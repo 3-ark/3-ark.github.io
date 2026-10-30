@@ -1,43 +1,59 @@
 ---
 layout: home
-title: Product Wiki & Engineering Blog
+title: Product Wiki & Engineering Hub
+description: "Central portal for product documentation, engineering notes, and technical articles."
 ---
 
-# 🚀 Welcome to Product Wiki & Engineering Blog
+<div class="hero-banner">
+  <h1>Product Wiki & Engineering Hub</h1>
+  <p>Discover complete user guides, system architecture diagrams, and release updates for our product ecosystem.</p>
+  <div class="hero-buttons">
+    <a href="{{ '/docs/' | relative_url }}" class="btn btn-primary">📖 Explore Documentation</a>
+    <a href="{{ '/blog/' | relative_url }}" class="btn btn-secondary">📰 Read Engineering Blog</a>
+  </div>
+</div>
 
-This is the central knowledge hub and documentation portal for our products, research notes, and engineering updates.
+<h2>🚀 Active Product Ecosystem</h2>
+<div class="card-grid">
+  <div class="card">
+    <h3 class="card-title"><a href="{{ '/docs/insightpage/getting-started.md' | relative_url }}">InsightPage Assistant</a></h3>
+    <p class="card-description">AI-powered Personal Knowledge Management (PKM) browser extension with local-first Markdown vault integration.</p>
+    <div class="card-meta">
+      <span>v2.5 Release</span> &bull; <span>Local AI / Cloud</span>
+    </div>
+  </div>
 
----
+  <div class="card">
+    <h3 class="card-title"><a href="{{ '/Rendering Showcase/' | relative_url }}">Rendering & Visualizations</a></h3>
+    <p class="card-description">Interactive Chart.js, Observable Plot, Leaflet Maps, Mermaid diagrams, and KaTeX math formulas showcase.</p>
+    <div class="card-meta">
+      <span>Rich Markdown</span> &bull; <span>Visualizations</span>
+    </div>
+  </div>
 
-## 📚 Product Documentation
+  <div class="card">
+    <h3 class="card-title"><a href="{{ '/privacy-policy.md' | relative_url }}">Privacy & Security Policy</a></h3>
+    <p class="card-description">Complete overview of our zero-data collection, local-first credentials, and direct client-to-API architecture.</p>
+    <div class="card-meta">
+      <span>100% Local-First</span> &bull; <span>Zero Tracking</span>
+    </div>
+  </div>
+</div>
 
-Explore guides, architecture overview, and API specifications for our active products:
+<hr>
 
-* **[InsightPage Assistant](./docs/insightpage/getting-started.md)**: AI-powered Personal Knowledge Management (PKM) browser extension.
-  * [Getting Started & Core Pillars](./docs/insightpage/getting-started.md)
-  * [Features & Capabilities](./docs/insightpage/features.md)
-  * [Privacy & Local-First Architecture](./privacy-policy.md)
-
-* **[Rich Text & Data Visualizations](./Rendering Showcase.md)**:
-  * [Chart & Data Visualizations](./Example Chart.md)
-  * [Interactive Maps (Leaflet)](./Example Map.md)
-  * [Mermaid Diagrams](./Example Mermaid.md)
-  * [Timeline Showcase](./Example Timeline.md)
-
----
-
-## 📰 Product Blog & Updates
-
-Latest announcements, release notes, and product development insights:
-
-* **[Welcome to the Product Wiki & Blog](./_posts/2026-03-01-welcome-to-product-wiki.md)** *(March 1, 2026)* — Learn how this wiki is structured for product documentation and blogging.
-* **[InsightPage v2.5 Architecture & Hybrid RAG](./_posts/2026-03-02-insightpage-v2-5-release.md)** *(March 2, 2026)* — Introducing BM25 + Semantic Hybrid Search and local AI engine support.
-
-👉 **[View All Blog Posts](./blog/index.md)**
-
----
-
-## 🛠️ Wiki Structure & Management
-
-Interested in adding documentation for a new product or contributing a blog post?
-Check out the **[Wiki Management Guide](./WIKI_GUIDE.md)** for detailed instructions.
+<h2>📰 Latest Blog Posts</h2>
+<div class="card-grid">
+  {% for post in site.posts limit:3 %}
+    <div class="card">
+      <h3 class="card-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <div class="card-meta" style="margin-bottom: 0.8rem;">
+        <span>📅 {{ post.date | date: "%B %d, %Y" }}</span>
+      </div>
+      <p class="card-description">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+      <div>
+        <a href="{{ post.url | relative_url }}" style="font-size: 0.9rem; font-weight: 600;">Read post &rarr;</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>

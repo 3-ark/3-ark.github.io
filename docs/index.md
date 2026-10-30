@@ -1,28 +1,63 @@
 ---
 layout: page
-title: Documentation Hub
+title: Documentation Directory
 permalink: /docs/
+description: "Comprehensive product documentation, architecture overviews, and interactive rendering guides."
 ---
 
-# 📚 Product Documentation Directory
+<div class="callout callout-note">
+  <div class="callout-title">💡 Welcome to Product Documentation</div>
+  Explore detailed user guides for active products and interactive visualization references.
+</div>
 
-Welcome to the central product documentation hub.
+<h2>📦 Products & Systems</h2>
 
-## Active Products
+<div class="card-grid">
+  <div class="card">
+    <h3 class="card-title"><a href="{{ '/docs/insightpage/getting-started.md' | relative_url }}">InsightPage Assistant</a></h3>
+    <p class="card-description">AI-powered Personal Knowledge Management extension with side panel chat, floating window, and local markdown sync.</p>
+    <div>
+      <a href="{{ '/docs/insightpage/getting-started.md' | relative_url }}" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Getting Started &rarr;</a>
+      <a href="{{ '/docs/insightpage/features.md' | relative_url }}" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Features &rarr;</a>
+    </div>
+  </div>
 
-### 1. InsightPage Assistant
-An AI-powered Personal Knowledge Management (PKM) browser extension that turns browsing into structured research and note-taking.
+  <div class="card">
+    <h3 class="card-title"><a href="{{ '/privacy-policy.md' | relative_url }}">Privacy & Data Security</a></h3>
+    <p class="card-description">Learn about our zero-tracking architecture, direct client-to-API communication, and local credential storage.</p>
+    <div>
+      <a href="{{ '/privacy-policy.md' | relative_url }}" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Read Policy &rarr;</a>
+    </div>
+  </div>
+</div>
 
-* [Getting Started & Core Architecture](./insightpage/getting-started.md)
-* [Features & Capabilities](./insightpage/features.md)
-* [Privacy & Security Architecture](../privacy-policy.md)
+<hr>
 
----
+<h2>🎨 Interactive Visualizations & Showcase</h2>
 
-## Interactive Showcase & Markdown Capabilities
+<div class="card-grid">
+  <div class="card">
+    <h3 class="card-title"><a href="{{ '/Rendering Showcase/' | relative_url }}">Rendering Showcase</a></h3>
+    <p class="card-description">Overview of supported Markdown syntax including LaTeX formulas, callouts, and inline comments.</p>
+  </div>
 
-* [Rendering Showcase](../Rendering Showcase.md)
-* [Example Charts & Visualizations](../Example Chart.md)
-* [Example Interactive Maps](../Example Map.md)
-* [Example Mermaid Diagrams](../Example Mermaid.md)
-* [Example Timelines](../Example Timeline.md)
+  <div class="card">
+    <h3 class="card-title"><a href="{{ '/Example Chart/' | relative_url }}">Interactive Charts</a></h3>
+    <p class="card-description">Bar, line, pie, donut, sankey, and radar charts via Chart.js and Observable Plot syntaxes.</p>
+  </div>
+
+  <div class="card">
+    <h3 class="card-title"><a href="{{ '/Example Map/' | relative_url }}">Interactive Maps</a></h3>
+    <p class="card-description">Geographical coordinates, markers, popups, and lines rendered using Leaflet.js.</p>
+  </div>
+
+  <div class="card">
+    <h3 class="card-title"><a href="{{ '/Example Mermaid/' | relative_url }}">Mermaid Diagrams</a></h3>
+    <p class="card-description">Flowcharts, sequence diagrams, state diagrams, and gantt charts vector rendering.</p>
+  </div>
+
+  <div class="card">
+    <h3 class="card-title"><a href="{{ '/Example Timeline/' | relative_url }}">Interactive Timelines</a></h3>
+    <p class="card-description">Zoomable timeline charts with project tags, categories, and milestone tracking.</p>
+  </div>
+</div>

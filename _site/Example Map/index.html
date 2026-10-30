@@ -1,0 +1,60 @@
+<h1 id="example-map">Example Map</h1>
+
+<p>InsightPage supports interactive maps rendered using <strong>Leaflet.js</strong> via <code class="language-plaintext highlighter-rouge">map</code> code blocks.</p>
+
+<hr />
+
+<h2 id="interactive-map-example">Interactive Map Example</h2>
+
+<pre><code class="language-map">center:
+  lat: 51.505
+  lng: -0.09
+zoom: 13
+height: 380px
+markers:
+  - lat: 51.505
+    lng: -0.09
+    title: "Central London"
+    popup: "&lt;b&gt;Central London&lt;/b&gt;&lt;br&gt;Heart of the city."
+    color: "#ef4444"
+  - lat: 51.515
+    lng: -0.1
+    title: "British Museum"
+    popup: "&lt;b&gt;British Museum&lt;/b&gt;&lt;br&gt;World-famous history and culture museum."
+    color: "#3b82f6"
+  - lat: 51.5007
+    lng: -0.1246
+    title: "Big Ben"
+    popup: "&lt;b&gt;Big Ben &amp; Houses of Parliament&lt;/b&gt;"
+    color: "#10b981"
+lines:
+  - coordinates:
+      - [51.505, -0.09]
+      - [51.515, -0.1]
+      - [51.5007, -0.1246]
+      - [51.505, -0.09]
+    color: "#8b5cf6"
+</code></pre>
+
+<hr />
+
+<h2 id="configuration-reference">Configuration Reference</h2>
+
+<p>Use YAML or JSON inside a <code class="language-plaintext highlighter-rouge">map</code> block:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">lat</code> / <code class="language-plaintext highlighter-rouge">lng</code></strong>: Latitude and longitude center coordinates.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">zoom</code></strong>: Initial zoom level (1 to 19).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">height</code> / <code class="language-plaintext highlighter-rouge">width</code></strong>: Map container dimensions (e.g. <code class="language-plaintext highlighter-rouge">380px</code>, <code class="language-plaintext highlighter-rouge">100%</code>).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">markers</code></strong>: List of marker objects or <code class="language-plaintext highlighter-rouge">[lat, lng, popup]</code> tuples.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">lat</code>, <code class="language-plaintext highlighter-rouge">lng</code>: Marker coordinates.</li>
+      <li><code class="language-plaintext highlighter-rouge">popup</code>: HTML / text displayed on click.</li>
+      <li><code class="language-plaintext highlighter-rouge">color</code>: Marker pin color (e.g., <code class="language-plaintext highlighter-rouge">#ef4444</code>, <code class="language-plaintext highlighter-rouge">#3b82f6</code>).</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">lines</code> / <code class="language-plaintext highlighter-rouge">polylines</code></strong>: Array of lines with coordinates and color options.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">polygons</code></strong>: Polygon shapes with <code class="language-plaintext highlighter-rouge">fillColor</code> and <code class="language-plaintext highlighter-rouge">color</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">circles</code></strong>: Circle overlays with <code class="language-plaintext highlighter-rouge">lat</code>, <code class="language-plaintext highlighter-rouge">lng</code>, <code class="language-plaintext highlighter-rouge">radius</code> (in meters), and <code class="language-plaintext highlighter-rouge">popup</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">geojson</code></strong>: Raw GeoJSON object or string to plot vector layers.</li>
+</ul>
