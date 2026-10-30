@@ -11,7 +11,7 @@ code, kbd, pre, samp {
   border: 1px solid var(--border-color);
 }
 
-pre.highlight, div.highlighter-rouge pre {
+pre, pre.highlight, div.highlighter-rouge pre {
   padding: 1.2rem;
   overflow-x: auto;
   border-radius: 8px;
@@ -19,6 +19,7 @@ pre.highlight, div.highlighter-rouge pre {
   border: 1px solid var(--border-color);
   margin: 1.5em 0;
   line-height: 1.5;
+  box-shadow: var(--shadow-sm);
 
   code {
     padding: 0;
