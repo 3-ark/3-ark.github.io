@@ -1,0 +1,229 @@
+<blockquote>
+  <p>[!Summary] Markdown Syntaxes
+This ^<strong>note</strong>^ <em>demonstrates</em> ~the~ various ==<strong><em>“Markdown”</em></strong>== rendering capabilities of InsightPage <del><strong><em>“笔记”</em></strong></del>.</p>
+</blockquote>
+
+<h2 id="standard-markdown">Standard Markdown</h2>
+
+<p>InsightPage is designed to make capturing and reading web pages easier with lightweight and intuitive editing features. Standard Markdown syntaxes are fully supported in an easy-to-read layout.</p>
+
+<blockquote>
+  <p>“The important thing is not to stop questioning. Curiosity has its own reason for existence.”</p>
+
+  <p>– Albert Einstein::cmt[Who knows. This is for your information; I am not sure if Einstein<sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup> actually said that.]</p>
+</blockquote>
+
+<h3 id="editable-tables">Editable Tables</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th style="text-align: center">Supported</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Editable Tables</td>
+      <td style="text-align: center">✅</td>
+      <td>Great for structured data.</td>
+    </tr>
+    <tr>
+      <td>Chart</td>
+      <td style="text-align: center">✅</td>
+      <td>Good for chart rendering.</td>
+    </tr>
+    <tr>
+      <td>Mermaid Diagrams</td>
+      <td style="text-align: center">✅</td>
+      <td>See below for a cool example.</td>
+    </tr>
+    <tr>
+      <td>LaTeX Math</td>
+      <td style="text-align: center">✅</td>
+      <td>For all your scientific notation needs.</td>
+    </tr>
+    <tr>
+      <td>Code Highlighting</td>
+      <td style="text-align: center">✅</td>
+      <td>For sharing code snippets.</td>
+    </tr>
+    <tr>
+      <td>Native Tabs</td>
+      <td style="text-align: center">✅</td>
+      <td>For a clean layout.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="advanced-rendering">Advanced Rendering</h2>
+
+<h3 id="tabs-inside-a-note">Tabs Inside a Note</h3>
+
+<p>Here is the format for internal tabs:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```tabs
+--- tab1
+
+$$\begin{aligned} \nabla \cdot \mathbf{E} &amp;= \frac{\rho}{\varepsilon_0} \\ \nabla \cdot \mathbf{B} &amp;= 0 \\ \nabla \times \mathbf{E} &amp;= -\frac{\partial \mathbf{B}}{\partial t} \\ \nabla \times \mathbf{B} &amp;= \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \end{aligned}$$
+--- yes you put here anything
+~~***right***~~ &lt;big&gt;wrong&lt;/big&gt; **fuck off** H~2~O X^2^=3
+
+--- like, thisistab3
+Standard Highlight: Parse ==text== directly into an HTML &lt;mark&gt;text&lt;/mark&gt; tag. enabling proper AST parsing into nodes for nested formatting like ==***text***==, ==**text**==, ==*text*==, and ==**_text_**== or ==_text_==.
+```
+</code></pre></div></div>
+
+<h4 id="rendered">Rendered</h4>
+
+<pre><code class="language-tabs">--- tab1
+
+$$\begin{aligned} \nabla \cdot \mathbf{E} &amp;= \frac{\rho}{\varepsilon_0} \\ \nabla \cdot \mathbf{B} &amp;= 0 \\ \nabla \times \mathbf{E} &amp;= -\frac{\partial \mathbf{B}}{\partial t} \\ \nabla \times \mathbf{B} &amp;= \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \end{aligned}$$
+--- yes you put here anything
+~~***right***~~ &lt;big&gt;wrong&lt;/big&gt; **fuck off** H~2~O X^2^=3
+
+--- like, thisistab3
+Standard Highlight: Parse ==text== directly into an HTML &lt;mark&gt;text&lt;/mark&gt; tag. enabling proper AST parsing into nodes for nested formatting like ==***text***==, ==**text**==, ==*text*==, and ==**_text_**== or ==_text_==.
+</code></pre>
+
+<h3 id="mermaid-diagrams">Mermaid Diagrams</h3>
+
+<p>InsightPage supports standard Mermaid diagrams (flowcharts, sequence diagrams, class diagrams, state diagrams, ER diagrams, gantt charts, and git graphs).</p>
+
+<p>To prevent CPU spikes and improve rendering performance, heavy diagram showcases are separated into dedicated notes:
+👉 <strong>[[Example Mermaid]]</strong></p>
+
+<blockquote>
+  <p>[!Note] Optimization &amp; Superior Alternatives
+Heavy specialized Mermaid chart modules (<code class="language-plaintext highlighter-rouge">xychart</code>, <code class="language-plaintext highlighter-rouge">pie</code>, <code class="language-plaintext highlighter-rouge">journey</code>, <code class="language-plaintext highlighter-rouge">architecture</code>, <code class="language-plaintext highlighter-rouge">mindmap</code>) are intentionally omitted to keep extension bundles lightweight and eliminate CPU rendering spikes:</p>
+  <ul>
+    <li><strong>For charts &amp; graphs:</strong> Use <strong>Chart.js style syntaxes</strong> (<code class="language-plaintext highlighter-rouge">chart</code> code block) or native <strong>Observable Plot</strong> (<code class="language-plaintext highlighter-rouge">plot</code> or <code class="language-plaintext highlighter-rouge">cosyobservableplot</code> code block), which offer far superior visual rendering, crisp SVG vector scaling, rich interactivity, and responsive scaling compared to Mermaid static charts. See: 👉 <strong>[[Example Chart]]</strong>.</li>
+    <li><strong>For mindmaps:</strong> The built-in interactive <strong>Mindmap Viewer</strong> (powered by Markmap) delivers a significantly smoother, zoomable, and collapsible mind-mapping experience.</li>
+  </ul>
+</blockquote>
+
+<h3 id="charts--data-visualizations">Charts &amp; Data Visualizations</h3>
+
+<p>InsightPage renders interactive charts via Chart.js-style YAML configurations (<code class="language-plaintext highlighter-rouge">chart</code>) and declarative JavaScript data visualizations via Observable Plot (<code class="language-plaintext highlighter-rouge">plot</code> / <code class="language-plaintext highlighter-rouge">cosyobservableplot</code>).</p>
+
+<p>To explore interactive bar charts, line charts, pie charts, histograms, and multi-series plots without CPU overhead in this document, see:
+👉 <strong>[[Example Chart]]</strong></p>
+
+<h3 id="abc-sheet-music-notes">ABC Sheet Music Notes</h3>
+
+<p>Render interactive sheet music with <code class="language-plaintext highlighter-rouge">abc</code> code blocks:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```abc
+X: 1
+T: Ode to Joy
+M: 4/4
+L: 1/4
+K: C
+E E F G | G F E D | C C D E | E3/2 D/ D2 |
+```
+</code></pre></div></div>
+
+<p><strong>Rendered Sheet Music:</strong></p>
+
+<pre><code class="language-abc">X: 1
+T: Ode to Joy
+M: 4/4
+L: 1/4
+K: C
+E E F G | G F E D | C C D E | E3/2 D/ D2 |
+</code></pre>
+
+<h3 id="inline-comment">Inline Comment</h3>
+
+<p>Here is an example of an interactive comment callout:
+::cmt[💡 example. This is a comment.]
+::cmt [💡 example. This is a comment.]
+::cmt{💡 example. This is a comment.}
+::cmt {💡 example. This is a comment.}</p>
+
+<p>Use <code class="language-plaintext highlighter-rouge">::cmt[]</code> for interactive comments/popovers.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>::cmt[💡 example. This is a comment.]
+</code></pre></div></div>
+
+<h2 id="skills-for-ai">Skills for AI</h2>
+
+<pre><code class="language-Markdown"># InsightPage Markdown Syntax
+
+Use these extensions in addition to standard Markdown and Mermaid.
+
+Use different fence lengths for nested code fences.
+
+## Mermaid Diagrams
+
+Supported diagram types: `flowchart` / `graph`, `sequenceDiagram`, `classDiagram`, `stateDiagram-v2`, `erDiagram`, `gantt`, `gitGraph`.
+
+*Note:* `xychart`, `pie`, `journey`, `architecture`, and `mindmap` are omitted to keep bundle size lightweight. Use `chart` blocks (Chart.js-style syntax) or `plot` blocks (Observable Plot) for charts—which offer much higher quality rendering and rich interactivity compared to Mermaid charts—and use the built-in Mindmap viewer for superior interactive mind-mapping.
+
+## Tabs
+
+Use `tabs` for switchable sections. Start each tab with `--- &lt;Tab Title&gt;`.
+
+````markdown
+```tabs
+--- Overview
+Summary...
+--- Details
+Specifications...
+```
+````
+
+## Charts
+
+Use `chart` with YAML configuration. Note: While this is not real Chart.js, you can use Chart.js-style syntaxes which most Chart.js wrappers use (powered by Observable Plot).
+
+Supported fields:
+
+* `type`: `bar`, `line`, `pie`, etc.
+* `labels`: category labels
+* `series`: list of `title` and `data`
+* `width`: optional
+
+````markdown
+```chart
+type: bar
+labels: ["Q1", "Q2", "Q3", "Q4"]
+series:
+  - title: "Revenue"
+    data: [120, 150, 180, 220]
+width: 500px
+```
+````
+
+## Observable Plot
+
+Use `plot` or `cosyobservableplot` for data visualizations using Observable Plot. You can write JavaScript expressions or declarative configuration options.
+
+````markdown
+```plot
+Plot.rectY(
+  [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9, 10, 12, 15],
+  Plot.binX(
+    { y: "count" },
+    { x: (d) =&gt; d, fill: "#3b82f6", tip: true, rx: 3 }
+  )
+)
+```
+````
+
+## Inline Comment
+
+Use `::cmt[]` for interactive comments/popovers.
+
+```markdown
+::cmt[💡 example. This is a comment.]
+```
+</code></pre>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Jeffery, is this you? <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>

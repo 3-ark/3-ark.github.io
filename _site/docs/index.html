@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.9.1 -->
+<title>Documentation Directory | Product Wiki &amp; Developer Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Documentation Directory" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Comprehensive product documentation, architecture overviews, and interactive rendering guides." />
+<meta name="twitter:description" property="og:description" content="Comprehensive product documentation, architecture overviews, and interactive rendering guides." />
+<meta property="og:site_name" content="Product Wiki &amp; Developer Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Documentation Directory" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Comprehensive product documentation, architecture overviews, and interactive rendering guides.","headline":"Documentation Directory","url":"/docs/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Product Wiki &amp; Developer Hub" />
+
+  <!-- Visualization Libraries Support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+  <div class="site-wrapper">
+    <header class="site-header">
+      <div class="header-container">
+        <div class="site-title">
+          <a href="/">⚡ Product Wiki & Developer Hub</a>
+        </div>
+        <nav class="site-nav">
+          <a class="nav-link " href="/">Home</a>
+          <a class="nav-link active" href="/docs/">Docs</a>
+          <a class="nav-link " href="/blog/">Blog</a>
+          <a class="nav-link " href="/Rendering%20Showcase/">Showcase</a>
+
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+            <span id="theme-icon">🌙</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <article class="page-article">
+  <header class="post-header">
+    <h1 class="post-title">Documentation Directory</h1>
+
+      <p class="card-description">Comprehensive product documentation, architecture overviews, and interactive rendering guides.</p>
+
+  </header>
+
+  <div class="page-content">
+    <div class="callout callout-note">
+  <div class="callout-title">💡 Welcome to Product Documentation</div>
+  Explore detailed user guides for active products and interactive visualization references.
+</div>
+
+<h2>📦 Products &amp; Systems</h2>
+
+<div class="card-grid">
+  <div class="card">
+    <h3 class="card-title"><a href="/docs/insightpage/getting-started.md">InsightPage Assistant</a></h3>
+    <p class="card-description">AI-powered Personal Knowledge Management extension with side panel chat, floating window, and local markdown sync.</p>
+    <div>
+      <a href="/docs/insightpage/getting-started.md" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Getting Started &rarr;</a>
+      <a href="/docs/insightpage/features.md" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Features &rarr;</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="card-title"><a href="/privacy-policy.md">Privacy &amp; Data Security</a></h3>
+    <p class="card-description">Learn about our zero-tracking architecture, direct client-to-API communication, and local credential storage.</p>
+    <div>
+      <a href="/privacy-policy.md" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Read Policy &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<h2>🎨 Interactive Visualizations &amp; Showcase</h2>
+
+<div class="card-grid">
+  <div class="card">
+    <h3 class="card-title"><a href="/Rendering%20Showcase/">Rendering Showcase</a></h3>
+    <p class="card-description">Overview of supported Markdown syntax including LaTeX formulas, callouts, and inline comments.</p>
+  </div>
+
+  <div class="card">
+    <h3 class="card-title"><a href="/Example%20Chart/">Interactive Charts</a></h3>
+    <p class="card-description">Bar, line, pie, donut, sankey, and radar charts via Chart.js and Observable Plot syntaxes.</p>
+  </div>
+
+  <div class="card">
+    <h3 class="card-title"><a href="/Example%20Map/">Interactive Maps</a></h3>
+    <p class="card-description">Geographical coordinates, markers, popups, and lines rendered using Leaflet.js.</p>
+  </div>
+
+  <div class="card">
+    <h3 class="card-title"><a href="/Example%20Mermaid/">Mermaid Diagrams</a></h3>
+    <p class="card-description">Flowcharts, sequence diagrams, state diagrams, and gantt charts vector rendering.</p>
+  </div>
+
+  <div class="card">
+    <h3 class="card-title"><a href="/Example%20Timeline/">Interactive Timelines</a></h3>
+    <p class="card-description">Zoomable timeline charts with project tags, categories, and milestone tracking.</p>
+  </div>
+</div>
+
+  </div>
+</article>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div>
+          <strong>Product Wiki & Developer Hub</strong> &copy; 2026 — Personal Knowledge & Engineering Portal
+        </div>
+        <div>
+          Powered by Jekyll & GitHub Pages
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Theme Switcher Script -->
+  <script>
+    (function() {
+      const toggleBtn = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+      document.documentElement.setAttribute('data-theme', storedTheme);
+      themeIcon.textContent = storedTheme === 'dark' ? '☀️' : '🌙';
+
+      toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      });
+    })();
+  </script>
+
+  <!-- Script Initializers for Visualisations -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. Initialize Mermaid Diagrams
+      if (typeof mermaid !== "undefined") {
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+      }
+
+      // 2. Initialize KaTeX Math Formulas
+      if (typeof renderMathInElement !== "undefined") {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ]
+        });
+      }
+
+      // 3. Transform Obsidian/Note Callouts (> [!Note], > [!Summary], etc.)
+      document.querySelectorAll('blockquote').forEach(function(bq) {
+        const html = bq.innerHTML.trim();
+        const calloutMatch = html.match(/^<p>\[\!(Note|Summary|Warning|Important|Tip)\]\s*(.*?)<\/p>/i);
+        if (calloutMatch) {
+          const type = calloutMatch[1].toLowerCase();
+          const title = calloutMatch[2] || type.toUpperCase();
+          const content = html.replace(/^<p>\[\!(Note|Summary|Warning|Important|Tip)\]\s*.*?<\/p>/i, '');
+
+          const div = document.createElement('div');
+          div.className = 'callout callout-' + type;
+          div.innerHTML = '<div class="callout-title">💡 ' + title + '</div>' + content;
+          bq.parentNode.replaceChild(div, bq);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

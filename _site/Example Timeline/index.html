@@ -1,0 +1,76 @@
+<h1 id="example-timeline">Example Timeline</h1>
+
+<p>InsightPage supports interactive zoomable timelines rendered using <code class="language-plaintext highlighter-rouge">timeline</code>, <code class="language-plaintext highlighter-rouge">timeline-chart</code>, or <code class="language-plaintext highlighter-rouge">event-timeline</code> code blocks.</p>
+
+<hr />
+
+<h2 id="1-interactive-timeline-example-yaml-syntax">1. Interactive Timeline Example (YAML Syntax)</h2>
+
+<p>Standard YAML supports unquoted keys and strings:</p>
+
+<pre><code class="language-timeline">- start: 2013-10-01
+  end: 2016-09-30
+  institution: Technical University Dresden
+  title: BSc. Student in Computer Science
+  type: education
+  collection: []
+
+- start: 2016-10-01
+  end: 2019-01-31
+  institution: Technical University Dresden
+  title: MSc. Student in Computer Science
+  type: education
+  collection: [Glyphboard, Conversation Trainer, VisBlocks]
+
+- start: 2019-03-01
+  end: 2022-02-26
+  institution: Aarhus University
+  title: Ph.D. Student
+  type: academia
+  collection: [ProSample, ProSteer, ReVize, ReVis, ReData]
+
+- start: 2022-03-01
+  end: Date.now()
+  institution: Aarhus University
+  title: Postdoctoral Researcher
+  type: academia
+  collection: [MapBlender]
+</code></pre>
+
+<hr />
+
+<h2 id="2-loose-syntax-support-examples">2. Loose Syntax Support Examples</h2>
+
+<p>InsightPage intelligently parses loose JSON and YAML syntaxes without strict quotes, including:</p>
+<ul>
+  <li>Loose double braces <code class="language-plaintext highlighter-rouge">{...}</code> or single object <code class="language-plaintext highlighter-rouge">{ ... }</code></li>
+  <li>Unquoted strings without double quotes</li>
+  <li>Variable key-value spacing (with or without spaces after <code class="language-plaintext highlighter-rouge">:</code>)</li>
+  <li>Dynamic <code class="language-plaintext highlighter-rouge">Date.now()</code> timestamps (rendering the “Today” indicator line)</li>
+</ul>
+
+<h3 id="loose-double-brace-object">Loose Double-Brace Object</h3>
+
+<pre><code class="language-timeline">{start: 2020-01-01, title:Project Alpha Launch, type:milestone, end: 2021-06-01, collection:[Design, Prototype]}
+</code></pre>
+
+<h3 id="loose-object-array-with-datenow">Loose Object Array with Date.now()</h3>
+
+<pre><code class="language-timeline">[
+  {start: 2021-01-01,end: 2022-05-15,title:"Research Phase",category:R&amp;D,collection:["Survey","Paper"]},
+  {start: "2022-06-01",end: Date.now(),title:Product Rollout,category:Operations,collection:[V1,V2]}
+]
+</code></pre>
+
+<hr />
+
+<h2 id="3-configuration-reference">3. Configuration Reference</h2>
+
+<p>Specify events using JSON or YAML arrays:</p>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">start</code></strong>: Event start date (ISO string <code class="language-plaintext highlighter-rouge">YYYY-MM-DD</code> or timestamp).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">end</code></strong>: Event end date (optional; omitted end dates or <code class="language-plaintext highlighter-rouge">Date.now()</code> extend to present day). Using <code class="language-plaintext highlighter-rouge">Date.now()</code> renders the vertical “Today” indicator line.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">title</code></strong>: Title label displayed above the event bar.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">collection</code></strong>: Array of related project or publication tags. Multiple items collapse into a <code class="language-plaintext highlighter-rouge">+N</code> badge on tight zoom.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">[customCategory]</code></strong>: Any custom key (e.g., <code class="language-plaintext highlighter-rouge">type</code>, <code class="language-plaintext highlighter-rouge">institution</code>, <code class="language-plaintext highlighter-rouge">category</code>) is automatically discovered and mapped to color categories with category selection radio buttons.</li>
+</ul>

@@ -1,0 +1,135 @@
+<p>InsightPage supports rendering vector diagrams directly in your notes using <strong>Mermaid</strong>.</p>
+
+<hr />
+
+<h2 id="supported-diagram-types">Supported Diagram Types</h2>
+
+<p>The following standard Mermaid diagram types are fully supported:</p>
+<ul>
+  <li><strong>Flowcharts</strong> (<code class="language-plaintext highlighter-rouge">graph</code> / <code class="language-plaintext highlighter-rouge">flowchart</code>)</li>
+  <li><strong>Sequence Diagrams</strong> (<code class="language-plaintext highlighter-rouge">sequenceDiagram</code>)</li>
+  <li><strong>Class Diagrams</strong> (<code class="language-plaintext highlighter-rouge">classDiagram</code>)</li>
+  <li><strong>State Diagrams</strong> (<code class="language-plaintext highlighter-rouge">stateDiagram-v2</code>)</li>
+  <li><strong>Entity Relationship Diagrams</strong> (<code class="language-plaintext highlighter-rouge">erDiagram</code>)</li>
+  <li><strong>Gantt Charts</strong> (<code class="language-plaintext highlighter-rouge">gantt</code>)</li>
+  <li><strong>Git Graphs</strong> (<code class="language-plaintext highlighter-rouge">gitGraph</code>)</li>
+</ul>
+
+<blockquote>
+  <p>[!Note] Omitted Diagram Types &amp; Superior Alternatives
+Heavy specialized Mermaid chart modules (<code class="language-plaintext highlighter-rouge">xychart</code>, <code class="language-plaintext highlighter-rouge">pie</code>, <code class="language-plaintext highlighter-rouge">journey</code>, <code class="language-plaintext highlighter-rouge">architecture</code>, <code class="language-plaintext highlighter-rouge">mindmap</code>) are intentionally omitted to keep extension bundle size lightweight and eliminate CPU rendering spikes:</p>
+  <ul>
+    <li><strong>For charts &amp; graphs:</strong> Use <strong>Chart.js style syntaxes</strong> (<code class="language-plaintext highlighter-rouge">chart</code> code block) or <strong>Observable Plot</strong> (<code class="language-plaintext highlighter-rouge">plot</code> or <code class="language-plaintext highlighter-rouge">cosyobservableplot</code> code block). They provide far superior visual rendering, crisp SVG vector scaling, rich interactivity, and responsive layout compared to Mermaid’s static chart output. See: 👉 <strong>[[Example Chart]]</strong>.</li>
+    <li><strong>For mindmaps:</strong> Use the built-in interactive <strong>Mindmap Viewer</strong> (powered by Markmap) for a smooth, zoomable, and collapsible mind-mapping experience.</li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h2 id="flowchart-example">Flowchart Example</h2>
+
+<pre><code class="language-mermaid">graph TD;
+    A[Start Research] --&gt; B{Need AI Insights?};
+    B -- Yes --&gt; C[Use InsightPage Assistant];
+    C --&gt; D[Save Findings to Vault];
+    B -- No --&gt; D;
+</code></pre>
+
+<hr />
+
+<h2 id="sequence-diagram-example">Sequence Diagram Example</h2>
+
+<pre><code class="language-mermaid">sequenceDiagram
+    autonumber
+    actor User as User
+    participant CP as Side Panel
+    participant AI as AI Engine
+    participant FS as Local Markdown Vault
+
+    User-&gt;&gt;CP: Ask question
+    CP-&gt;&gt;AI: Send prompt &amp; context
+    AI--&gt;&gt;CP: Stream AI response
+    CP-&gt;&gt;FS: Save response to note
+</code></pre>
+
+<hr />
+
+<h2 id="state-diagram-example">State Diagram Example</h2>
+
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; Idle
+    Idle --&gt; Processing: Receive Query
+    Processing --&gt; Rendering: Generate Output
+    Rendering --&gt; Idle: Render Complete
+</code></pre>
+
+<hr />
+
+<h2 id="gantt-chart-example">Gantt Chart Example</h2>
+
+<pre><code class="language-mermaid">gantt
+    title Project Timeline
+    dateFormat  YYYY-MM-DD
+    section Research
+    Literature Review   :a1, 2026-01-01, 7d
+    Data Collection     :after a1, 10d
+    section Development
+    System Design       :a2, 2026-01-15, 10d
+    Implementation      :after a2, 14d
+</code></pre>
+
+<h2 id="timeline">Timeline</h2>
+
+<pre><code class="language-mermaid">timeline TD
+        title England's History Timeline
+        section Stone Age
+          7600 BC : Britain's oldest known house was built in Orkney, Scotland
+          6000 BC : Sea levels rise and Britain becomes an island.&lt;br&gt; The people who live here are hunter-gatherers.
+        section Bronze Age
+          2300 BC : People arrive from Europe and settle in Britain. &lt;br&gt;They bring farming and metalworking.
+                  : New styles of pottery and ways of burying the dead appear.
+          2200 BC : The last major building works are completed at Stonehenge.&lt;br&gt; People now bury their dead in stone circles.
+                  : The first metal objects are made in Britain.Some other nice things happen. it is a good time to be alive.
+</code></pre>
+
+<pre><code class="language-timeline"> [{start: "2022-03-01", end: Date.now(), test: "a", institution: "Aarhus University", title: "Postdoctoral Researcher", type: "academia", collection: ["mapblender"]},
+  {start: "2019-03-01", end: "2022-02-26", test: "a", institution: "Aarhus University", title: "Ph.D. Student", type: "academia", collection: ["ProSample", "ProSteer", "ReVize", "ReVis", "ReData", "ColorBrewer-lite", "VisFlow-lite"]},
+  {start: "2016-10-01", end: "2019-01-31", test: "b", institution: "Technical University Dresden", title: "MSc. Student in Computer Science", type: "education", collection: ["Glyphboard", "Conversation Trainer", "VisBlocks"]},
+  {start: "2013-10-01", end: "2016-09-30", test: "a", institution: "Technical University Dresden", title: "BSc. Student in Computer Science", type: "education", collection: []},
+  {start: "2021-01-01", end: "2021-04-30", test: "b", institution: "Carnegie Mellon University", title: "Visiting Ph.D. student at DIG Lab", type: "academia", collection: ["ProInterest"]},
+  {start: "2016-10-02", end: "2018-03-30", test: "a", institution: "Technical University Dresden", title: "Web developer", type: "academia", collection: []},
+  {start: "2017-09-01", end: "2019-01-31", test: "a", institution: "SAP", title: "Part-time developer", type: "industry", collection: ["Parallel Hierarchies"]}]
+</code></pre>
+
+<pre><code class="language-timeline">- start: 2022-03-01
+  end: 2024-01-01
+  institution: Aarhus University
+  title: Postdoctoral Researcher
+  type: academia
+  test: a
+  collection: [mapblender]
+
+- start: 2019-03-01
+  end: 2022-02-26
+  institution: Aarhus University
+  title: Ph.D. Student
+  type: academia
+  test: a
+  collection: [ProSample, ProSteer, ReVize, ReVis, ReData, ColorBrewer-lite, VisFlow-lite]
+
+- start: 2016-10-01
+  end: 2019-01-31
+  institution: Technical University Dresden
+  title: MSc. Student in Computer Science
+  type: education
+  test: b
+  collection: [Glyphboard, Conversation Trainer, VisBlocks]
+
+- start: 2017-09-01
+  end: 2019-01-31
+  institution: SAP
+  title: Part-time developer
+  type: industry
+  test: a
+  collection: [Parallel Hierarchies]
+</code></pre>

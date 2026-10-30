@@ -14,7 +14,7 @@ pinned: false
 
 # Example Timeline
 
-InsightPage supports interactive zoomable timelines rendered using ```timeline```, ```timeline-chart```, or ```event-timeline``` code blocks.
+InsightPage supports interactive zoomable timelines rendered using `timeline`, `timeline-chart`, or `event-timeline` code blocks.
 
 ---
 
@@ -57,7 +57,7 @@ Standard YAML supports unquoted keys and strings:
 ## 2. Loose Syntax Support Examples
 
 InsightPage intelligently parses loose JSON and YAML syntaxes without strict quotes, including:
-- Loose double braces `{{ ... }}` or single object `{ ... }`
+- Loose double braces `{...}` or single object `{ ... }`
 - Unquoted strings without double quotes
 - Variable key-value spacing (with or without spaces after `:`)
 - Dynamic `Date.now()` timestamps (rendering the "Today" indicator line)
@@ -65,7 +65,7 @@ InsightPage intelligently parses loose JSON and YAML syntaxes without strict quo
 ### Loose Double-Brace Object
 
 ```timeline
-{{start: 2020-01-01, title:Project Alpha Launch, type:milestone, end: 2021-06-01, collection:[Design, Prototype]}}
+{start: 2020-01-01, title:Project Alpha Launch, type:milestone, end: 2021-06-01, collection:[Design, Prototype]}
 ```
 
 ### Loose Object Array with Date.now()
