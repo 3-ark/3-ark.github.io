@@ -1,0 +1,34 @@
+title: "Product Wiki & Developer Hub"
+description: "Personal knowledge management, product documentation, and engineering updates."
+theme: minima
+
+# Header Navigation
+header_pages:
+  - docs/index.md
+  - blog/index.md
+  - Rendering Showcase.md
+  - privacy-policy.md
+
+# Permalink settings
+permalink: /blog/:year/:month/:day/:title/
+
+# Markdown parser options
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax_highlighter: rouge
+
+# Plugins supported natively on GitHub Pages
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude unneeded development files
+exclude:
+  - README.md
+  - WIKI_GUIDE.md
+  - .git/
