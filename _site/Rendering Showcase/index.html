@@ -149,77 +149,68 @@ E E F G | G F E D | C C D E | E3/2 D/ D2 |
 
 <h2 id="skills-for-ai">Skills for AI</h2>
 
-<pre><code class="language-Markdown"># InsightPage Markdown Syntax
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># InsightPage Markdown Syntax</span>
 
 Use these extensions in addition to standard Markdown and Mermaid.
 
-Use different fence lengths for nested code fences.
+<span class="gu">## Mermaid Diagrams</span>
 
-## Mermaid Diagrams
+Supported diagram types: <span class="sb">`flowchart`</span> / <span class="sb">`graph`</span>, <span class="sb">`sequenceDiagram`</span>, <span class="sb">`classDiagram`</span>, <span class="sb">`stateDiagram-v2`</span>, <span class="sb">`erDiagram`</span>, <span class="sb">`gantt`</span>, <span class="sb">`gitGraph`</span>.
 
-Supported diagram types: `flowchart` / `graph`, `sequenceDiagram`, `classDiagram`, `stateDiagram-v2`, `erDiagram`, `gantt`, `gitGraph`.
+<span class="ge">*Note:*</span> <span class="sb">`xychart`</span>, <span class="sb">`pie`</span>, <span class="sb">`journey`</span>, <span class="sb">`architecture`</span>, and <span class="sb">`mindmap`</span> are omitted to keep bundle size lightweight. Use <span class="sb">`chart`</span> blocks (Chart.js-style syntax) or <span class="sb">`plot`</span> blocks (Observable Plot) for charts—which offer much higher quality rendering and rich interactivity compared to Mermaid charts—and use the built-in Mindmap viewer for superior interactive mind-mapping.
 
-*Note:* `xychart`, `pie`, `journey`, `architecture`, and `mindmap` are omitted to keep bundle size lightweight. Use `chart` blocks (Chart.js-style syntax) or `plot` blocks (Observable Plot) for charts—which offer much higher quality rendering and rich interactivity compared to Mermaid charts—and use the built-in Mindmap viewer for superior interactive mind-mapping.
+<span class="gu">## Tabs</span>
 
-## Tabs
+Use <span class="sb">`tabs`</span> for switchable sections. Start each tab with <span class="sb">`--- &lt;Tab Title&gt;`</span>.
 
-Use `tabs` for switchable sections. Start each tab with `--- &lt;Tab Title&gt;`.
-
-````markdown
-```tabs
---- Overview
+<span class="p">```</span><span class="nl">tabs
+</span><span class="sb">--- Overview
 Summary...
 --- Details
 Specifications...
-```
-````
+</span></code></pre></div></div>
 
-## Charts
+<h2 id="charts">Charts</h2>
 
-Use `chart` with YAML configuration. Note: While this is not real Chart.js, you can use Chart.js-style syntaxes which most Chart.js wrappers use (powered by Observable Plot).
+<p>Use <code class="language-plaintext highlighter-rouge">chart</code> with YAML configuration. Note: While this is not real Chart.js, you can use Chart.js-style syntaxes which most Chart.js wrappers use (powered by Observable Plot).</p>
 
-Supported fields:
+<p>Supported fields:</p>
 
-* `type`: `bar`, `line`, `pie`, etc.
-* `labels`: category labels
-* `series`: list of `title` and `data`
-* `width`: optional
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">type</code>: <code class="language-plaintext highlighter-rouge">bar</code>, <code class="language-plaintext highlighter-rouge">line</code>, <code class="language-plaintext highlighter-rouge">pie</code>, etc.</li>
+  <li><code class="language-plaintext highlighter-rouge">labels</code>: category labels</li>
+  <li><code class="language-plaintext highlighter-rouge">series</code>: list of <code class="language-plaintext highlighter-rouge">title</code> and <code class="language-plaintext highlighter-rouge">data</code></li>
+  <li><code class="language-plaintext highlighter-rouge">width</code>: optional</li>
+</ul>
 
-````markdown
-```chart
-type: bar
+<pre><code class="language-chart">type: bar
 labels: ["Q1", "Q2", "Q3", "Q4"]
 series:
   - title: "Revenue"
     data: [120, 150, 180, 220]
 width: 500px
-```
-````
+</code></pre>
 
-## Observable Plot
+<h2 id="observable-plot">Observable Plot</h2>
 
-Use `plot` or `cosyobservableplot` for data visualizations using Observable Plot. You can write JavaScript expressions or declarative configuration options.
+<p>Use <code class="language-plaintext highlighter-rouge">plot</code> or <code class="language-plaintext highlighter-rouge">cosyobservableplot</code> for data visualizations using Observable Plot. You can write JavaScript expressions or declarative configuration options.</p>
 
-````markdown
-```plot
-Plot.rectY(
+<pre><code class="language-plot">Plot.rectY(
   [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9, 10, 12, 15],
   Plot.binX(
     { y: "count" },
     { x: (d) =&gt; d, fill: "#3b82f6", tip: true, rx: 3 }
   )
 )
-```
-````
-
-## Inline Comment
-
-Use `::cmt[]` for interactive comments/popovers.
-
-```markdown
-::cmt[💡 example. This is a comment.]
-```
 </code></pre>
+
+<h2 id="inline-comment-1">Inline Comment</h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">::cmt[]</code> for interactive comments/popovers.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>::cmt[💡 example. This is a comment.]
+</code></pre></div></div>
+<p>```</p>
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1">

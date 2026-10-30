@@ -21,6 +21,6 @@ InsightPage is a Personal Knowledge Management (PKM) browser extension with inte
 
 ## Quick Navigation
 
-* [Detailed Features & Capabilities](./features.md)
-* [Privacy Policy & Local-First Principles](../../privacy-policy.md)
-* [Wiki & Blog Portal Home](../../index.md)
+* [Detailed Features & Capabilities]({{ '/docs/insightpage/features/' | relative_url }})
+* [Privacy Policy & Local-First Principles]({{ '/privacy-policy/' | relative_url }})
+* [Wiki & Blog Portal Home]({{ '/' | relative_url }})

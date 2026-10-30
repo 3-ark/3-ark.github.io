@@ -130,12 +130,10 @@ Use `::cmt[]` for interactive comments/popovers.
 
 ## Skills for AI
 
-`````Markdown
+```markdown
 # InsightPage Markdown Syntax
 
 Use these extensions in addition to standard Markdown and Mermaid.
-
-Use different fence lengths for nested code fences.
 
 ## Mermaid Diagrams
 
@@ -147,14 +145,12 @@ Supported diagram types: `flowchart` / `graph`, `sequenceDiagram`, `classDiagram
 
 Use `tabs` for switchable sections. Start each tab with `--- <Tab Title>`.
 
-````markdown
 ```tabs
 --- Overview
 Summary...
 --- Details
 Specifications...
 ```
-````
 
 ## Charts
 
@@ -167,7 +163,6 @@ Supported fields:
 * `series`: list of `title` and `data`
 * `width`: optional
 
-````markdown
 ```chart
 type: bar
 labels: ["Q1", "Q2", "Q3", "Q4"]
@@ -176,13 +171,11 @@ series:
     data: [120, 150, 180, 220]
 width: 500px
 ```
-````
 
 ## Observable Plot
 
 Use `plot` or `cosyobservableplot` for data visualizations using Observable Plot. You can write JavaScript expressions or declarative configuration options.
 
-````markdown
 ```plot
 Plot.rectY(
   [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9, 10, 12, 15],
@@ -192,7 +185,6 @@ Plot.rectY(
   )
 )
 ```
-````
 
 ## Inline Comment
 
@@ -201,4 +193,4 @@ Use `::cmt[]` for interactive comments/popovers.
 ```markdown
 ::cmt[💡 example. This is a comment.]
 ```
-`````
+```
