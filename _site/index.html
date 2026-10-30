@@ -49,44 +49,97 @@
     <main class="main-content">
       <div class="home-layout">
   <div class="hero-banner">
+  <div class="hero-badge">⚡ Developer &amp; Technical Knowledge Base</div>
   <h1>Product Wiki &amp; Engineering Hub</h1>
-  <p>Discover complete user guides, system architecture diagrams, and release updates for our product ecosystem.</p>
+  <p>Discover complete user guides, system architecture diagrams, interactive visualization showcases, and engineering updates for our product ecosystem.</p>
   <div class="hero-buttons">
     <a href="/docs/" class="btn btn-primary">📖 Explore Documentation</a>
-    <a href="/blog/" class="btn btn-secondary">📰 Read Engineering Blog</a>
+    <a href="/blog/" class="btn btn-secondary">📰 Engineering Blog</a>
+    <a href="/Rendering%20Showcase/" class="btn btn-secondary">🎨 Interactive Showcase</a>
   </div>
 </div>
 
-<h2>🚀 Active Product Ecosystem</h2>
+<div class="section-header">
+  <h2>🚀 Core Products &amp; System Specs</h2>
+  <a href="/docs/" class="section-link">View all docs &rarr;</a>
+</div>
+
 <div class="card-grid">
-  <div class="card">
-    <h3 class="card-title"><a href="/docs/insightpage/getting-started.md">InsightPage Assistant</a></h3>
-    <p class="card-description">AI-powered Personal Knowledge Management (PKM) browser extension with local-first Markdown vault integration.</p>
-    <div class="card-meta">
-      <span>v2.5 Release</span> &bull; <span>Local AI / Cloud</span>
+  <div class="card featured-card">
+    <div class="card-tag">Core Product</div>
+    <h3 class="card-title"><a href="/docs/insightpage/getting-started/">InsightPage Assistant</a></h3>
+    <p class="card-description">AI-powered Personal Knowledge Management (PKM) browser extension with local-first Markdown vault integration, floating side panel, and hybrid RAG search.</p>
+    <div class="card-footer">
+      <div class="card-meta">
+        <span class="badge">v2.5 Release</span>
+        <span>Local AI &bull; Privacy-first</span>
+      </div>
+      <a href="/docs/insightpage/getting-started/" class="card-action">Get Started &rarr;</a>
     </div>
   </div>
 
   <div class="card">
-    <h3 class="card-title"><a href="/Rendering%20Showcase/">Rendering &amp; Visualizations</a></h3>
-    <p class="card-description">Interactive Chart.js, Observable Plot, Leaflet Maps, Mermaid diagrams, and KaTeX math formulas showcase.</p>
-    <div class="card-meta">
-      <span>Rich Markdown</span> &bull; <span>Visualizations</span>
-    </div>
-  </div>
-
-  <div class="card">
-    <h3 class="card-title"><a href="/privacy-policy.md">Privacy &amp; Security Policy</a></h3>
-    <p class="card-description">Complete overview of our zero-data collection, local-first credentials, and direct client-to-API architecture.</p>
-    <div class="card-meta">
-      <span>100% Local-First</span> &bull; <span>Zero Tracking</span>
+    <div class="card-tag">Architecture &amp; Security</div>
+    <h3 class="card-title"><a href="/privacy-policy/">Privacy &amp; Security Policy</a></h3>
+    <p class="card-description">Complete overview of our zero-data collection, local-first credential management, and direct client-to-API communication model.</p>
+    <div class="card-footer">
+      <div class="card-meta">
+        <span class="badge">100% Local-First</span>
+        <span>Zero Tracking</span>
+      </div>
+      <a href="/privacy-policy/" class="card-action">Read Policy &rarr;</a>
     </div>
   </div>
 </div>
 
 <hr />
 
-<h2>📰 Latest Blog Posts</h2>
+<div class="section-header">
+  <h2>🎨 Visualizations &amp; Markdown Rendering</h2>
+  <a href="/Rendering%20Showcase/" class="section-link">Explore showcases &rarr;</a>
+</div>
+
+<div class="card-grid showcase-grid">
+  <div class="card mini-card">
+    <div class="mini-card-icon">📊</div>
+    <div class="mini-card-content">
+      <h3 class="card-title"><a href="/Example%20Chart/">Interactive Charts</a></h3>
+      <p class="card-description">Bar, line, pie, donut, sankey, and radar charts via Chart.js &amp; Observable Plot.</p>
+    </div>
+  </div>
+
+  <div class="card mini-card">
+    <div class="mini-card-icon">🗺️</div>
+    <div class="mini-card-content">
+      <h3 class="card-title"><a href="/Example%20Map/">Leaflet Maps</a></h3>
+      <p class="card-description">Geographical coordinates, custom markers, popups, and route lines.</p>
+    </div>
+  </div>
+
+  <div class="card mini-card">
+    <div class="mini-card-icon">🔀</div>
+    <div class="mini-card-content">
+      <h3 class="card-title"><a href="/Example%20Mermaid/">Mermaid Diagrams</a></h3>
+      <p class="card-description">Flowcharts, sequence diagrams, class diagrams, and state machines.</p>
+    </div>
+  </div>
+
+  <div class="card mini-card">
+    <div class="mini-card-icon">⏳</div>
+    <div class="mini-card-content">
+      <h3 class="card-title"><a href="/Example%20Timeline/">Interactive Timelines</a></h3>
+      <p class="card-description">Zoomable timeline charts with milestones, tags, and category filtering.</p>
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="section-header">
+  <h2>📰 Latest Engineering Updates</h2>
+  <a href="/blog/" class="section-link">View blog archive &rarr;</a>
+</div>
+
 <div class="card-grid">
 
     <div class="card">
@@ -96,8 +149,8 @@
       </div>
       <p class="card-description">We are excited to announce the release of InsightPage v2.5!
 </p>
-      <div>
-        <a href="/blog/2026/03/02/insightpage-v2-5-release/" style="font-size: 0.9rem; font-weight: 600;">Read post &rarr;</a>
+      <div class="card-footer" style="margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border-subtle);">
+        <a href="/blog/2026/03/02/insightpage-v2-5-release/" class="card-action">Read post &rarr;</a>
       </div>
     </div>
 
@@ -108,8 +161,8 @@
       </div>
       <p class="card-description">Welcome to our combined product wiki and blog repository!
 </p>
-      <div>
-        <a href="/blog/2026/03/01/welcome-to-product-wiki/" style="font-size: 0.9rem; font-weight: 600;">Read post &rarr;</a>
+      <div class="card-footer" style="margin-top: auto; padding-top: 0.8rem; border-top: 1px solid var(--border-subtle);">
+        <a href="/blog/2026/03/01/welcome-to-product-wiki/" class="card-action">Read post &rarr;</a>
       </div>
     </div>
 

@@ -14,19 +14,19 @@ description: "Comprehensive product documentation, architecture overviews, and i
 
 <div class="card-grid">
   <div class="card">
-    <h3 class="card-title"><a href="{{ '/docs/insightpage/getting-started.md' | relative_url }}">InsightPage Assistant</a></h3>
+    <h3 class="card-title"><a href="{{ '/docs/insightpage/getting-started/' | relative_url }}">InsightPage Assistant</a></h3>
     <p class="card-description">AI-powered Personal Knowledge Management extension with side panel chat, floating window, and local markdown sync.</p>
     <div>
-      <a href="{{ '/docs/insightpage/getting-started.md' | relative_url }}" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Getting Started &rarr;</a>
-      <a href="{{ '/docs/insightpage/features.md' | relative_url }}" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Features &rarr;</a>
+      <a href="{{ '/docs/insightpage/getting-started/' | relative_url }}" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Getting Started &rarr;</a>
+      <a href="{{ '/docs/insightpage/features/' | relative_url }}" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Features &rarr;</a>
     </div>
   </div>
 
   <div class="card">
-    <h3 class="card-title"><a href="{{ '/privacy-policy.md' | relative_url }}">Privacy & Data Security</a></h3>
+    <h3 class="card-title"><a href="{{ '/privacy-policy/' | relative_url }}">Privacy & Data Security</a></h3>
     <p class="card-description">Learn about our zero-tracking architecture, direct client-to-API communication, and local credential storage.</p>
     <div>
-      <a href="{{ '/privacy-policy.md' | relative_url }}" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Read Policy &rarr;</a>
+      <a href="{{ '/privacy-policy/' | relative_url }}" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Read Policy &rarr;</a>
     </div>
   </div>
 </div>

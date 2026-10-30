@@ -20,10 +20,10 @@
           <a href="{{ "/" | relative_url }}">⚡ {{ site.title | default: "Product Wiki & Engineering Hub" }}</a>
         </div>
         <nav class="site-nav">
-          <a class="nav-link {% if page.url == '/' %}active{% endif %}" href="{{ "/" | relative_url }}">Home</a>
+          <a class="nav-link {% if page.url == '/' or page.url == '/index.html' %}active{% endif %}" href="{{ "/" | relative_url }}">Home</a>
           <a class="nav-link {% if page.url contains '/docs/' %}active{% endif %}" href="{{ "/docs/" | relative_url }}">Docs</a>
           <a class="nav-link {% if page.url contains '/blog/' %}active{% endif %}" href="{{ "/blog/" | relative_url }}">Blog</a>
-          <a class="nav-link {% if page.url contains 'Showcase' %}active{% endif %}" href="{{ "/Rendering Showcase/" | relative_url }}">Showcase</a>
+          <a class="nav-link {% if page.url contains 'Showcase' or page.url contains 'Example' %}active{% endif %}" href="{{ "/Rendering Showcase/" | relative_url }}">Showcase</a>
 
           <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
             <span id="theme-icon">🌙</span>
