@@ -58,26 +58,171 @@
   <div class="page-content">
     <h1 id="insightpage-assistant-key-features">InsightPage Assistant: Key Features</h1>
 
-<h2 id="1-hybrid-rag-search">1. Hybrid RAG Search</h2>
-<p>InsightPage combines:</p>
+<p>InsightPage integrates an AI chat engine, an interactive floating assistant, a local markdown vault, and smart web clipping into a unified research and knowledge management workflow.</p>
+
+<hr />
+
+<h2 id="1-ai-chat-engine">1. AI Chat Engine</h2>
+
+<p>InsightPage’s side panel features a flexible, powerful chat interface that connects directly to local or cloud-based AI models.</p>
+
+<h3 id="chat-modes">Chat Modes</h3>
 <ul>
-  <li><strong>BM25 Keyword Search</strong> for exact word matching.</li>
-  <li><strong>Semantic Embeddings Search</strong> for concept matching.</li>
-  <li><strong>MMR Reranking</strong> for relevance optimization.</li>
+  <li><strong>Standard Chat Mode (<code class="language-plaintext highlighter-rouge">chat</code>)</strong>: Converse with the AI using general knowledge and conversation history.</li>
+  <li><strong>Web Mode (<code class="language-plaintext highlighter-rouge">web</code>)</strong>: The AI optimizes your query, performs a live web search, visits top relevant pages to extract content, and synthesizes a fully-sourced, up-to-date answer.</li>
+  <li><strong>Page Mode (<code class="language-plaintext highlighter-rouge">page</code>)</strong>: The AI reads the active browser tab’s content (including web PDFs) to summarize, extract structured data, or answer questions in context.</li>
 </ul>
 
-<h2 id="2-floating-action-assistant">2. Floating Action Assistant</h2>
+<h3 id="hybrid-rag-search">Hybrid RAG Search</h3>
+<p>Type <code class="language-plaintext highlighter-rouge">/r</code> before a query (e.g. <code class="language-plaintext highlighter-rouge">/r key takeaways from project alpha</code>) to run a <strong>Hybrid Search</strong> across your notes:</p>
 <ul>
-  <li>Drag-and-drop floating action button (FAB).</li>
-  <li>Automatic page summary and Q&amp;A.</li>
-  <li>One-click transfer to side panel.</li>
+  <li><strong>Keyword Search (BM25)</strong>: Matches exact keywords in notes and chats.</li>
+  <li><strong>Semantic Search (Embeddings)</strong>: Matches the underlying conceptual meaning.</li>
+  <li><strong>MMR Reranking</strong>: Re-ranks results to maximize relevance while minimizing redundancy before feeding context to the LLM.</li>
 </ul>
 
-<h2 id="3-local-markdown-vault-integration">3. Local Markdown Vault Integration</h2>
+<h3 id="smart-dispatcher">Smart Dispatcher</h3>
+<p>When given multi-step requests, the <code class="language-plaintext highlighter-rouge">smart_dispatcher</code> acts as your personal AI agent:</p>
+<ol>
+  <li>Searches the web.</li>
+  <li>Extracts full article text.</li>
+  <li>Synthesizes structured summaries.</li>
+  <li>Saves findings directly to your Note Viewer vault.</li>
+</ol>
+
+<hr />
+
+<h2 id="2-floating-assistant">2. Floating Assistant</h2>
+
+<p>The <strong>Floating Assistant</strong> brings AI assistance directly onto any webpage, letting you interact with content seamlessly without opening the full side panel.</p>
+
+<pre><code class="language-mermaid">graph LR
+    FAB[Floating Action Button] --&gt;|Click| FW[Floating Window]
+    FW --&gt;|Summary| QA[Automatic Page Summary &amp; Q&amp;A]
+    FW --&gt;|Drag / Resize| Custom[Saved Layout Preferences]
+    FW --&gt;|Export| SidePanel[Transfer Chat to Side Panel]
+
+    style FAB fill:#e1f5fe,stroke:#0288d1;
+    style FW fill:#e1f5fe,stroke:#0288d1;
+</code></pre>
+
 <ul>
-  <li>Direct <code class="language-plaintext highlighter-rouge">.md</code> file reading and writing via Web File System Access API.</li>
-  <li>Deep Wikilinks support (<code class="language-plaintext highlighter-rouge">[[Note Title]]</code>).</li>
-  <li>Note mentions (<code class="language-plaintext highlighter-rouge">@[Note Title]</code>) for contextual Q&amp;A.</li>
+  <li><strong>Floating Action Button (FAB)</strong>: A lightweight button floating at the edge of the viewport. Drag vertically to reposition anytime.</li>
+  <li><strong>Floating Window</strong>: Movable, resizable overlay window.</li>
+  <li><strong>In-Context Actions</strong>:
+    <ul>
+      <li><strong>Automatic Summaries</strong>: Instant page overview, detected tags, and suggested follow-up questions.</li>
+      <li><strong>In-Context Chat</strong>: Ask questions directly about the page content.</li>
+      <li><strong>Quick Transfers</strong>: Clear chat with <strong>Refresh</strong>, or migrate the conversation to the main side panel with <strong>Open in Side Panel</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="3-note-viewer--personal-vault">3. Note Viewer &amp; Personal Vault</h2>
+
+<p>The note-taking system serves as your second brain, offering full Markdown compatibility and native local-file integration.</p>
+
+<pre><code class="language-mermaid">graph TD
+    NV[Note System] --&gt;|Double Click / Open| Tab[Full-Tab Note Editor]
+    Tab --&gt;|AI Edit Request| Diff[Diff View: Original vs. AI suggested]
+    Diff --&gt;|Accept / Decline| Final[.md File Saved Directly to PC]
+
+    style NV fill:#fff3e0,stroke:#f57c00;
+    style Tab fill:#fff3e0,stroke:#f57c00;
+</code></pre>
+
+<ul>
+  <li><strong>Local Markdown Vault</strong>: Connect folders on your PC directly using the <strong>File System Access API</strong>. Notes are saved as standard <code class="language-plaintext highlighter-rouge">.md</code> files in real-time, functioning as a lightweight Obsidian-like setup. No intermediate cache layer is used, preventing write amplification and keeping your local directory as the single source of truth.</li>
+  <li><strong>Obsidian Style &amp; Rich Visualization Ecosystem</strong>:
+    <ul>
+      <li>InsightPage’s rendering capabilities are powered by the official Obsidian community plugin <a href="https://github.com/3-ark/insightpage-style"><strong><code class="language-plaintext highlighter-rouge">3-ark/insightpage-style</code></strong></a>. Use the plugin in Obsidian to get the exact same charts, maps, timelines, ABC sheet music audio player, and inline popover comments in your desktop Obsidian vault.</li>
+    </ul>
+  </li>
+  <li><strong>Wikilinks &amp; Deep Internal Linking (<code class="language-plaintext highlighter-rouge">[[Note Title]]</code>)</strong>:
+    <ul>
+      <li>Full Wikilink syntax support across notes, popovers, and chat responses.</li>
+      <li>Type <code class="language-plaintext highlighter-rouge">[[Note Title]]</code> to link to any note in your vault. Clicking a Wikilink navigates directly or creates the note if it does not exist yet.</li>
+    </ul>
+  </li>
+  <li><strong>Note Mentions (<code class="language-plaintext highlighter-rouge">@[Note Title]</code>) &amp; Context Injection</strong>:
+    <ul>
+      <li>Type <code class="language-plaintext highlighter-rouge">@</code> in the chat input to search and attach specific notes directly into the AI context window.</li>
+    </ul>
+  </li>
+  <li><strong>Select Notes for Q&amp;A</strong>:
+    <ul>
+      <li>Select multiple notes from your Vault list and click <strong>Start Q&amp;A</strong> to pre-fill note mentions (<code class="language-plaintext highlighter-rouge">@[Note Title]</code>) in the chat bar. The AI will answer queries using strictly the selected notes.</li>
+    </ul>
+  </li>
+  <li><strong>Full-Page Tab Editor</strong>: Open any note in a new browser tab for a spacious, distraction-free editing layout complete with adjustable font sizes.</li>
+  <li><strong>AI-Powered Note Editing &amp; Diff View</strong>:
+    <ol>
+      <li>Open your note in a new tab.</li>
+      <li>In the side panel, ask the AI to modify the note (e.g., <em>“Make this summary more concise”</em>, <em>“Translate to German”</em>).</li>
+      <li>View the real-time <strong>Diff View</strong> in your note tab, highlighting additions and deletions side-by-side.</li>
+      <li>Click <strong>Accept</strong> to commit the changes directly to your file, or <strong>Decline</strong> to keep the original.</li>
+    </ol>
+  </li>
+</ul>
+
+<p>Explore all visual rendering features in our <a href="/Rendering%20Showcase/">Rendering Showcase</a>.</p>
+
+<hr />
+
+<h2 id="4-context-window--smart-clipping">4. Context Window &amp; Smart Clipping</h2>
+
+<ul>
+  <li><strong>Context Window Integration</strong>: Drag files, images, or enter specific URLs into the chat’s input context window. URLs are automatically scraped and used as additional prompt context.</li>
+  <li><strong>Smart Web Clipper</strong>:
+    <ul>
+      <li>Highlight any text on a webpage, right-click, and select <strong>Add to Note</strong> to append the text to your current popover note.</li>
+      <li>Use the context menus to quickly capture insights without breaking your browsing momentum.</li>
+    </ul>
+  </li>
+  <li><strong>Smart Weekly Notes</strong>:
+    <ul>
+      <li>Instantly create or open weekly review files with predefined action templates.</li>
+      <li>Highlight text on any page, right-click, and select <strong>Add to Weekly Note</strong> to instantly append clean, sanitized web links (stripping analytical and tracking parameters) alongside your captured snippets.</li>
+      <li>Customize action items and path folders under <strong>Settings -&gt; Page Mode Settings</strong>.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h2 id="5-advanced--multi-modal-capabilities">5. Advanced &amp; Multi-Modal Capabilities</h2>
+
+<h3 id="multimodal-image--vision-model-support">Multimodal Image &amp; Vision Model Support</h3>
+<ul>
+  <li><strong>Vision-Ready Uploads</strong>: Upload standard image formats (<code class="language-plaintext highlighter-rouge">.png</code>, <code class="language-plaintext highlighter-rouge">.jpg</code>, <code class="language-plaintext highlighter-rouge">.jpeg</code>, <code class="language-plaintext highlighter-rouge">.webp</code>, <code class="language-plaintext highlighter-rouge">.gif</code>) via the chat input interface.</li>
+  <li><strong>Automatic Resolution &amp; Quality Optimization</strong>: Large images (longer side &gt; 1568px) are automatically scaled down while maintaining aspect ratio. Large PNG images are automatically optimized to JPEG (90% quality with white background fallbacks) before dispatch to avoid API limits.</li>
+  <li><strong>Native Vision Payloads</strong>: Images are sent as structured, OpenAI-compatible <code class="language-plaintext highlighter-rouge">image_url</code> vision payloads, compatible with cloud endpoints (GPT-4o) and local multi-modal hosts (LM Studio).</li>
+</ul>
+
+<h3 id="intelligent-pdf-operations--language-auto-detection">Intelligent PDF Operations &amp; Language Auto-Detection</h3>
+<ul>
+  <li><strong>Dynamic Language Detection</strong>: Automatically detects language families—including English, Spanish, German, French, Simplified Chinese (<code class="language-plaintext highlighter-rouge">zh-CN</code>), Traditional Chinese (<code class="language-plaintext highlighter-rouge">zh-TW</code>), Japanese, and Korean.</li>
+  <li><strong>One-Click PDF Generation</strong>: The note action menu features a direct PDF download button that automatically selects appropriate system fonts and runs high-performance regex checks for CJK rendering based on text content.</li>
+  <li><strong>Background PDF Text Extraction</strong>: Web PDF tab text parsing is handled asynchronously in background service workers and offscreen documents, preventing UI freezes and bundle bloat.</li>
+</ul>
+
+<h3 id="theme-aware-design--floating-window-polish">Theme-Aware Design &amp; Floating Window Polish</h3>
+<ul>
+  <li><strong>Unified Custom Theme Palette Mapping</strong>: When using themes like Moss, Night Sepia, or Dark, all dropdown selectors, settings panels, hover menus, and modals adapt seamlessly.</li>
+  <li><strong>Theme-Aware Floating Tooltips</strong>: Tooltips leverage CSS variables (<code class="language-plaintext highlighter-rouge">--tooltip-bg</code>, <code class="language-plaintext highlighter-rouge">--tooltip-fg</code>, and <code class="language-plaintext highlighter-rouge">--tooltip-border</code>) to match the active persona theme.</li>
+  <li><strong>Hover-Triggered Action Overlays</strong>: Quick-action controls (such as web search toggles) transition smoothly on container hover or input focus.</li>
+</ul>
+
+<hr />
+
+<h2 id="6-privacy-security--data-ownership">6. Privacy, Security &amp; Data Ownership</h2>
+
+<ul>
+  <li><strong>100% Local-First Architecture</strong>: No developer servers, no proxies, no user registration, and no tracking.</li>
+  <li><strong>Direct Client-to-API Communication</strong>: Browser talks directly to your configured AI provider or local server.</li>
+  <li>Learn more on our <a href="/privacy-policy/">Privacy &amp; Security Policy</a>.</li>
 </ul>
 
   </div>
@@ -117,7 +262,7 @@
     })();
   </script>
 
-  <!-- Script Initializers for Visualisations -->
+  <!-- Script Initializers for Visualisations & Libraries -->
   <script src="/assets/js/pele.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
@@ -125,6 +270,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
   <script src="/assets/js/insightpage-style.js"></script>
+  <script src="/assets/js/ngram-cipher.global.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {

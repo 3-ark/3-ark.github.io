@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.9.1 -->
+<title>N-Gram Cipher - Steganographic Encryption | Product Wiki &amp; Developer Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="N-Gram Cipher - Steganographic Encryption" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Personal knowledge management, product documentation, and engineering updates." />
+<meta name="twitter:description" property="og:description" content="Personal knowledge management, product documentation, and engineering updates." />
+<meta property="og:site_name" content="Product Wiki &amp; Developer Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="N-Gram Cipher - Steganographic Encryption" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Personal knowledge management, product documentation, and engineering updates.","headline":"N-Gram Cipher - Steganographic Encryption","url":"/docs/ngram-cipher/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Product Wiki &amp; Developer Hub" />
+
+  <!-- Visualization Libraries Support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/assets/css/insightpage-style.css">
+</head>
+<body>
+  <div class="site-wrapper">
+    <header class="site-header">
+      <div class="header-container">
+        <div class="site-title">
+          <a href="/">⚡ Product Wiki & Developer Hub</a>
+        </div>
+        <nav class="site-nav">
+          <a class="nav-link " href="/">Home</a>
+          <a class="nav-link active" href="/docs/">Docs</a>
+          <a class="nav-link " href="/blog/">Blog</a>
+          <a class="nav-link " href="/Rendering%20Showcase/">Showcase</a>
+          <a class="nav-link" href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+            <span id="theme-icon">🌙</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <article class="page-article">
+  <header class="post-header">
+    <h1 class="post-title">N-Gram Cipher - Steganographic Encryption</h1>
+
+  </header>
+
+  <div class="page-content">
+    <h1 id="n-gram-cipher-natural-english-steganographic-encryption">N-Gram Cipher: Natural English Steganographic Encryption</h1>
+
+<p><strong><code class="language-plaintext highlighter-rouge">ngram-cipher</code></strong> is an open-source TypeScript and JavaScript steganography engine that encrypts secret payloads using <strong>AES-256-GCM</strong> and conceals the resulting ciphertext directly within losslessly reversible, grammatically natural English prose or poetic stanzas.</p>
+
+<p>Instead of classical pixel- or audio-based steganography, <code class="language-plaintext highlighter-rouge">ngram-cipher</code> maps encrypted bitstreams into power-of-two continuation tokens guided by statistical 1–5 gram language models (derived from Google Books N-Gram datasets).</p>
+
+<hr />
+
+<h2 id="-interactive-live-cipher-tester">⚡ Interactive Live Cipher Tester</h2>
+
+<p>Test the library right now in your browser using the client-side JavaScript engine bundled directly on this site:</p>
+
+<div class="card" style="margin: 1.5rem 0; padding: 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px;">
+  <div style="margin-bottom: 1rem;">
+    <label for="live-pass" style="font-weight: 600; display: block; margin-bottom: 0.4rem;">🔑 Secret Password / Key:</label>
+    <input type="password" id="live-pass" value="ArkSecure2026!" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-subtle); border-radius: 6px; background: var(--bg-card); color: var(--text-color); font-size: 0.95rem;" />
+  </div>
+
+  <div style="margin-bottom: 1rem;">
+    <label for="live-plain" style="font-weight: 600; display: block; margin-bottom: 0.4rem;">📝 Plaintext to Encode:</label>
+    <textarea id="live-plain" rows="3" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-subtle); border-radius: 6px; background: var(--bg-card); color: var(--text-color); font-size: 0.95rem;">Deploy the release bundle at midnight behind the embassy.</textarea>
+  </div>
+
+  <div style="margin-bottom: 1rem;">
+    <label for="live-style" style="font-weight: 600; display: block; margin-bottom: 0.4rem;">🎨 Carrier Prose Style:</label>
+    <select id="live-style" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-subtle); border-radius: 6px; background: var(--bg-card); color: var(--text-color); font-size: 0.95rem;">
+      <option value="news">News Prose (Journalistic N-Gram LM)</option>
+      <option value="poetry">Poetry (Dynamic Stanzas &amp; Rhythm)</option>
+    </select>
+  </div>
+
+  <div style="display: flex; gap: 0.8rem; margin-bottom: 1rem;">
+    <button id="live-btn-encode" class="btn btn-primary" style="cursor: pointer; flex: 1;">🔒 Encode into Natural English</button>
+    <button id="live-btn-decode" class="btn btn-secondary" style="cursor: pointer; flex: 1;">🔓 Decode back to Plaintext</button>
+  </div>
+
+  <div id="live-status" style="display: none; padding: 0.75rem; border-radius: 6px; margin-bottom: 1rem; font-size: 0.9rem;"></div>
+
+  <div>
+    <label for="live-cipher" style="font-weight: 600; display: block; margin-bottom: 0.4rem;">💬 English Carrier Ciphertext:</label>
+    <textarea id="live-cipher" rows="5" placeholder="Encoded English carrier text will appear here..." style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-subtle); border-radius: 6px; background: var(--bg-card); color: var(--text-color); font-size: 0.95rem;"></textarea>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const passEl = document.getElementById("live-pass");
+  const plainEl = document.getElementById("live-plain");
+  const cipherEl = document.getElementById("live-cipher");
+  const styleEl = document.getElementById("live-style");
+  const statusEl = document.getElementById("live-status");
+  const encodeBtn = document.getElementById("live-btn-encode");
+  const decodeBtn = document.getElementById("live-btn-decode");
+
+  function showMsg(text, isError) {
+    statusEl.style.display = "block";
+    statusEl.style.backgroundColor = isError ? "rgba(239, 68, 68, 0.15)" : "rgba(34, 197, 94, 0.15)";
+    statusEl.style.color = isError ? "#ef4444" : "#22c55e";
+    statusEl.style.border = isError ? "1px solid #ef4444" : "1px solid #22c55e";
+    statusEl.textContent = text;
+  }
+
+  encodeBtn.addEventListener("click", async function() {
+    try {
+      statusEl.style.display = "none";
+      const cipherLib = window.ngramCipher;
+      if (!cipherLib || !cipherLib.encode) {
+        showMsg("Cipher engine library is not loaded.", true);
+        return;
+      }
+      const plain = plainEl.value.trim();
+      const pass = passEl.value;
+      if (!plain || !pass) {
+        showMsg("Please provide both plaintext and a password.", true);
+        return;
+      }
+      const style = styleEl.value;
+      const res = await cipherLib.encode(plain, pass, { encoding: { style: style } });
+      cipherEl.value = res;
+      showMsg("Successfully encoded into natural English prose!", false);
+    } catch (err) {
+      showMsg(err.message || String(err), true);
+    }
+  });
+
+  decodeBtn.addEventListener("click", async function() {
+    try {
+      statusEl.style.display = "none";
+      const cipherLib = window.ngramCipher;
+      if (!cipherLib || !cipherLib.decode) {
+        showMsg("Cipher engine library is not loaded.", true);
+        return;
+      }
+      const cipher = cipherEl.value.trim();
+      const pass = passEl.value;
+      if (!cipher || !pass) {
+        showMsg("Please provide ciphertext and a password.", true);
+        return;
+      }
+      const style = styleEl.value;
+      const res = await cipherLib.decode(cipher, pass, { encoding: { style: style } });
+      plainEl.value = res;
+      showMsg("Successfully decoded and verified plaintext!", false);
+    } catch (err) {
+      showMsg("Decryption failed: " + (err.message || "Invalid password or corrupted text."), true);
+    }
+  });
+});
+</script>
+
+<hr />
+
+<h2 id="-key-architectural-features">🔑 Key Architectural Features</h2>
+
+<ol>
+  <li><strong>Robust Cryptography</strong>:
+    <ul>
+      <li>Key derivation using <strong>PBKDF2</strong> with 100,000 SHA-256 iterations.</li>
+      <li>Symmetric authenticated encryption via <strong>AES-256-GCM</strong>.</li>
+      <li>Binary frame verification with CRC32 checksums and bit whitening.</li>
+    </ul>
+  </li>
+  <li><strong>Natural Carrier Prose (News &amp; Poetry)</strong>:
+    <ul>
+      <li>Dynamic grammatical sentence construction prevents structural repetition within subsequent sentences.</li>
+      <li>Context continuation probabilities prevent unnatural keyword clustering.</li>
+    </ul>
+  </li>
+  <li><strong>100% Losslessly Reversible</strong>:
+    <ul>
+      <li>Power-of-two slot allocation guarantees bit-exact extraction without precision drift.</li>
+    </ul>
+  </li>
+  <li><strong>Adaptive Compression</strong>:
+    <ul>
+      <li>Transparent pre-encryption payload compression with <code class="language-plaintext highlighter-rouge">gzip</code> or common-word packing.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="-installation--usage">📦 Installation &amp; Usage</h2>
+
+<p>Install the package via npm:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>ngram-cipher
+</code></pre></div></div>
+
+<h3 id="modern-esm--typescript">Modern ESM / TypeScript</h3>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">encode</span><span class="p">,</span> <span class="nx">decode</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">ngram-cipher</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="c1">// 1. Encode</span>
+<span class="kd">const</span> <span class="nx">carrier</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">encode</span><span class="p">(</span><span class="dl">"</span><span class="s2">Classified update</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">StrongPassword123</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">carrier</span><span class="p">);</span>
+
+<span class="c1">// 2. Decode</span>
+<span class="kd">const</span> <span class="nx">plaintext</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">decode</span><span class="p">(</span><span class="nx">carrier</span><span class="p">,</span> <span class="dl">"</span><span class="s2">StrongPassword123</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">plaintext</span><span class="p">);</span> <span class="c1">// "Classified update"</span>
+</code></pre></div></div>
+
+<h3 id="browser-script-tag">Browser Script Tag</h3>
+
+<p>Include the global build directly from our site or CDN:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/ngram-cipher.global.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script&gt;</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">ngramCipher</span><span class="p">.</span><span class="nf">encode</span><span class="p">(</span><span class="dl">"</span><span class="s2">My Secret</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">password</span><span class="dl">"</span><span class="p">).</span><span class="nf">then</span><span class="p">(</span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="-project-links">🔗 Project Links</h2>
+
+<ul>
+  <li><strong>GitHub Repository</strong>: <a href="https://github.com/3-ark/ngram-cipher">https://github.com/3-ark/ngram-cipher</a></li>
+  <li><strong>License</strong>: MIT</li>
+</ul>
+
+  </div>
+</article>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div>
+          <strong>Product Wiki & Developer Hub</strong> &copy; 2026 — Personal Knowledge & Engineering Portal
+        </div>
+        <div>
+          Powered by Jekyll & GitHub Pages &bull; <a href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted);">insightpage-style on GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Theme Switcher Script -->
+  <script>
+    (function() {
+      const toggleBtn = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+      document.documentElement.setAttribute('data-theme', storedTheme);
+      themeIcon.textContent = storedTheme === 'dark' ? '☀️' : '🌙';
+
+      toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      });
+    })();
+  </script>
+
+  <!-- Script Initializers for Visualisations & Libraries -->
+  <script src="/assets/js/pele.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script src="/assets/js/insightpage-style.js"></script>
+  <script src="/assets/js/ngram-cipher.global.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. Initialize KaTeX Math Formulas
+      if (typeof renderMathInElement !== "undefined") {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ]
+        });
+      }
+
+      // 3. Transform Obsidian/Note Callouts (> [!Note], > [!Summary], etc.)
+      document.querySelectorAll('blockquote').forEach(function(bq) {
+        const html = bq.innerHTML.trim();
+        const calloutMatch = html.match(/^<p>\[\!(Note|Summary|Warning|Important|Tip)\]\s*(.*?)<\/p>/i);
+        if (calloutMatch) {
+          const type = calloutMatch[1].toLowerCase();
+          const title = calloutMatch[2] || type.toUpperCase();
+          const content = html.replace(/^<p>\[\!(Note|Summary|Warning|Important|Tip)\]\s*.*?<\/p>/i, '');
+
+          const div = document.createElement('div');
+          div.className = 'callout callout-' + type;
+          div.innerHTML = '<div class="callout-title">💡 ' + title + '</div>' + content;
+          bq.parentNode.replaceChild(div, bq);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

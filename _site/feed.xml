@@ -1,4 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-10-31T11:32:20+00:00</updated><id>/feed.xml</id><title type="html">Product Wiki &amp;amp; Developer Hub</title><subtitle>Personal knowledge management, product documentation, and engineering updates.</subtitle><entry><title type="html">Introducing InsightPage Style: Obsidian Plugin for Rich Visualizations &amp;amp; Interactive Notes</title><link href="/blog/2026/03/03/introducing-insightpage-style-obsidian-plugin/" rel="alternate" type="text/html" title="Introducing InsightPage Style: Obsidian Plugin for Rich Visualizations &amp;amp; Interactive Notes" /><published>2026-03-03T12:00:00+00:00</published><updated>2026-03-03T12:00:00+00:00</updated><id>/blog/2026/03/03/introducing-insightpage-style-obsidian-plugin</id><content type="html" xml:base="/blog/2026/03/03/introducing-insightpage-style-obsidian-plugin/"><![CDATA[<p>We are thrilled to introduce the official Obsidian community plugin: <a href="https://github.com/3-ark/insightpage-style"><strong>InsightPage Style (<code class="language-plaintext highlighter-rouge">3-ark/insightpage-style</code>)</strong></a>!</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-10-31T14:06:57+00:00</updated><id>/feed.xml</id><title type="html">Product Wiki &amp;amp; Developer Hub</title><subtitle>Personal knowledge management, product documentation, and engineering updates.</subtitle><entry><title type="html">Introducing N-Gram Cipher: Reversible Natural English Steganography</title><link href="/blog/2026/03/04/introducing-ngram-cipher/" rel="alternate" type="text/html" title="Introducing N-Gram Cipher: Reversible Natural English Steganography" /><published>2026-03-04T12:00:00+00:00</published><updated>2026-03-04T12:00:00+00:00</updated><id>/blog/2026/03/04/introducing-ngram-cipher</id><content type="html" xml:base="/blog/2026/03/04/introducing-ngram-cipher/"><![CDATA[<p>We are excited to introduce <a href="https://github.com/3-ark/ngram-cipher"><strong><code class="language-plaintext highlighter-rouge">3-ark/ngram-cipher</code></strong></a>—a modern cryptographic steganography engine for JavaScript and TypeScript!</p>
+
+<p><code class="language-plaintext highlighter-rouge">ngram-cipher</code> transforms encrypted payloads into natural-sounding, syntactically coherent English prose (journalistic reports) or poetic verses that are <strong>100% losslessly reversible</strong>.</p>
+
+<hr />
+
+<h2 id="why-n-gram-steganography">Why N-Gram Steganography?</h2>
+
+<p>Traditional steganography conceals data in image pixels, audio waveforms, or whitespace formatting. However, when communicating across text-only messaging channels, email, or social media platforms, non-text files are often heavily re-encoded, stripped, or flagged by security scanners.</p>
+
+<p><code class="language-plaintext highlighter-rouge">ngram-cipher</code> solves this by transforming ciphertext directly into realistic natural language text:</p>
+<ul>
+  <li><strong>AES-256-GCM Authenticated Encryption</strong>: Strong symmetric security with PBKDF2 key derivation (100,000 SHA-256 iterations).</li>
+  <li><strong>Statistical Language Models</strong>: Uses dynamic N-gram statistical scoring from Google Books datasets to ensure word continuations follow natural syntactic and semantic distributions.</li>
+  <li><strong>Grammar &amp; Variety Rules</strong>: Generates varied sentence structures with appositives, clauses, and reporting verbs, while actively preventing structural repetition across consecutive sentences.</li>
+  <li><strong>100% Exact Recovery</strong>: Employs power-of-two slot allocation and CRC32 verification to ensure bit-exact decryption every time.</li>
+</ul>
+
+<hr />
+
+<h2 id="interactive-browser-demo">Interactive Browser Demo</h2>
+
+<p>You can try the cipher directly in your browser on our new documentation page:</p>
+
+<p>👉 <strong><a href="/docs/ngram-cipher/">Try the N-Gram Cipher Interactive Demo</a></strong></p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">encode</span><span class="p">,</span> <span class="nx">decode</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">ngram-cipher</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="c1">// Encrypt &amp; hide in news prose</span>
+<span class="kd">const</span> <span class="nx">carrierText</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">encode</span><span class="p">(</span><span class="dl">"</span><span class="s2">Top secret deployment instructions</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ArkPassword123</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">carrierText</span><span class="p">);</span>
+<span class="cm">/*
+"A regional leader approved the measure. The executive announced the directive in Paris;
+Local investment remained 14.5% in Madrid..."
+*/</span>
+
+<span class="c1">// Reversibly extract &amp; decrypt</span>
+<span class="kd">const</span> <span class="nx">decrypted</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">decode</span><span class="p">(</span><span class="nx">carrierText</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ArkPassword123</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">decrypted</span><span class="p">);</span> <span class="c1">// "Top secret deployment instructions"</span>
+</code></pre></div></div>
+
+<p>Check out the code and documentation on <a href="https://github.com/3-ark/ngram-cipher">GitHub</a>.</p>]]></content><author><name></name></author><category term="cryptography" /><category term="release" /><category term="steganography" /><category term="cryptography" /><category term="aes-gcm" /><category term="n-gram" /><category term="typescript" /><category term="steganography" /><category term="open-source" /><summary type="html"><![CDATA[We are excited to introduce 3-ark/ngram-cipher—a modern cryptographic steganography engine for JavaScript and TypeScript!]]></summary></entry><entry><title type="html">Introducing InsightPage Style: Obsidian Plugin for Rich Visualizations &amp;amp; Interactive Notes</title><link href="/blog/2026/03/03/introducing-insightpage-style-obsidian-plugin/" rel="alternate" type="text/html" title="Introducing InsightPage Style: Obsidian Plugin for Rich Visualizations &amp;amp; Interactive Notes" /><published>2026-03-03T12:00:00+00:00</published><updated>2026-03-03T12:00:00+00:00</updated><id>/blog/2026/03/03/introducing-insightpage-style-obsidian-plugin</id><content type="html" xml:base="/blog/2026/03/03/introducing-insightpage-style-obsidian-plugin/"><![CDATA[<p>We are thrilled to introduce the official Obsidian community plugin: <a href="https://github.com/3-ark/insightpage-style"><strong>InsightPage Style (<code class="language-plaintext highlighter-rouge">3-ark/insightpage-style</code>)</strong></a>!</p>
 
 <p>InsightPage Style brings the exact same visual components and interactive diagrams powering our web assistant and note vault directly into your local <strong>Obsidian</strong> desktop experience.</p>
 

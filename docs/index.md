@@ -31,6 +31,15 @@ description: "Comprehensive product documentation, architecture overviews, and i
   </div>
 
   <div class="card">
+    <h3 class="card-title"><a href="{{ '/docs/ngram-cipher/' | relative_url }}">N-Gram Cipher</a></h3>
+    <p class="card-description">Natural English steganographic cipher encoder and decoder in TypeScript/JavaScript (AES-256-GCM + dynamic N-gram models).</p>
+    <div>
+      <a href="{{ '/docs/ngram-cipher/' | relative_url }}" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">Interactive Demo &rarr;</a>
+      <a href="https://github.com/3-ark/ngram-cipher" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">GitHub &rarr;</a>
+    </div>
+  </div>
+
+  <div class="card">
     <h3 class="card-title"><a href="{{ '/privacy-policy/' | relative_url }}">Privacy & Data Security</a></h3>
     <p class="card-description">Learn about our zero-tracking architecture, direct client-to-API communication, and local credential storage.</p>
     <div>

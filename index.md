@@ -48,6 +48,19 @@ description: "Central portal for product documentation, engineering notes, and t
   </div>
 
   <div class="card">
+    <div class="card-tag">TypeScript &bull; Cryptography</div>
+    <h3 class="card-title"><a href="{{ '/docs/ngram-cipher/' | relative_url }}">N-Gram Cipher</a></h3>
+    <p class="card-description">Natural English steganographic cipher encoding secret data with AES-256-GCM into grammatically fluid, losslessly reversible English prose and poetry.</p>
+    <div class="card-footer">
+      <div class="card-meta">
+        <span class="badge">v1.0 Release</span>
+        <span>Steganography &bull; Open Source</span>
+      </div>
+      <a href="{{ '/docs/ngram-cipher/' | relative_url }}" class="card-action">Try Cipher &rarr;</a>
+    </div>
+  </div>
+
+  <div class="card">
     <div class="card-tag">Architecture & Security</div>
     <h3 class="card-title"><a href="{{ '/privacy-policy/' | relative_url }}">Privacy & Security Policy</a></h3>
     <p class="card-description">Complete overview of our zero-data collection, local-first credential management, and direct client-to-API communication model.</p>

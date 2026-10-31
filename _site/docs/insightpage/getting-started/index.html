@@ -58,27 +58,96 @@
   <div class="page-content">
     <h1 id="insightpage-assistant-getting-started">InsightPage Assistant: Getting Started</h1>
 
-<p>InsightPage is a Personal Knowledge Management (PKM) browser extension with integrated AI assistance, designed to help turn web browsing, research, and note-taking into a seamless workflow.</p>
+<p>Welcome to <strong>InsightPage</strong>! InsightPage is an open, privacy-first Personal Knowledge Management (PKM) browser extension with integrated AI assistance, helping you turn web browsing, research, and note-taking into a seamless workflow.</p>
 
 <hr />
 
-<h2 id="core-pillars">Core Pillars</h2>
+<h2 id="system-overview--information-flow">System Overview &amp; Information Flow</h2>
+
+<p>Below are architectural diagrams illustrating how InsightPage organizes its functionalities into four core pillars and how data flows between your browser, the AI engine, and your local files.</p>
+
+<h3 id="the-four-core-pillars-of-insightpage">The Four Core Pillars of InsightPage</h3>
+<pre><code class="language-mermaid">graph TD
+    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
+    classDef highlight fill:#d4edda,stroke:#28a745,stroke-width:2px;
+
+    A[InsightPage Assistant] --&gt; B(1. AI Chat Engine)
+    A --&gt; C(2. Floating Assistant)
+    A --&gt; D(3. Note Viewer &amp; Vault)
+    A --&gt; E(4. Context &amp; Clipping)
+
+    class B,C,D,E highlight;
+</code></pre>
+
+<h3 id="information-flow-diagram">Information Flow Diagram</h3>
+<pre><code class="language-mermaid">sequenceDiagram
+    autonumber
+    actor User as User / Browser Tab
+    participant FW as Floating Assistant
+    participant CP as Side Panel (Chat &amp; Vault)
+    participant AI as AI Engine (Local/Cloud)
+    participant FS as Local Markdown Vault (PC)
+
+    User-&gt;&gt;FW: Highlight text &amp; Open Floating Window
+    FW-&gt;&gt;AI: Send page context + User Query
+    AI--&gt;&gt;FW: Stream in-context answer
+    User-&gt;&gt;CP: Clip content / Append to Note
+    CP-&gt;&gt;FS: Save directly as standard Markdown file (.md)
+    CP-&gt;&gt;AI: Run semantic hybrid search (RAG)
+</code></pre>
+
+<hr />
+
+<h2 id="-quick-setup--configuration">🚀 Quick Setup &amp; Configuration</h2>
+
+<p>InsightPage is designed to be highly configurable and operates under a <strong>Bring Your Own Key (BYOK)</strong> model. Access settings anytime by clicking your persona’s avatar in the top-left corner of the side panel.</p>
 
 <ol>
-  <li><strong>AI Chat Engine</strong>: Flexible chat interface connecting directly to local (Ollama, LM Studio) or cloud AI models (OpenAI, Gemini, Groq, OpenRouter).</li>
-  <li><strong>Floating Assistant</strong>: In-context webpage AI actions and summary overlay window.</li>
-  <li><strong>Note Viewer &amp; Vault</strong>: Standard Markdown file sync using local file access APIs (<code class="language-plaintext highlighter-rouge">.md</code> files).</li>
-  <li><strong>Context &amp; Web Clipper</strong>: Highlight text and clip web content directly into markdown notes.</li>
+  <li><strong>API &amp; Model Access</strong>:
+    <ul>
+      <li><strong>Cloud Providers</strong>: Direct support for OpenAI, Google Gemini, Groq, OpenRouter, and custom OpenAI-compatible endpoints.</li>
+      <li><strong>Local Inference</strong>: Connect zero-cost local LLMs via Ollama (<code class="language-plaintext highlighter-rouge">http://localhost:11434/v1</code>) or LM Studio (<code class="language-plaintext highlighter-rouge">http://localhost:1234/v1</code>).</li>
+      <li>All keys and endpoints are stored purely within your local browser storage.</li>
+    </ul>
+  </li>
+  <li><strong>Local Markdown Vault Setup</strong>:
+    <ul>
+      <li>Open the <strong>Note System</strong> tab.</li>
+      <li>Click <strong>Connect Folder</strong> and pick any local folder on your computer using the Web File System Access API.</li>
+      <li>Notes are immediately written directly to disk as <code class="language-plaintext highlighter-rouge">.md</code> files without intermediate proprietary cloud servers.</li>
+    </ul>
+  </li>
+  <li><strong>AI Personas &amp; Prompt Customization</strong>:
+    <ul>
+      <li>Customize personality prompts (Research, Business, Concise Explainer, Code Assistant) and upload custom persona avatars.</li>
+    </ul>
+  </li>
+  <li><strong>Themes &amp; UI Customization</strong>:
+    <ul>
+      <li>Switch between built-in themes (Paper, Night Sepia, Moss, Light, Dark) or create your own custom color scheme.</li>
+    </ul>
+  </li>
 </ol>
 
 <hr />
 
-<h2 id="quick-navigation">Quick Navigation</h2>
+<h2 id="️-common-troubleshooting--quick-fixes">🛠️ Common Troubleshooting &amp; Quick-Fixes</h2>
 
 <ul>
-  <li><a href="/docs/insightpage/features/">Detailed Features &amp; Capabilities</a></li>
+  <li><strong>AI fails to respond</strong>: Verify your internet connection for cloud models, or ensure your local Ollama/LM Studio server is running on the correct port (e.g., <code class="language-plaintext highlighter-rouge">http://localhost:11434/v1</code>).</li>
+  <li><strong>RAG Search returns empty results</strong>: If in <strong>Manual Mode</strong>, remember to open Embedding Management in the main menu and click <strong>Rebuild</strong> or <strong>Update</strong> to index your notes and chats.</li>
+  <li><strong>File System directory disconnects</strong>: Browsers require user permission to access local folders after a browser restart. Go to the Note System and click “Reconnect” or select your folder again to restore access.</li>
+</ul>
+
+<hr />
+
+<h2 id="-further-reading">📚 Further Reading</h2>
+
+<ul>
+  <li><a href="/docs/insightpage/features/">Explore Detailed Features &amp; Capabilities</a></li>
+  <li><a href="/Rendering%20Showcase/">Interactive Rendering Showcase</a></li>
   <li><a href="/privacy-policy/">Privacy Policy &amp; Local-First Principles</a></li>
-  <li><a href="/">Wiki &amp; Blog Portal Home</a></li>
+  <li><a href="/docs/">Documentation Hub Home</a></li>
 </ul>
 
   </div>
@@ -118,7 +187,7 @@
     })();
   </script>
 
-  <!-- Script Initializers for Visualisations -->
+  <!-- Script Initializers for Visualisations & Libraries -->
   <script src="/assets/js/pele.global.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
@@ -126,6 +195,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
   <script src="/assets/js/insightpage-style.js"></script>
+  <script src="/assets/js/ngram-cipher.global.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {

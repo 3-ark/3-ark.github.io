@@ -74,11 +74,11 @@ Standard Highlight: Parse ==text== directly into an HTML <mark>text</mark> tag, 
 InsightPage supports standard Mermaid diagrams (flowcharts, sequence diagrams, class diagrams, state diagrams, ER diagrams, gantt charts, and git graphs).
 
 To prevent CPU spikes and improve rendering performance, heavy diagram showcases are separated into dedicated notes:
-👉 **[[Example Mermaid]]**
+👉 [**Example Mermaid Diagrams**]({{ '/Example Mermaid/' | relative_url }})
 
 > [!Note] Optimization & Superior Alternatives
 > Heavy specialized Mermaid chart modules (`xychart`, `pie`, `journey`, `architecture`, `mindmap`) are intentionally omitted to keep extension bundles lightweight and eliminate CPU rendering spikes:
-> - **For charts & graphs:** Use **Chart.js style syntaxes** (`chart` code block) or native **Observable Plot** (`plot` or `cosyobservableplot` code block), which offer far superior visual rendering, crisp SVG vector scaling, rich interactivity, and responsive scaling compared to Mermaid static charts. See: 👉 **[[Example Chart]]**.
+> - **For charts & graphs:** Use **Chart.js style syntaxes** (`chart` code block) or native **Observable Plot** (`plot` or `cosyobservableplot` code block), which offer far superior visual rendering, crisp SVG vector scaling, rich interactivity, and responsive scaling compared to Mermaid static charts. See: 👉 [**Example Interactive Charts**]({{ '/Example Chart/' | relative_url }}).
 > - **For mindmaps:** The built-in interactive **Mindmap Viewer** (powered by Markmap) delivers a significantly smoother, zoomable, and collapsible mind-mapping experience.
 
 ### Charts & Data Visualizations
@@ -140,7 +140,7 @@ width: 500px
 ```
 
 To explore advanced multi-series charts, donuts, Sankey diagrams, and NOAA-style plots, see:
-👉 **[[Example Chart]]**
+👉 [**Example Interactive Charts**]({{ '/Example Chart/' | relative_url }})
 
 ### ABC Sheet Music Notes
 
