@@ -1,4 +1,63 @@
-<pre><code class="language-abc">X:1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.9.1 -->
+<title>simple abc | Product Wiki &amp; Developer Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="simple abc" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Personal knowledge management, product documentation, and engineering updates." />
+<meta name="twitter:description" property="og:description" content="Personal knowledge management, product documentation, and engineering updates." />
+<meta property="og:site_name" content="Product Wiki &amp; Developer Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="simple abc" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"Personal knowledge management, product documentation, and engineering updates.","headline":"simple abc","url":"/simple%20abc/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Product Wiki &amp; Developer Hub" />
+
+  <!-- Visualization Libraries Support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/assets/css/insightpage-style.css">
+</head>
+<body>
+  <div class="site-wrapper">
+    <header class="site-header">
+      <div class="header-container">
+        <div class="site-title">
+          <a href="/">⚡ Product Wiki & Developer Hub</a>
+        </div>
+        <nav class="site-nav">
+          <a class="nav-link " href="/">Home</a>
+          <a class="nav-link " href="/docs/">Docs</a>
+          <a class="nav-link " href="/blog/">Blog</a>
+          <a class="nav-link " href="/Rendering%20Showcase/">Showcase</a>
+
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+            <span id="theme-icon">🌙</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <article class="page-article">
+  <header class="post-header">
+    <h1 class="post-title">simple abc</h1>
+
+      <p class="card-description"></p>
+
+  </header>
+
+  <div class="page-content">
+    <pre><code class="language-abc">X:1
 T:Sample Music
 M:2/4
 L:1/16
@@ -108,3 +167,86 @@ P:B
 .g.a.g.f e2 c2 | tgta tgtf e2 c2 | "^dolcemente"c2 G2 c4 | c2 G2 !D.C.!c4 |]
 w:son-nez les mâ-ti-nes, son-nez le mâ-ti-nes, dig, ding, dong, dig, ding, dong.
 </code></pre>
+
+  </div>
+</article>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div>
+          <strong>Product Wiki & Developer Hub</strong> &copy; 2026 — Personal Knowledge & Engineering Portal
+        </div>
+        <div>
+          Powered by Jekyll & GitHub Pages
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Theme Switcher Script -->
+  <script>
+    (function() {
+      const toggleBtn = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+      document.documentElement.setAttribute('data-theme', storedTheme);
+      themeIcon.textContent = storedTheme === 'dark' ? '☀️' : '🌙';
+
+      toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      });
+    })();
+  </script>
+
+  <!-- Script Initializers for Visualisations -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script src="/assets/js/insightpage-style.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. Initialize Mermaid Diagrams
+      if (typeof mermaid !== "undefined") {
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+      }
+
+      // 2. Initialize KaTeX Math Formulas
+      if (typeof renderMathInElement !== "undefined") {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ]
+        });
+      }
+
+      // 3. Transform Obsidian/Note Callouts (> [!Note], > [!Summary], etc.)
+      document.querySelectorAll('blockquote').forEach(function(bq) {
+        const html = bq.innerHTML.trim();
+        const calloutMatch = html.match(/^<p>\[\!(Note|Summary|Warning|Important|Tip)\]\s*(.*?)<\/p>/i);
+        if (calloutMatch) {
+          const type = calloutMatch[1].toLowerCase();
+          const title = calloutMatch[2] || type.toUpperCase();
+          const content = html.replace(/^<p>\[\!(Note|Summary|Warning|Important|Tip)\]\s*.*?<\/p>/i, '');
+
+          const div = document.createElement('div');
+          div.className = 'callout callout-' + type;
+          div.innerHTML = '<div class="callout-title">💡 ' + title + '</div>' + content;
+          bq.parentNode.replaceChild(div, bq);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -21,6 +21,13 @@ kramdown:
   hard_wrap: false
   syntax_highlighter: rouge
 
+# Default layout for markdown files
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "page"
+
 # Plugins supported natively on GitHub Pages
 plugins:
   - jekyll-feed
