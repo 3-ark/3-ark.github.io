@@ -31,7 +31,7 @@ The following standard Mermaid diagram types are fully supported:
 
 > [!Note] Omitted Diagram Types & Superior Alternatives
 > Heavy specialized Mermaid chart modules (`xychart`, `pie`, `journey`, `architecture`, `mindmap`) are intentionally omitted to keep extension bundle size lightweight and eliminate CPU rendering spikes:
-> - **For charts & graphs:** Use **Chart.js style syntaxes** (`chart` code block) or **Observable Plot** (`plot` or `cosyobservableplot` code block). They provide far superior visual rendering, crisp SVG vector scaling, rich interactivity, and responsive layout compared to Mermaid's static chart output. See: 👉 **[[Example Chart]]**.
+> - **For charts & graphs:** Use **Chart.js style syntaxes** (`chart` code block) or **Observable Plot** (`plot` or `cosyobservableplot` code block). They provide far superior visual rendering, crisp SVG vector scaling, rich interactivity, and responsive layout compared to Mermaid's static chart output. See: 👉 [**Example Interactive Charts**]({{ '/Example Chart/' | relative_url }}).
 > - **For mindmaps:** Use the built-in interactive **Mindmap Viewer** (powered by Markmap) for a smooth, zoomable, and collapsible mind-mapping experience.
 
 ---

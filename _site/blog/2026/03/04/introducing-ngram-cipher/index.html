@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.9.1 -->
+<title>Introducing N-Gram Cipher: Reversible Natural English Steganography | Product Wiki &amp; Developer Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Introducing N-Gram Cipher: Reversible Natural English Steganography" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="We are excited to introduce 3-ark/ngram-cipher—a modern cryptographic steganography engine for JavaScript and TypeScript!" />
+<meta name="twitter:description" property="og:description" content="We are excited to introduce 3-ark/ngram-cipher—a modern cryptographic steganography engine for JavaScript and TypeScript!" />
+<meta property="og:site_name" content="Product Wiki &amp; Developer Hub" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-03-04T12:00:00+00:00" />
+<meta property="article:modified_time" content="2026-03-04T12:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Introducing N-Gram Cipher: Reversible Natural English Steganography" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-03-04T12:00:00+00:00","datePublished":"2026-03-04T12:00:00+00:00","description":"We are excited to introduce 3-ark/ngram-cipher—a modern cryptographic steganography engine for JavaScript and TypeScript!","headline":"Introducing N-Gram Cipher: Reversible Natural English Steganography","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/2026/03/04/introducing-ngram-cipher/"},"url":"/blog/2026/03/04/introducing-ngram-cipher/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Product Wiki &amp; Developer Hub" />
+
+  <!-- Visualization Libraries Support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/assets/css/insightpage-style.css">
+</head>
+<body>
+  <div class="site-wrapper">
+    <header class="site-header">
+      <div class="header-container">
+        <div class="site-title">
+          <a href="/">⚡ Product Wiki & Developer Hub</a>
+        </div>
+        <nav class="site-nav">
+          <a class="nav-link " href="/">Home</a>
+          <a class="nav-link " href="/docs/">Docs</a>
+          <a class="nav-link active" href="/blog/">Blog</a>
+          <a class="nav-link " href="/Rendering%20Showcase/">Showcase</a>
+          <a class="nav-link" href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+            <span id="theme-icon">🌙</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <article class="post-article">
+  <header class="post-header">
+    <h1 class="post-title">Introducing N-Gram Cipher: Reversible Natural English Steganography</h1>
+    <div class="post-meta">
+      <span>📅 March 04, 2026</span>
+
+        <span>📁 cryptography, release, steganography</span>
+
+
+        <div>
+
+            <span class="tag-badge">#cryptography</span>
+
+            <span class="tag-badge">#aes-gcm</span>
+
+            <span class="tag-badge">#n-gram</span>
+
+            <span class="tag-badge">#typescript</span>
+
+            <span class="tag-badge">#steganography</span>
+
+            <span class="tag-badge">#open-source</span>
+
+        </div>
+
+    </div>
+  </header>
+
+  <div class="post-content">
+    <p>We are excited to introduce <a href="https://github.com/3-ark/ngram-cipher"><strong><code class="language-plaintext highlighter-rouge">3-ark/ngram-cipher</code></strong></a>—a modern cryptographic steganography engine for JavaScript and TypeScript!</p>
+
+<p><code class="language-plaintext highlighter-rouge">ngram-cipher</code> transforms encrypted payloads into natural-sounding, syntactically coherent English prose (journalistic reports) or poetic verses that are <strong>100% losslessly reversible</strong>.</p>
+
+<hr />
+
+<h2 id="why-n-gram-steganography">Why N-Gram Steganography?</h2>
+
+<p>Traditional steganography conceals data in image pixels, audio waveforms, or whitespace formatting. However, when communicating across text-only messaging channels, email, or social media platforms, non-text files are often heavily re-encoded, stripped, or flagged by security scanners.</p>
+
+<p><code class="language-plaintext highlighter-rouge">ngram-cipher</code> solves this by transforming ciphertext directly into realistic natural language text:</p>
+<ul>
+  <li><strong>AES-256-GCM Authenticated Encryption</strong>: Strong symmetric security with PBKDF2 key derivation (100,000 SHA-256 iterations).</li>
+  <li><strong>Statistical Language Models</strong>: Uses dynamic N-gram statistical scoring from Google Books datasets to ensure word continuations follow natural syntactic and semantic distributions.</li>
+  <li><strong>Grammar &amp; Variety Rules</strong>: Generates varied sentence structures with appositives, clauses, and reporting verbs, while actively preventing structural repetition across consecutive sentences.</li>
+  <li><strong>100% Exact Recovery</strong>: Employs power-of-two slot allocation and CRC32 verification to ensure bit-exact decryption every time.</li>
+</ul>
+
+<hr />
+
+<h2 id="interactive-browser-demo">Interactive Browser Demo</h2>
+
+<p>You can try the cipher directly in your browser on our new documentation page:</p>
+
+<p>👉 <strong><a href="/docs/ngram-cipher/">Try the N-Gram Cipher Interactive Demo</a></strong></p>
+
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">encode</span><span class="p">,</span> <span class="nx">decode</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">ngram-cipher</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="c1">// Encrypt &amp; hide in news prose</span>
+<span class="kd">const</span> <span class="nx">carrierText</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">encode</span><span class="p">(</span><span class="dl">"</span><span class="s2">Top secret deployment instructions</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ArkPassword123</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">carrierText</span><span class="p">);</span>
+<span class="cm">/*
+"A regional leader approved the measure. The executive announced the directive in Paris;
+Local investment remained 14.5% in Madrid..."
+*/</span>
+
+<span class="c1">// Reversibly extract &amp; decrypt</span>
+<span class="kd">const</span> <span class="nx">decrypted</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">decode</span><span class="p">(</span><span class="nx">carrierText</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ArkPassword123</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">decrypted</span><span class="p">);</span> <span class="c1">// "Top secret deployment instructions"</span>
+</code></pre></div></div>
+
+<p>Check out the code and documentation on <a href="https://github.com/3-ark/ngram-cipher">GitHub</a>.</p>
+
+  </div>
+</article>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div>
+          <strong>Product Wiki & Developer Hub</strong> &copy; 2026 — Personal Knowledge & Engineering Portal
+        </div>
+        <div>
+          Powered by Jekyll & GitHub Pages &bull; <a href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted);">insightpage-style on GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Theme Switcher Script -->
+  <script>
+    (function() {
+      const toggleBtn = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+      document.documentElement.setAttribute('data-theme', storedTheme);
+      themeIcon.textContent = storedTheme === 'dark' ? '☀️' : '🌙';
+
+      toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      });
+    })();
+  </script>
+
+  <!-- Script Initializers for Visualisations & Libraries -->
+  <script src="/assets/js/pele.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script src="/assets/js/insightpage-style.js"></script>
+  <script src="/assets/js/ngram-cipher.global.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. Initialize KaTeX Math Formulas
+      if (typeof renderMathInElement !== "undefined") {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ]
+        });
+      }
+
+      // 3. Transform Obsidian/Note Callouts (> [!Note], > [!Summary], etc.)
+      document.querySelectorAll('blockquote').forEach(function(bq) {
+        const html = bq.innerHTML.trim();
+        const calloutMatch = html.match(/^<p>\[\!(Note|Summary|Warning|Important|Tip)\]\s*(.*?)<\/p>/i);
+        if (calloutMatch) {
+          const type = calloutMatch[1].toLowerCase();
+          const title = calloutMatch[2] || type.toUpperCase();
+          const content = html.replace(/^<p>\[\!(Note|Summary|Warning|Important|Tip)\]\s*.*?<\/p>/i, '');
+
+          const div = document.createElement('div');
+          div.className = 'callout callout-' + type;
+          div.innerHTML = '<div class="callout-title">💡 ' + title + '</div>' + content;
+          bq.parentNode.replaceChild(div, bq);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -323,11 +323,5 @@ Plot.plot({
 
 <iframe width="560" height="315" src="https://www.inoreader.com/"></iframe>
 
-[[#Chart.js Style YAML Charts]]
-
-[[#^table]]
-
-[[3-Resources/Hobby/tarot card/cards images/w14.jpg]]
-![[3-Resources/Hobby/tarot card/cards images/w12.jpg]]
-
-[[Render Test/Rendering Showcase]]
+* [Chart.js Style YAML Charts](#chartjs-style-yaml-charts)
+* [Rendering Showcase]({{ '/Rendering Showcase/' | relative_url }})
