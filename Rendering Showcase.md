@@ -48,11 +48,11 @@ Here is the format for internal tabs:
 --- tab1
 
 $$\begin{aligned} \nabla \cdot \mathbf{E} &= \frac{\rho}{\varepsilon_0} \\ \nabla \cdot \mathbf{B} &= 0 \\ \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\ \nabla \times \mathbf{B} &= \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \end{aligned}$$
---- yes you put here anything
-~~***right***~~ <big>wrong</big> **fuck off** H~2~O X^2^=3
+--- tab2
+~~***right***~~ <big>formatted</big> **bold** H~2~O X^2^=3
 
---- like, thisistab3
-Standard Highlight: Parse ==text== directly into an HTML <mark>text</mark> tag. enabling proper AST parsing into nodes for nested formatting like ==***text***==, ==**text**==, ==*text*==, and ==**_text_**== or ==_text_==.
+--- tab3
+Standard Highlight: Parse ==text== directly into an HTML <mark>text</mark> tag, enabling nested formatting like ==***text***==, ==**text**==, and ==*text*==.
 ```
 ````
 
@@ -62,11 +62,11 @@ Standard Highlight: Parse ==text== directly into an HTML <mark>text</mark> tag. 
 --- tab1
 
 $$\begin{aligned} \nabla \cdot \mathbf{E} &= \frac{\rho}{\varepsilon_0} \\ \nabla \cdot \mathbf{B} &= 0 \\ \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\ \nabla \times \mathbf{B} &= \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \end{aligned}$$
---- yes you put here anything
-~~***right***~~ <big>wrong</big> **fuck off** H~2~O X^2^=3
+--- tab2
+~~***right***~~ <big>formatted</big> **bold** H~2~O X^2^=3
 
---- like, thisistab3
-Standard Highlight: Parse ==text== directly into an HTML <mark>text</mark> tag. enabling proper AST parsing into nodes for nested formatting like ==***text***==, ==**text**==, ==*text*==, and ==**_text_**== or ==_text_==.
+--- tab3
+Standard Highlight: Parse ==text== directly into an HTML <mark>text</mark> tag, enabling nested formatting like ==***text***==, ==**text**==, and ==*text*==.
 ```
 
 ### Mermaid Diagrams
@@ -85,7 +85,61 @@ To prevent CPU spikes and improve rendering performance, heavy diagram showcases
 
 InsightPage renders interactive charts via Chart.js-style YAML configurations (`chart`) and declarative JavaScript data visualizations via Observable Plot (`plot` / `cosyobservableplot`).
 
-To explore interactive bar charts, line charts, pie charts, histograms, and multi-series plots without CPU overhead in this document, see:
+#### Observable Plot Syntaxes & Examples
+
+Use `plot` or `cosyobservableplot` for declarative data visualizations powered by Observable Plot.
+
+````markdown
+```plot
+Plot.rectY(
+  [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9, 10, 12, 15],
+  Plot.binX(
+    { y: "count" },
+    { x: (d) => d, fill: "#3b82f6", tip: true, rx: 3 }
+  )
+)
+```
+````
+
+**Rendered Plot:**
+
+```plot
+Plot.rectY(
+  [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9, 10, 12, 15],
+  Plot.binX(
+    { y: "count" },
+    { x: (d) => d, fill: "#3b82f6", tip: true, rx: 3 }
+  )
+)
+```
+
+#### YAML Chart Syntaxes & Examples
+
+Use `chart` with YAML configuration for standard bar, line, pie, and radar charts:
+
+````markdown
+```chart
+type: bar
+labels: ["Q1", "Q2", "Q3", "Q4"]
+series:
+  - title: "Revenue"
+    data: [120, 150, 180, 220]
+width: 500px
+```
+````
+
+**Rendered Chart:**
+
+```chart
+type: bar
+labels: ["Q1", "Q2", "Q3", "Q4"]
+series:
+  - title: "Revenue"
+    data: [120, 150, 180, 220]
+width: 500px
+```
+
+To explore advanced multi-series charts, donuts, Sankey diagrams, and NOAA-style plots, see:
 👉 **[[Example Chart]]**
 
 ### ABC Sheet Music Notes
@@ -126,71 +180,4 @@ Use `::cmt[]` for interactive comments/popovers.
 
 ```markdown
 ::cmt[💡 example. This is a comment.]
-```
-
-## Skills for AI
-
-```markdown
-# InsightPage Markdown Syntax
-
-Use these extensions in addition to standard Markdown and Mermaid.
-
-## Mermaid Diagrams
-
-Supported diagram types: `flowchart` / `graph`, `sequenceDiagram`, `classDiagram`, `stateDiagram-v2`, `erDiagram`, `gantt`, `gitGraph`.
-
-*Note:* `xychart`, `pie`, `journey`, `architecture`, and `mindmap` are omitted to keep bundle size lightweight. Use `chart` blocks (Chart.js-style syntax) or `plot` blocks (Observable Plot) for charts—which offer much higher quality rendering and rich interactivity compared to Mermaid charts—and use the built-in Mindmap viewer for superior interactive mind-mapping.
-
-## Tabs
-
-Use `tabs` for switchable sections. Start each tab with `--- <Tab Title>`.
-
-```tabs
---- Overview
-Summary...
---- Details
-Specifications...
-```
-
-## Charts
-
-Use `chart` with YAML configuration. Note: While this is not real Chart.js, you can use Chart.js-style syntaxes which most Chart.js wrappers use (powered by Observable Plot).
-
-Supported fields:
-
-* `type`: `bar`, `line`, `pie`, etc.
-* `labels`: category labels
-* `series`: list of `title` and `data`
-* `width`: optional
-
-```chart
-type: bar
-labels: ["Q1", "Q2", "Q3", "Q4"]
-series:
-  - title: "Revenue"
-    data: [120, 150, 180, 220]
-width: 500px
-```
-
-## Observable Plot
-
-Use `plot` or `cosyobservableplot` for data visualizations using Observable Plot. You can write JavaScript expressions or declarative configuration options.
-
-```plot
-Plot.rectY(
-  [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9, 10, 12, 15],
-  Plot.binX(
-    { y: "count" },
-    { x: (d) => d, fill: "#3b82f6", tip: true, rx: 3 }
-  )
-)
-```
-
-## Inline Comment
-
-Use `::cmt[]` for interactive comments/popovers.
-
-```markdown
-::cmt[💡 example. This is a comment.]
-```
 ```

@@ -126,11 +126,11 @@ This ^<strong>note</strong>^ <em>demonstrates</em> ~the~ various ==<strong><em>�
 --- tab1
 
 $$\begin{aligned} \nabla \cdot \mathbf{E} &amp;= \frac{\rho}{\varepsilon_0} \\ \nabla \cdot \mathbf{B} &amp;= 0 \\ \nabla \times \mathbf{E} &amp;= -\frac{\partial \mathbf{B}}{\partial t} \\ \nabla \times \mathbf{B} &amp;= \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \end{aligned}$$
---- yes you put here anything
-~~***right***~~ &lt;big&gt;wrong&lt;/big&gt; **fuck off** H~2~O X^2^=3
+--- tab2
+~~***right***~~ &lt;big&gt;formatted&lt;/big&gt; **bold** H~2~O X^2^=3
 
---- like, thisistab3
-Standard Highlight: Parse ==text== directly into an HTML &lt;mark&gt;text&lt;/mark&gt; tag. enabling proper AST parsing into nodes for nested formatting like ==***text***==, ==**text**==, ==*text*==, and ==**_text_**== or ==_text_==.
+--- tab3
+Standard Highlight: Parse ==text== directly into an HTML &lt;mark&gt;text&lt;/mark&gt; tag, enabling nested formatting like ==***text***==, ==**text**==, and ==*text*==.
 ```
 </code></pre></div></div>
 
@@ -139,11 +139,11 @@ Standard Highlight: Parse ==text== directly into an HTML &lt;mark&gt;text&lt;/ma
 <pre><code class="language-tabs">--- tab1
 
 $$\begin{aligned} \nabla \cdot \mathbf{E} &amp;= \frac{\rho}{\varepsilon_0} \\ \nabla \cdot \mathbf{B} &amp;= 0 \\ \nabla \times \mathbf{E} &amp;= -\frac{\partial \mathbf{B}}{\partial t} \\ \nabla \times \mathbf{B} &amp;= \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t} \end{aligned}$$
---- yes you put here anything
-~~***right***~~ &lt;big&gt;wrong&lt;/big&gt; **fuck off** H~2~O X^2^=3
+--- tab2
+~~***right***~~ &lt;big&gt;formatted&lt;/big&gt; **bold** H~2~O X^2^=3
 
---- like, thisistab3
-Standard Highlight: Parse ==text== directly into an HTML &lt;mark&gt;text&lt;/mark&gt; tag. enabling proper AST parsing into nodes for nested formatting like ==***text***==, ==**text**==, ==*text*==, and ==**_text_**== or ==_text_==.
+--- tab3
+Standard Highlight: Parse ==text== directly into an HTML &lt;mark&gt;text&lt;/mark&gt; tag, enabling nested formatting like ==***text***==, ==**text**==, and ==*text*==.
 </code></pre>
 
 <h3 id="mermaid-diagrams">Mermaid Diagrams</h3>
@@ -166,7 +166,57 @@ Heavy specialized Mermaid chart modules (<code class="language-plaintext highlig
 
 <p>InsightPage renders interactive charts via Chart.js-style YAML configurations (<code class="language-plaintext highlighter-rouge">chart</code>) and declarative JavaScript data visualizations via Observable Plot (<code class="language-plaintext highlighter-rouge">plot</code> / <code class="language-plaintext highlighter-rouge">cosyobservableplot</code>).</p>
 
-<p>To explore interactive bar charts, line charts, pie charts, histograms, and multi-series plots without CPU overhead in this document, see:
+<h4 id="observable-plot-syntaxes--examples">Observable Plot Syntaxes &amp; Examples</h4>
+
+<p>Use <code class="language-plaintext highlighter-rouge">plot</code> or <code class="language-plaintext highlighter-rouge">cosyobservableplot</code> for declarative data visualizations powered by Observable Plot.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```plot
+Plot.rectY(
+  [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9, 10, 12, 15],
+  Plot.binX(
+    { y: "count" },
+    { x: (d) =&gt; d, fill: "#3b82f6", tip: true, rx: 3 }
+  )
+)
+```
+</code></pre></div></div>
+
+<p><strong>Rendered Plot:</strong></p>
+
+<pre><code class="language-plot">Plot.rectY(
+  [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9, 10, 12, 15],
+  Plot.binX(
+    { y: "count" },
+    { x: (d) =&gt; d, fill: "#3b82f6", tip: true, rx: 3 }
+  )
+)
+</code></pre>
+
+<h4 id="yaml-chart-syntaxes--examples">YAML Chart Syntaxes &amp; Examples</h4>
+
+<p>Use <code class="language-plaintext highlighter-rouge">chart</code> with YAML configuration for standard bar, line, pie, and radar charts:</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```chart
+type: bar
+labels: ["Q1", "Q2", "Q3", "Q4"]
+series:
+  - title: "Revenue"
+    data: [120, 150, 180, 220]
+width: 500px
+```
+</code></pre></div></div>
+
+<p><strong>Rendered Chart:</strong></p>
+
+<pre><code class="language-chart">type: bar
+labels: ["Q1", "Q2", "Q3", "Q4"]
+series:
+  - title: "Revenue"
+    data: [120, 150, 180, 220]
+width: 500px
+</code></pre>
+
+<p>To explore advanced multi-series charts, donuts, Sankey diagrams, and NOAA-style plots, see:
 👉 <strong>[[Example Chart]]</strong></p>
 
 <h3 id="abc-sheet-music-notes">ABC Sheet Music Notes</h3>
@@ -206,70 +256,6 @@ E E F G | G F E D | C C D E | E3/2 D/ D2 |
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>::cmt[💡 example. This is a comment.]
 </code></pre></div></div>
 
-<h2 id="skills-for-ai">Skills for AI</h2>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh"># InsightPage Markdown Syntax</span>
-
-Use these extensions in addition to standard Markdown and Mermaid.
-
-<span class="gu">## Mermaid Diagrams</span>
-
-Supported diagram types: <span class="sb">`flowchart`</span> / <span class="sb">`graph`</span>, <span class="sb">`sequenceDiagram`</span>, <span class="sb">`classDiagram`</span>, <span class="sb">`stateDiagram-v2`</span>, <span class="sb">`erDiagram`</span>, <span class="sb">`gantt`</span>, <span class="sb">`gitGraph`</span>.
-
-<span class="ge">*Note:*</span> <span class="sb">`xychart`</span>, <span class="sb">`pie`</span>, <span class="sb">`journey`</span>, <span class="sb">`architecture`</span>, and <span class="sb">`mindmap`</span> are omitted to keep bundle size lightweight. Use <span class="sb">`chart`</span> blocks (Chart.js-style syntax) or <span class="sb">`plot`</span> blocks (Observable Plot) for charts—which offer much higher quality rendering and rich interactivity compared to Mermaid charts—and use the built-in Mindmap viewer for superior interactive mind-mapping.
-
-<span class="gu">## Tabs</span>
-
-Use <span class="sb">`tabs`</span> for switchable sections. Start each tab with <span class="sb">`--- &lt;Tab Title&gt;`</span>.
-
-<span class="p">```</span><span class="nl">tabs
-</span><span class="sb">--- Overview
-Summary...
---- Details
-Specifications...
-</span></code></pre></div></div>
-
-<h2 id="charts">Charts</h2>
-
-<p>Use <code class="language-plaintext highlighter-rouge">chart</code> with YAML configuration. Note: While this is not real Chart.js, you can use Chart.js-style syntaxes which most Chart.js wrappers use (powered by Observable Plot).</p>
-
-<p>Supported fields:</p>
-
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">type</code>: <code class="language-plaintext highlighter-rouge">bar</code>, <code class="language-plaintext highlighter-rouge">line</code>, <code class="language-plaintext highlighter-rouge">pie</code>, etc.</li>
-  <li><code class="language-plaintext highlighter-rouge">labels</code>: category labels</li>
-  <li><code class="language-plaintext highlighter-rouge">series</code>: list of <code class="language-plaintext highlighter-rouge">title</code> and <code class="language-plaintext highlighter-rouge">data</code></li>
-  <li><code class="language-plaintext highlighter-rouge">width</code>: optional</li>
-</ul>
-
-<pre><code class="language-chart">type: bar
-labels: ["Q1", "Q2", "Q3", "Q4"]
-series:
-  - title: "Revenue"
-    data: [120, 150, 180, 220]
-width: 500px
-</code></pre>
-
-<h2 id="observable-plot">Observable Plot</h2>
-
-<p>Use <code class="language-plaintext highlighter-rouge">plot</code> or <code class="language-plaintext highlighter-rouge">cosyobservableplot</code> for data visualizations using Observable Plot. You can write JavaScript expressions or declarative configuration options.</p>
-
-<pre><code class="language-plot">Plot.rectY(
-  [2, 3, 3, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 9, 10, 12, 15],
-  Plot.binX(
-    { y: "count" },
-    { x: (d) =&gt; d, fill: "#3b82f6", tip: true, rx: 3 }
-  )
-)
-</code></pre>
-
-<h2 id="inline-comment-1">Inline Comment</h2>
-
-<p>Use <code class="language-plaintext highlighter-rouge">::cmt[]</code> for interactive comments/popovers.</p>
-
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>::cmt[💡 example. This is a comment.]
-</code></pre></div></div>
-<p>```</p>
 <div class="footnotes" role="doc-endnotes">
   <ol>
     <li id="fn:1">
