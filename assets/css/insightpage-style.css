@@ -640,7 +640,7 @@ a[href="https://ko-fi.com/phibr0"] > img
 
 /* Pele theme variables mapped to site colors */
 :root {
-  --pele-bg: transparent;
+  --pele-bg: var(--bg-card, #ffffff);
   --pele-fg: #1f2937;
   --pele-muted: #6b7280;
   --pele-line: #374151;
@@ -652,7 +652,7 @@ a[href="https://ko-fi.com/phibr0"] > img
 
 [data-theme="dark"],
 .theme-dark {
-  --pele-bg: transparent;
+  --pele-bg: var(--bg-card, #151d2a);
   --pele-fg: #f3f4f6;
   --pele-muted: #9ca3af;
   --pele-line: #d1d5db;
