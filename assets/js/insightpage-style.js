@@ -728,7 +728,44 @@ leaflet/dist/leaflet-src.js:
       const lang = match[1].toLowerCase();
 
       // Check if this language is handled by registeredCodeBlocks, tabs, or chart
-      if (lang === "tabs") {
+      if (lang === "mermaid") {
+        const source = codeEl.textContent.trim();
+        const container = document.createElement("div");
+        container.className = "block-language-mermaid";
+        preEl.parentNode.replaceChild(container, preEl);
+        container.setAttribute("data-insightpage-rendered", "true");
+
+        const peleEngine = window.pele || window.Pele;
+        if (peleEngine && typeof peleEngine.render === "function") {
+          try {
+            const isDark = document.documentElement.getAttribute("data-theme") === "dark" || document.body.classList.contains("theme-dark");
+            const result = peleEngine.render(source, { dark: isDark });
+            if (result && result.svg) {
+              container.innerHTML = result.svg;
+            } else if (typeof result === "string") {
+              container.innerHTML = result;
+            } else {
+              container.textContent = source;
+            }
+          } catch (err) {
+            console.error("Pele diagram render error:", err);
+            const errDiv = document.createElement("div");
+            errDiv.className = "chart-error";
+            errDiv.textContent = "Pele Diagram Render Error: " + (err.message || err);
+            container.appendChild(errDiv);
+          }
+        } else if (typeof window.mermaid !== "undefined") {
+          try {
+            const mContainer = document.createElement("div");
+            mContainer.className = "mermaid";
+            mContainer.textContent = source;
+            container.appendChild(mContainer);
+            window.mermaid.run({ nodes: [mContainer] });
+          } catch (err) {
+            console.error("Mermaid fallback render error:", err);
+          }
+        }
+      } else if (lang === "tabs") {
         const source = codeEl.textContent;
         const container = document.createElement("div");
         container.className = "block-language-tabs";
@@ -756,7 +793,7 @@ leaflet/dist/leaflet-src.js:
         } catch (err) {
           console.error("Chart render error:", err);
         }
-      } else if (registeredCodeBlocks[lang]) {
+      } else if (lang === "abc" || lang === "abcjs" || registeredCodeBlocks[lang]) {
         const source = codeEl.textContent;
         const container = document.createElement("div");
         container.className = "block-language-" + lang;
@@ -773,7 +810,11 @@ leaflet/dist/leaflet-src.js:
         };
 
         try {
-          await registeredCodeBlocks[lang](source, container, mockCtx);
+          if (registeredCodeBlocks[lang]) {
+            await registeredCodeBlocks[lang](source, container, mockCtx);
+          } else if (registeredCodeBlocks["abc"]) {
+            await registeredCodeBlocks["abc"](source, container, mockCtx);
+          }
         } catch (err) {
           console.error("Render error for [" + lang + "]:", err);
         }

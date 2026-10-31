@@ -621,3 +621,42 @@ a[href="https://ko-fi.com/phibr0"] > img
 .timeline-svg.is-zooming .events {
   pointer-events: none;
 }
+
+/* Pele Mermaid Diagram Container */
+.block-language-mermaid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.block-language-mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Pele theme variables mapped to site colors */
+:root {
+  --pele-bg: transparent;
+  --pele-fg: #1f2937;
+  --pele-muted: #6b7280;
+  --pele-line: #374151;
+  --pele-surface: #f3f4f6;
+  --pele-surface-alt: #e5e7eb;
+  --pele-border: #9ca3af;
+  --pele-accent: #2563eb;
+}
+
+[data-theme="dark"],
+.theme-dark {
+  --pele-bg: transparent;
+  --pele-fg: #f3f4f6;
+  --pele-muted: #9ca3af;
+  --pele-line: #d1d5db;
+  --pele-surface: #1f2937;
+  --pele-surface-alt: #374151;
+  --pele-border: #6b7280;
+  --pele-accent: #60a5fa;
+}
