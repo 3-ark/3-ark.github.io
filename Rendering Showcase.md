@@ -14,7 +14,7 @@ fileextension: .md
 fileExtension: .md
 ---
 > [!Summary] Markdown Syntaxes
-> This ^**note**^ *demonstrates* ~the~ various ==***"Markdown"***== rendering capabilities of InsightPage ~~***"笔记"***~~.
+> This ^**note**^ *demonstrates* ~the~ various ==***"Markdown"***== rendering capabilities of InsightPage ~~***"笔记"***~~, powered by the open-source Obsidian plugin [`3-ark/insightpage-style`](https://github.com/3-ark/insightpage-style).
 
 ## Standard Markdown
 

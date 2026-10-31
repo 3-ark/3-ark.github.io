@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.9.1 -->
+<title>Introducing InsightPage Style: Obsidian Plugin for Rich Visualizations &amp; Interactive Notes | Product Wiki &amp; Developer Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Introducing InsightPage Style: Obsidian Plugin for Rich Visualizations &amp; Interactive Notes" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="We are thrilled to introduce the official Obsidian community plugin: InsightPage Style (3-ark/insightpage-style)!" />
+<meta name="twitter:description" property="og:description" content="We are thrilled to introduce the official Obsidian community plugin: InsightPage Style (3-ark/insightpage-style)!" />
+<meta property="og:site_name" content="Product Wiki &amp; Developer Hub" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-03-03T12:00:00+00:00" />
+<meta property="article:modified_time" content="2026-03-03T12:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Introducing InsightPage Style: Obsidian Plugin for Rich Visualizations &amp; Interactive Notes" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2026-03-03T12:00:00+00:00","datePublished":"2026-03-03T12:00:00+00:00","description":"We are thrilled to introduce the official Obsidian community plugin: InsightPage Style (3-ark/insightpage-style)!","headline":"Introducing InsightPage Style: Obsidian Plugin for Rich Visualizations \u0026amp; Interactive Notes","mainEntityOfPage":{"@type":"WebPage","@id":"/blog/2026/03/03/introducing-insightpage-style-obsidian-plugin/"},"url":"/blog/2026/03/03/introducing-insightpage-style-obsidian-plugin/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Product Wiki &amp; Developer Hub" />
+
+  <!-- Visualization Libraries Support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/assets/css/insightpage-style.css">
+</head>
+<body>
+  <div class="site-wrapper">
+    <header class="site-header">
+      <div class="header-container">
+        <div class="site-title">
+          <a href="/">⚡ Product Wiki & Developer Hub</a>
+        </div>
+        <nav class="site-nav">
+          <a class="nav-link " href="/">Home</a>
+          <a class="nav-link " href="/docs/">Docs</a>
+          <a class="nav-link active" href="/blog/">Blog</a>
+          <a class="nav-link " href="/Rendering%20Showcase/">Showcase</a>
+          <a class="nav-link" href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+            <span id="theme-icon">🌙</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <article class="post-article">
+  <header class="post-header">
+    <h1 class="post-title">Introducing InsightPage Style: Obsidian Plugin for Rich Visualizations & Interactive Notes</h1>
+    <div class="post-meta">
+      <span>📅 March 03, 2026</span>
+
+        <span>📁 obsidian, release, plugins</span>
+
+
+        <div>
+
+            <span class="tag-badge">#obsidian</span>
+
+            <span class="tag-badge">#charts</span>
+
+            <span class="tag-badge">#maps</span>
+
+            <span class="tag-badge">#timelines</span>
+
+            <span class="tag-badge">#abcjs</span>
+
+            <span class="tag-badge">#markdown</span>
+
+            <span class="tag-badge">#open-source</span>
+
+        </div>
+
+    </div>
+  </header>
+
+  <div class="post-content">
+    <p>We are thrilled to introduce the official Obsidian community plugin: <a href="https://github.com/3-ark/insightpage-style"><strong>InsightPage Style (<code class="language-plaintext highlighter-rouge">3-ark/insightpage-style</code>)</strong></a>!</p>
+
+<p>InsightPage Style brings the exact same visual components and interactive diagrams powering our web assistant and note vault directly into your local <strong>Obsidian</strong> desktop experience.</p>
+
+<hr />
+
+<h2 id="what-is-insightpage-style">What is InsightPage Style?</h2>
+
+<p>While standard Markdown is great for structured text, complex technical notes often require rich visual aids—interactive timelines, responsive charts, geographic maps, musical notation, and discrete inline comments.</p>
+
+<p><a href="https://github.com/3-ark/insightpage-style">InsightPage Style</a> seamlessly integrates these capabilities into Obsidian using familiar Markdown code blocks and custom syntax.</p>
+
+<hr />
+
+<h2 id="key-features--highlights">Key Features &amp; Highlights</h2>
+
+<h3 id="1-observable-plot--yaml-charts-plot-chart">1. Observable Plot &amp; YAML Charts (<code class="language-plaintext highlighter-rouge">plot</code>, <code class="language-plaintext highlighter-rouge">chart</code>)</h3>
+<p>Render declarative data visualizations using <a href="https://observablehq.com/@observablehq/plot">Observable Plot</a> and D3, or write concise YAML configurations powered by Chart.js syntax:</p>
+
+<ul>
+  <li><strong>Chart.js Types</strong>: Bar, Line, Pie, Doughnut, Radar, and Sankey diagrams.</li>
+  <li><strong>Observable Plot</strong>: Full JavaScript execution context with access to <code class="language-plaintext highlighter-rouge">Plot</code>, <code class="language-plaintext highlighter-rouge">d3</code>, and vault file loading via <code class="language-plaintext highlighter-rouge">fetch()</code>.</li>
+</ul>
+
+<pre><code class="language-chart">type: bar
+labels: ["Q1", "Q2", "Q3", "Q4"]
+series:
+  - title: "Productivity Index"
+    data: [65, 82, 90, 115]
+width: 500px
+</code></pre>
+
+<h3 id="2-zoomable-event-timelines-timeline">2. Zoomable Event Timelines (<code class="language-plaintext highlighter-rouge">timeline</code>)</h3>
+<p>Plot milestones, multi-month development phases, and ongoing projects with interactive pan and zoom controls:</p>
+<ul>
+  <li>Supports JSON, YAML, or JS object literals.</li>
+  <li>Category filtering toggles and dynamic “Today” indicator line.</li>
+  <li>SVG export and copy actions built-in.</li>
+</ul>
+
+<h3 id="3-interactive-leaflet-maps-map-leaflet">3. Interactive Leaflet Maps (<code class="language-plaintext highlighter-rouge">map</code>, <code class="language-plaintext highlighter-rouge">leaflet</code>)</h3>
+<p>Embed interactive maps directly into your notes:</p>
+<ul>
+  <li>Customizable markers, popups, and radius circles.</li>
+  <li>Polylines and polygons for routes and zones.</li>
+  <li>Support for custom tile servers and raw GeoJSON layers.</li>
+</ul>
+
+<h3 id="4-abc-sheet-music-notation--audio-player-abc-abcjs">4. ABC Sheet Music Notation &amp; Audio Player (<code class="language-plaintext highlighter-rouge">abc</code>, <code class="language-plaintext highlighter-rouge">abcjs</code>)</h3>
+<p>Write sheet music with standard ABC notation:</p>
+<ul>
+  <li>Built-in interactive synthesizer audio playback (Play/Pause/Seek).</li>
+  <li>Real-time visual note highlighting synchronized with audio playback.</li>
+  <li>MIDI file export (<code class="language-plaintext highlighter-rouge">.midi</code>) and source copy controls.</li>
+</ul>
+
+<h3 id="5-inline-popover-comments-cmt">5. Inline Popover Comments (<code class="language-plaintext highlighter-rouge">::cmt[...]</code>)</h3>
+<p>Add compact popover comments directly inside paragraph text:</p>
+<ul>
+  <li>Compact emoji badge trigger in preview mode.</li>
+  <li>Hover or click to reveal formatted callout notes.</li>
+  <li>Clean print and PDF export styling.</li>
+</ul>
+
+<hr />
+
+<h2 id="open-source--community">Open Source &amp; Community</h2>
+
+<p>The plugin is 100% open-source under the AGPL-3.0 license.</p>
+
+<ul>
+  <li><strong>GitHub Repository</strong>: <a href="https://github.com/3-ark/insightpage-style">https://github.com/3-ark/insightpage-style</a></li>
+  <li><strong>Interactive Showcase</strong>: Explore live web demos on our <a href="/Rendering%20Showcase/">Rendering Showcase</a>.</li>
+  <li><strong>Sample Visualizations</strong>: Check out <a href="/Example%20Chart/">Example Chart</a>, <a href="/Example%20Map/">Example Map</a>, and <a href="/Example%20Timeline/">Example Timeline</a>.</li>
+</ul>
+
+<p>Check out the repository on GitHub, try it out in your Obsidian vault, and let us know what you think!</p>
+
+  </div>
+</article>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div>
+          <strong>Product Wiki & Developer Hub</strong> &copy; 2026 — Personal Knowledge & Engineering Portal
+        </div>
+        <div>
+          Powered by Jekyll & GitHub Pages &bull; <a href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted);">insightpage-style on GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Theme Switcher Script -->
+  <script>
+    (function() {
+      const toggleBtn = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+      document.documentElement.setAttribute('data-theme', storedTheme);
+      themeIcon.textContent = storedTheme === 'dark' ? '☀️' : '🌙';
+
+      toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      });
+    })();
+  </script>
+
+  <!-- Script Initializers for Visualisations -->
+  <script src="/assets/js/pele.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script src="/assets/js/insightpage-style.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. Initialize KaTeX Math Formulas
+      if (typeof renderMathInElement !== "undefined") {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ]
+        });
+      }
+
+      // 3. Transform Obsidian/Note Callouts (> [!Note], > [!Summary], etc.)
+      document.querySelectorAll('blockquote').forEach(function(bq) {
+        const html = bq.innerHTML.trim();
+        const calloutMatch = html.match(/^<p>\[\!(Note|Summary|Warning|Important|Tip)\]\s*(.*?)<\/p>/i);
+        if (calloutMatch) {
+          const type = calloutMatch[1].toLowerCase();
+          const title = calloutMatch[2] || type.toUpperCase();
+          const content = html.replace(/^<p>\[\!(Note|Summary|Warning|Important|Tip)\]\s*.*?<\/p>/i, '');
+
+          const div = document.createElement('div');
+          div.className = 'callout callout-' + type;
+          div.innerHTML = '<div class="callout-title">💡 ' + title + '</div>' + content;
+          bq.parentNode.replaceChild(div, bq);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

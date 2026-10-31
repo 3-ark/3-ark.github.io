@@ -23,6 +23,14 @@ description: "Comprehensive product documentation, architecture overviews, and i
   </div>
 
   <div class="card">
+    <h3 class="card-title"><a href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer">InsightPage Style (Obsidian Plugin)</a></h3>
+    <p class="card-description">Obsidian plugin enhancing markdown notes with Observable Plot, Chart.js, zoomable timelines, Leaflet maps, ABC audio playback, and inline popover comments.</p>
+    <div>
+      <a href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">GitHub Repository &rarr;</a>
+    </div>
+  </div>
+
+  <div class="card">
     <h3 class="card-title"><a href="{{ '/privacy-policy/' | relative_url }}">Privacy & Data Security</a></h3>
     <p class="card-description">Learn about our zero-tracking architecture, direct client-to-API communication, and local credential storage.</p>
     <div>

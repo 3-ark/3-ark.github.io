@@ -1,4 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-10-31T03:31:41+00:00</updated><id>/feed.xml</id><title type="html">Product Wiki &amp;amp; Developer Hub</title><subtitle>Personal knowledge management, product documentation, and engineering updates.</subtitle><entry><title type="html">InsightPage v2.5 Release: Hybrid RAG Search &amp;amp; Local LLM Support</title><link href="/blog/2026/03/02/insightpage-v2-5-release/" rel="alternate" type="text/html" title="InsightPage v2.5 Release: Hybrid RAG Search &amp;amp; Local LLM Support" /><published>2026-03-02T14:30:00+00:00</published><updated>2026-03-02T14:30:00+00:00</updated><id>/blog/2026/03/02/insightpage-v2-5-release</id><content type="html" xml:base="/blog/2026/03/02/insightpage-v2-5-release/"><![CDATA[<p>We are excited to announce the release of <strong>InsightPage v2.5</strong>!</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2026-10-31T11:32:20+00:00</updated><id>/feed.xml</id><title type="html">Product Wiki &amp;amp; Developer Hub</title><subtitle>Personal knowledge management, product documentation, and engineering updates.</subtitle><entry><title type="html">Introducing InsightPage Style: Obsidian Plugin for Rich Visualizations &amp;amp; Interactive Notes</title><link href="/blog/2026/03/03/introducing-insightpage-style-obsidian-plugin/" rel="alternate" type="text/html" title="Introducing InsightPage Style: Obsidian Plugin for Rich Visualizations &amp;amp; Interactive Notes" /><published>2026-03-03T12:00:00+00:00</published><updated>2026-03-03T12:00:00+00:00</updated><id>/blog/2026/03/03/introducing-insightpage-style-obsidian-plugin</id><content type="html" xml:base="/blog/2026/03/03/introducing-insightpage-style-obsidian-plugin/"><![CDATA[<p>We are thrilled to introduce the official Obsidian community plugin: <a href="https://github.com/3-ark/insightpage-style"><strong>InsightPage Style (<code class="language-plaintext highlighter-rouge">3-ark/insightpage-style</code>)</strong></a>!</p>
+
+<p>InsightPage Style brings the exact same visual components and interactive diagrams powering our web assistant and note vault directly into your local <strong>Obsidian</strong> desktop experience.</p>
+
+<hr />
+
+<h2 id="what-is-insightpage-style">What is InsightPage Style?</h2>
+
+<p>While standard Markdown is great for structured text, complex technical notes often require rich visual aids—interactive timelines, responsive charts, geographic maps, musical notation, and discrete inline comments.</p>
+
+<p><a href="https://github.com/3-ark/insightpage-style">InsightPage Style</a> seamlessly integrates these capabilities into Obsidian using familiar Markdown code blocks and custom syntax.</p>
+
+<hr />
+
+<h2 id="key-features--highlights">Key Features &amp; Highlights</h2>
+
+<h3 id="1-observable-plot--yaml-charts-plot-chart">1. Observable Plot &amp; YAML Charts (<code class="language-plaintext highlighter-rouge">plot</code>, <code class="language-plaintext highlighter-rouge">chart</code>)</h3>
+<p>Render declarative data visualizations using <a href="https://observablehq.com/@observablehq/plot">Observable Plot</a> and D3, or write concise YAML configurations powered by Chart.js syntax:</p>
+
+<ul>
+  <li><strong>Chart.js Types</strong>: Bar, Line, Pie, Doughnut, Radar, and Sankey diagrams.</li>
+  <li><strong>Observable Plot</strong>: Full JavaScript execution context with access to <code class="language-plaintext highlighter-rouge">Plot</code>, <code class="language-plaintext highlighter-rouge">d3</code>, and vault file loading via <code class="language-plaintext highlighter-rouge">fetch()</code>.</li>
+</ul>
+
+<pre><code class="language-chart">type: bar
+labels: ["Q1", "Q2", "Q3", "Q4"]
+series:
+  - title: "Productivity Index"
+    data: [65, 82, 90, 115]
+width: 500px
+</code></pre>
+
+<h3 id="2-zoomable-event-timelines-timeline">2. Zoomable Event Timelines (<code class="language-plaintext highlighter-rouge">timeline</code>)</h3>
+<p>Plot milestones, multi-month development phases, and ongoing projects with interactive pan and zoom controls:</p>
+<ul>
+  <li>Supports JSON, YAML, or JS object literals.</li>
+  <li>Category filtering toggles and dynamic “Today” indicator line.</li>
+  <li>SVG export and copy actions built-in.</li>
+</ul>
+
+<h3 id="3-interactive-leaflet-maps-map-leaflet">3. Interactive Leaflet Maps (<code class="language-plaintext highlighter-rouge">map</code>, <code class="language-plaintext highlighter-rouge">leaflet</code>)</h3>
+<p>Embed interactive maps directly into your notes:</p>
+<ul>
+  <li>Customizable markers, popups, and radius circles.</li>
+  <li>Polylines and polygons for routes and zones.</li>
+  <li>Support for custom tile servers and raw GeoJSON layers.</li>
+</ul>
+
+<h3 id="4-abc-sheet-music-notation--audio-player-abc-abcjs">4. ABC Sheet Music Notation &amp; Audio Player (<code class="language-plaintext highlighter-rouge">abc</code>, <code class="language-plaintext highlighter-rouge">abcjs</code>)</h3>
+<p>Write sheet music with standard ABC notation:</p>
+<ul>
+  <li>Built-in interactive synthesizer audio playback (Play/Pause/Seek).</li>
+  <li>Real-time visual note highlighting synchronized with audio playback.</li>
+  <li>MIDI file export (<code class="language-plaintext highlighter-rouge">.midi</code>) and source copy controls.</li>
+</ul>
+
+<h3 id="5-inline-popover-comments-cmt">5. Inline Popover Comments (<code class="language-plaintext highlighter-rouge">::cmt[...]</code>)</h3>
+<p>Add compact popover comments directly inside paragraph text:</p>
+<ul>
+  <li>Compact emoji badge trigger in preview mode.</li>
+  <li>Hover or click to reveal formatted callout notes.</li>
+  <li>Clean print and PDF export styling.</li>
+</ul>
+
+<hr />
+
+<h2 id="open-source--community">Open Source &amp; Community</h2>
+
+<p>The plugin is 100% open-source under the AGPL-3.0 license.</p>
+
+<ul>
+  <li><strong>GitHub Repository</strong>: <a href="https://github.com/3-ark/insightpage-style">https://github.com/3-ark/insightpage-style</a></li>
+  <li><strong>Interactive Showcase</strong>: Explore live web demos on our <a href="/Rendering%20Showcase/">Rendering Showcase</a>.</li>
+  <li><strong>Sample Visualizations</strong>: Check out <a href="/Example%20Chart/">Example Chart</a>, <a href="/Example%20Map/">Example Map</a>, and <a href="/Example%20Timeline/">Example Timeline</a>.</li>
+</ul>
+
+<p>Check out the repository on GitHub, try it out in your Obsidian vault, and let us know what you think!</p>]]></content><author><name></name></author><category term="obsidian" /><category term="release" /><category term="plugins" /><category term="obsidian" /><category term="charts" /><category term="maps" /><category term="timelines" /><category term="abcjs" /><category term="markdown" /><category term="open-source" /><summary type="html"><![CDATA[We are thrilled to introduce the official Obsidian community plugin: InsightPage Style (3-ark/insightpage-style)!]]></summary></entry><entry><title type="html">InsightPage v2.5 Release: Hybrid RAG Search &amp;amp; Local LLM Support</title><link href="/blog/2026/03/02/insightpage-v2-5-release/" rel="alternate" type="text/html" title="InsightPage v2.5 Release: Hybrid RAG Search &amp;amp; Local LLM Support" /><published>2026-03-02T14:30:00+00:00</published><updated>2026-03-02T14:30:00+00:00</updated><id>/blog/2026/03/02/insightpage-v2-5-release</id><content type="html" xml:base="/blog/2026/03/02/insightpage-v2-5-release/"><![CDATA[<p>We are excited to announce the release of <strong>InsightPage v2.5</strong>!</p>
 
 <p>This milestone update brings major improvements to search accuracy, local model integration, and note synchronization.</p>
 
