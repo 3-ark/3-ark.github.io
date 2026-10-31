@@ -25,6 +25,7 @@
           <a class="nav-link {% if page.url contains '/docs/' %}active{% endif %}" href="{{ "/docs/" | relative_url }}">Docs</a>
           <a class="nav-link {% if page.url contains '/blog/' %}active{% endif %}" href="{{ "/blog/" | relative_url }}">Blog</a>
           <a class="nav-link {% if page.url contains 'Showcase' or page.url contains 'Example' %}active{% endif %}" href="{{ "/Rendering Showcase/" | relative_url }}">Showcase</a>
+          <a class="nav-link" href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer">GitHub</a>
 
           <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
             <span id="theme-icon">🌙</span>
@@ -43,7 +44,7 @@
           <strong>{{ site.title }}</strong> &copy; {{ 'now' | date: "%Y" }} — Personal Knowledge & Engineering Portal
         </div>
         <div>
-          Powered by Jekyll & GitHub Pages
+          Powered by Jekyll & GitHub Pages &bull; <a href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted);">insightpage-style on GitHub</a>
         </div>
       </div>
     </footer>

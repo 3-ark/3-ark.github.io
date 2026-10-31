@@ -35,6 +35,19 @@ description: "Central portal for product documentation, engineering notes, and t
   </div>
 
   <div class="card">
+    <div class="card-tag">Obsidian Plugin</div>
+    <h3 class="card-title"><a href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer">InsightPage Style Plugin</a></h3>
+    <p class="card-description">Official Obsidian community plugin bringing rich charts (Chart.js & Observable Plot), interactive timelines, Leaflet maps, ABC sheet music audio, and inline popover comments to your markdown vault.</p>
+    <div class="card-footer">
+      <div class="card-meta">
+        <span class="badge">Obsidian Plugin</span>
+        <span>Open Source</span>
+      </div>
+      <a href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer" class="card-action">GitHub Repo &rarr;</a>
+    </div>
+  </div>
+
+  <div class="card">
     <div class="card-tag">Architecture & Security</div>
     <h3 class="card-title"><a href="{{ '/privacy-policy/' | relative_url }}">Privacy & Security Policy</a></h3>
     <p class="card-description">Complete overview of our zero-data collection, local-first credential management, and direct client-to-API communication model.</p>

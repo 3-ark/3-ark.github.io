@@ -108,6 +108,8 @@ graph TD
 ```
 
 *   **Local Markdown Vault**: Connect folders on your PC directly using the **File System Access API**. Notes are saved as standard `.md` files in real-time, functioning as a lightweight Obsidian-like setup. No IndexedDB cache layer is used in this mode, preventing write amplification and ensuring your local directories remain the single source of truth.
+*   **Obsidian Style & Rich Visualization Ecosystem**:
+    *   InsightPage's rendering capabilities are powered by the official Obsidian community plugin [**`3-ark/insightpage-style`**](https://github.com/3-ark/insightpage-style). Use the plugin in Obsidian to get the exact same charts, maps, timelines, ABC sheet music audio player, and inline popover comments in your desktop Obsidian vault.
 *   **Wikilinks & Deep Internal Linking (`[[Note Title]]`)**:
     *   Full Wikilink syntax support across notes, popovers, and chat responses.
     *   Type `[[Note Title]]` to link to any note in your vault. Clicking a Wikilink instantly navigates to that note—or automatically creates a new note with that title if it does not exist yet.
