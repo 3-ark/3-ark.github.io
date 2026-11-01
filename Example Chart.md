@@ -117,6 +117,7 @@ series:
 | Data1 | 1 | 2 | 3.33 |
 | Data2 | 3 | 2 | 1 |
 | Data3 | 4.5 | 4 | 2 |
+
 ^table
 
 ```chart
