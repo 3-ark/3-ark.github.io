@@ -11,16 +11,18 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Personal knowledge management, product documentation, and engineering updates." />
 <meta name="twitter:description" property="og:description" content="Personal knowledge management, product documentation, and engineering updates." />
+<link rel="canonical" href="http://localhost:4000/docs/ngram-cipher/" />
+<meta property="og:url" content="http://localhost:4000/docs/ngram-cipher/" />
 <meta property="og:site_name" content="Product Wiki &amp; Developer Hub" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="N-Gram Cipher - Steganographic Encryption" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"Personal knowledge management, product documentation, and engineering updates.","headline":"N-Gram Cipher - Steganographic Encryption","url":"/docs/ngram-cipher/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"Personal knowledge management, product documentation, and engineering updates.","headline":"N-Gram Cipher - Steganographic Encryption","url":"http://localhost:4000/docs/ngram-cipher/"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Product Wiki &amp; Developer Hub" />
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Product Wiki &amp; Developer Hub" />
 
   <!-- Visualization Libraries Support -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
@@ -56,111 +58,328 @@
   </header>
 
   <div class="page-content">
-    <h1 id="n-gram-cipher-natural-english-steganographic-encryption">N-Gram Cipher: Natural English Steganographic Encryption</h1>
+    <h1 id="-natural-english-n-gram-cipher">🔏 Natural English N-Gram Cipher</h1>
 
-<p><strong><code class="language-plaintext highlighter-rouge">ngram-cipher</code></strong> is an open-source TypeScript and JavaScript steganography engine that encrypts secret payloads using <strong>AES-256-GCM</strong> and conceals the resulting ciphertext directly within losslessly reversible, grammatically natural English prose or poetic stanzas.</p>
-
-<p>Instead of classical pixel- or audio-based steganography, <code class="language-plaintext highlighter-rouge">ngram-cipher</code> maps encrypted bitstreams into power-of-two continuation tokens guided by statistical 1–5 gram language models (derived from Google Books N-Gram datasets).</p>
+<p><strong><code class="language-plaintext highlighter-rouge">ngram-cipher</code></strong> is an open-source TypeScript &amp; JavaScript steganography engine that encrypts secret payloads using <strong>AES-256-GCM</strong> and conceals the resulting ciphertext directly within losslessly reversible, grammatically natural English prose, poetry, or ONNX neural language model tokens.</p>
 
 <hr />
 
-<h2 id="-interactive-live-cipher-tester">⚡ Interactive Live Cipher Tester</h2>
+<h2 id="-interactive-cipher-encoder--decoder">⚡ Interactive Cipher Encoder &amp; Decoder</h2>
 
-<p>Test the library right now in your browser using the client-side JavaScript engine bundled directly on this site:</p>
+<p>Test the cipher engine directly in your browser. Select your preferred carrier style below—from statistical news prose and poetry stanzas to experimental causal language models:</p>
 
-<div class="card" style="margin: 1.5rem 0; padding: 1.5rem; background: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: 8px;">
-  <div style="margin-bottom: 1rem;">
-    <label for="live-pass" style="font-weight: 600; display: block; margin-bottom: 0.4rem;">🔑 Secret Password / Key:</label>
-    <input type="password" id="live-pass" value="ArkSecure2026!" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-subtle); border-radius: 6px; background: var(--bg-card); color: var(--text-color); font-size: 0.95rem;" />
+<div class="card cipher-tester-card" style="margin: 1.75rem 0 2.5rem 0; padding: 1.75rem; border: 1px solid var(--border-color); border-radius: 14px; background: var(--bg-card); box-shadow: var(--card-shadow);">
+  <div style="margin-bottom: 1.25rem;">
+    <label for="cipher-password" style="display: block; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-main);">🔑 Secret Password / Key</label>
+    <input type="password" id="cipher-password" value="MySecretKey123" placeholder="Enter encryption password..." style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem; background: var(--bg-body); color: var(--text-main); box-sizing: border-box; font-family: inherit;" />
   </div>
 
-  <div style="margin-bottom: 1rem;">
-    <label for="live-plain" style="font-weight: 600; display: block; margin-bottom: 0.4rem;">📝 Plaintext to Encode:</label>
-    <textarea id="live-plain" rows="3" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-subtle); border-radius: 6px; background: var(--bg-card); color: var(--text-color); font-size: 0.95rem;">Deploy the release bundle at midnight behind the embassy.</textarea>
+  <div style="margin-bottom: 1.25rem;">
+    <label for="cipher-plaintext" style="display: block; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-main);">📝 Plaintext Message</label>
+    <textarea id="cipher-plaintext" rows="3" placeholder="Type message to encode..." style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem; background: var(--bg-body); color: var(--text-main); resize: vertical; box-sizing: border-box; font-family: inherit;">Hello world! This secret message will be encoded into natural English text.</textarea>
   </div>
 
-  <div style="margin-bottom: 1rem;">
-    <label for="live-style" style="font-weight: 600; display: block; margin-bottom: 0.4rem;">🎨 Carrier Prose Style:</label>
-    <select id="live-style" style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-subtle); border-radius: 6px; background: var(--bg-card); color: var(--text-color); font-size: 0.95rem;">
-      <option value="news">News Prose (Journalistic N-Gram LM)</option>
+  <div style="margin-bottom: 1.25rem;">
+    <label for="cipher-style" style="display: block; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-main);">🎨 Carrier Writing Style</label>
+    <select id="cipher-style" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem; background: var(--bg-body); color: var(--text-main); box-sizing: border-box; font-family: inherit;">
+      <option value="news">News prose (Google N-Gram Statistical LM)</option>
       <option value="poetry">Poetry (Dynamic Stanzas &amp; Rhythm)</option>
+      <option value="llm">LLM ONNX Mode (Transformers.js)</option>
+      <option value="equal-length">Equal-Length Cipher LLM Mode (Norelli &amp; Bronstein, 2025)</option>
     </select>
   </div>
 
-  <div style="display: flex; gap: 0.8rem; margin-bottom: 1rem;">
-    <button id="live-btn-encode" class="btn btn-primary" style="cursor: pointer; flex: 1;">🔒 Encode into Natural English</button>
-    <button id="live-btn-decode" class="btn btn-secondary" style="cursor: pointer; flex: 1;">🔓 Decode back to Plaintext</button>
+  <!-- LLM Configuration Panel -->
+  <div id="llm-panel" style="display: none; background: var(--bg-code); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.25rem;">
+    <div style="margin-bottom: 1rem;">
+      <label for="llm-model" style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.35rem; color: var(--text-main);">Hugging Face Model ID or URL</label>
+      <input type="text" id="llm-model" value="onnx-community/Supra-Mini-v2-0.1M-ONNX" placeholder="e.g. onnx-community/Supra-Mini-v2-0.1M-ONNX" style="width: 100%; padding: 0.65rem 0.85rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.9rem; background: var(--bg-card); color: var(--text-main); box-sizing: border-box; font-family: inherit;" />
+      <small style="color: var(--text-muted); display: block; margin-top: 0.35rem; font-size: 0.8rem;">
+        Accepts model IDs (e.g. <code>onnx-community/Supra-Mini-v2-0.1M-ONNX</code>) or Hugging Face URLs. Model downloads directly on first run and caches in IndexedDB.
+      </small>
+    </div>
+
+    <div id="llm-std-fields">
+      <div style="margin-bottom: 1rem;">
+        <label for="llm-prompt" style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.35rem; color: var(--text-main);">Generation Prompt Context</label>
+        <input type="text" id="llm-prompt" value="In recent news," placeholder="Prompt context for model generation" style="width: 100%; padding: 0.65rem 0.85rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.9rem; background: var(--bg-card); color: var(--text-main); box-sizing: border-box; font-family: inherit;" />
+      </div>
+
+      <div style="margin-bottom: 0.5rem;">
+        <label for="bits-per-token" style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.35rem; color: var(--text-main);">Bits Embedded Per Token (1–8 bits)</label>
+        <input type="number" id="bits-per-token" min="1" max="8" value="4" style="width: 100%; padding: 0.65rem 0.85rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.9rem; background: var(--bg-card); color: var(--text-main); box-sizing: border-box; font-family: inherit;" />
+      </div>
+    </div>
+
+    <div id="llm-equal-length-fields" style="display: none;">
+      <div style="margin-bottom: 1rem;">
+        <label for="equal-key-prompt" style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.35rem; color: var(--text-main);">Secret Key Prompt Context</label>
+        <input type="text" id="equal-key-prompt" value="Here is an interesting observation:" placeholder="Secret key prompt context for cover text generation" style="width: 100%; padding: 0.65rem 0.85rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.9rem; background: var(--bg-card); color: var(--text-main); box-sizing: border-box; font-family: inherit;" />
+      </div>
+
+      <div style="margin-bottom: 0.5rem;">
+        <label for="equal-plain-prompt" style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 0.35rem; color: var(--text-main);">Plaintext Prompt Context</label>
+        <input type="text" id="equal-plain-prompt" value="A text:" placeholder="Prompt context for plaintext distribution mapping" style="width: 100%; padding: 0.65rem 0.85rem; border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.9rem; background: var(--bg-card); color: var(--text-main); box-sizing: border-box; font-family: inherit;" />
+      </div>
+    </div>
+
+    <div class="callout callout-warning" style="margin-top: 1rem; margin-bottom: 0; font-size: 0.85rem;">
+      <div class="callout-title" style="font-weight: 700; color: #b45309;">⚠️ CRITICAL WARNING: LLM steganography methods are experimental.</div>
+      <p style="margin: 0.4rem 0 0.5rem 0;">Decoding relies on bit-identical logit ranks. Even micro-deviations in floating-point math can alter token ranks and corrupt decoding. The following must match identically between encoding and decoding:</p>
+      <ul style="margin: 0 0 0 1.2rem; padding: 0;">
+        <li><strong>Runtime hardware &amp; platform:</strong> Must use the same CPU architecture/SIMD/WASM execution provider.</li>
+        <li><strong>Model checkpoint &amp; precision:</strong> Exact model weights, repository, revision, and quantization.</li>
+        <li><strong>Library versions:</strong> Exact <code>@huggingface/transformers</code> &amp; ONNX Runtime versions.</li>
+        <li><strong>Prompts &amp; configuration:</strong> Generation prompts, key prompts, bits per token, and sampling settings.</li>
+      </ul>
+    </div>
   </div>
 
-  <div id="live-status" style="display: none; padding: 0.75rem; border-radius: 6px; margin-bottom: 1rem; font-size: 0.9rem;"></div>
+  <div id="cipher-status" style="display: none; padding: 0.85rem 1rem; border-radius: 8px; margin-bottom: 1.25rem; font-size: 0.9rem; font-weight: 500;"></div>
+
+  <div id="cipher-error" style="display: none; padding: 0.85rem 1rem; border-radius: 8px; margin-bottom: 1.25rem; font-size: 0.9rem; font-weight: 500; background-color: rgba(239, 68, 68, 0.12); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3);"></div>
+
+  <div class="btn-group" style="display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+    <button id="cipher-encode-btn" class="btn btn-primary" style="flex: 1; min-width: 200px; cursor: pointer; border: none; padding: 0.75rem 1.25rem;">🔒 Encode to English Prose</button>
+    <button id="cipher-decode-btn" class="btn btn-secondary" style="flex: 1; min-width: 200px; cursor: pointer; padding: 0.75rem 1.25rem;">🔓 Decode to Plaintext</button>
+  </div>
 
   <div>
-    <label for="live-cipher" style="font-weight: 600; display: block; margin-bottom: 0.4rem;">💬 English Carrier Ciphertext:</label>
-    <textarea id="live-cipher" rows="5" placeholder="Encoded English carrier text will appear here..." style="width: 100%; padding: 0.6rem; border: 1px solid var(--border-subtle); border-radius: 6px; background: var(--bg-card); color: var(--text-color); font-size: 0.95rem;"></textarea>
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+      <label for="cipher-ciphertext" style="font-weight: 700; font-size: 0.95rem; color: var(--text-main);">💬 English Carrier Ciphertext</label>
+      <button id="cipher-copy-btn" style="background: none; border: 1px solid var(--border-color); color: var(--accent-primary); border-radius: 6px; padding: 0.2rem 0.6rem; font-size: 0.8rem; cursor: pointer; font-weight: 600;">📋 Copy</button>
+    </div>
+    <textarea id="cipher-ciphertext" rows="5" placeholder="Encoded English ciphertext will appear here..." style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem; background: var(--bg-body); color: var(--text-main); resize: vertical; box-sizing: border-box; font-family: inherit;"></textarea>
+  </div>
+
+  <div id="cipher-metrics" style="display: none; margin-top: 1rem; padding: 0.85rem 1rem; background: var(--bg-code); border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.85rem; color: var(--text-muted); justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;">
+    <span>Words: <strong id="metric-words" style="color: var(--text-main);">0</strong></span>
+    <span>Sentences: <strong id="metric-sentences" style="color: var(--text-main);">0</strong></span>
+    <span>Avg Words/Sentence: <strong id="metric-avg-len" style="color: var(--text-main);">0</strong></span>
+    <span>Vocabulary Coverage: <strong id="metric-vocab-cov" style="color: var(--text-main);">0%</strong></span>
   </div>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  const passEl = document.getElementById("live-pass");
-  const plainEl = document.getElementById("live-plain");
-  const cipherEl = document.getElementById("live-cipher");
-  const styleEl = document.getElementById("live-style");
-  const statusEl = document.getElementById("live-status");
-  const encodeBtn = document.getElementById("live-btn-encode");
-  const decodeBtn = document.getElementById("live-btn-decode");
+  const plainEl = document.getElementById("cipher-plaintext");
+  const cipherEl = document.getElementById("cipher-ciphertext");
+  const passEl = document.getElementById("cipher-password");
+  const styleEl = document.getElementById("cipher-style");
+  const llmPanelEl = document.getElementById("llm-panel");
+  const llmModelEl = document.getElementById("llm-model");
+  const llmPromptEl = document.getElementById("llm-prompt");
+  const bitsPerTokenEl = document.getElementById("bits-per-token");
+  const llmStdFieldsEl = document.getElementById("llm-std-fields");
+  const llmEqualLengthFieldsEl = document.getElementById("llm-equal-length-fields");
+  const equalKeyPromptEl = document.getElementById("equal-key-prompt");
+  const equalPlainPromptEl = document.getElementById("equal-plain-prompt");
+  const encodeBtn = document.getElementById("cipher-encode-btn");
+  const decodeBtn = document.getElementById("cipher-decode-btn");
+  const copyBtn = document.getElementById("cipher-copy-btn");
+  const statusEl = document.getElementById("cipher-status");
+  const errorEl = document.getElementById("cipher-error");
+  const metricsEl = document.getElementById("cipher-metrics");
+  const metricWords = document.getElementById("metric-words");
+  const metricSentences = document.getElementById("metric-sentences");
+  const metricAvgLen = document.getElementById("metric-avg-len");
+  const metricVocabCov = document.getElementById("metric-vocab-cov");
 
-  function showMsg(text, isError) {
-    statusEl.style.display = "block";
-    statusEl.style.backgroundColor = isError ? "rgba(239, 68, 68, 0.15)" : "rgba(34, 197, 94, 0.15)";
-    statusEl.style.color = isError ? "#ef4444" : "#22c55e";
-    statusEl.style.border = isError ? "1px solid #ef4444" : "1px solid #22c55e";
-    statusEl.textContent = text;
+  function updateStyleUI() {
+    const style = styleEl.value;
+    if (style === "llm") {
+      llmPanelEl.style.display = "block";
+      llmStdFieldsEl.style.display = "block";
+      llmEqualLengthFieldsEl.style.display = "none";
+      encodeBtn.textContent = "🤖 Encode with ONNX LLM";
+      decodeBtn.textContent = "🔓 Decode with ONNX LLM";
+    } else if (style === "equal-length") {
+      llmPanelEl.style.display = "block";
+      llmStdFieldsEl.style.display = "none";
+      llmEqualLengthFieldsEl.style.display = "block";
+      encodeBtn.textContent = "🤖 Encode with Equal-Length LLM";
+      decodeBtn.textContent = "🔓 Decode with Equal-Length LLM";
+    } else if (style === "poetry") {
+      llmPanelEl.style.display = "none";
+      encodeBtn.textContent = "🔒 Encode to Poetry";
+      decodeBtn.textContent = "🔓 Decode to Plaintext";
+    } else {
+      llmPanelEl.style.display = "none";
+      encodeBtn.textContent = "🔒 Encode to English Prose";
+      decodeBtn.textContent = "🔓 Decode to Plaintext";
+    }
+  }
+
+  styleEl.addEventListener("change", updateStyleUI);
+  updateStyleUI();
+
+  function showError(msg) {
+    if (msg) {
+      errorEl.textContent = msg;
+      errorEl.style.display = "block";
+    } else {
+      errorEl.style.display = "none";
+    }
+  }
+
+  function showStatus(msg, isSuccess) {
+    if (msg) {
+      statusEl.textContent = msg;
+      statusEl.style.display = "block";
+      if (isSuccess) {
+        statusEl.style.backgroundColor = "rgba(34, 197, 94, 0.12)";
+        statusEl.style.color = "#22c55e";
+        statusEl.style.border = "1px solid rgba(34, 197, 94, 0.3)";
+      } else {
+        statusEl.style.backgroundColor = "rgba(59, 130, 246, 0.12)";
+        statusEl.style.color = "var(--accent-primary)";
+        statusEl.style.border = "1px solid rgba(59, 130, 246, 0.3)";
+      }
+    } else {
+      statusEl.style.display = "none";
+    }
+  }
+
+  function updateMetrics(text) {
+    if (!text || !window.ngramCipher || !window.ngramCipher.analyzeCarrierText) {
+      metricsEl.style.display = "none";
+      return;
+    }
+    try {
+      const a = window.ngramCipher.analyzeCarrierText(text);
+      metricWords.textContent = a.wordCount;
+      metricSentences.textContent = a.sentenceCount;
+      metricAvgLen.textContent = a.avgSentenceLength.toFixed(1);
+      metricVocabCov.textContent = (a.vocabularyCoverage * 100).toFixed(1) + "%";
+      metricsEl.style.display = "flex";
+    } catch {
+      metricsEl.style.display = "none";
+    }
+  }
+
+  copyBtn.addEventListener("click", async function() {
+    const text = cipherEl.value;
+    if (!text) return;
+    try {
+      await navigator.clipboard.writeText(text);
+      const original = copyBtn.textContent;
+      copyBtn.textContent = "✅ Copied!";
+      setTimeout(() => copyBtn.textContent = original, 2000);
+    } catch {
+      cipherEl.select();
+      document.execCommand("copy");
+    }
+  });
+
+  async function ensureTransformersLoaded() {
+    if (window.transformers && window.transformers.AutoTokenizer) {
+      return window.transformers;
+    }
+    showStatus("⏳ Loading neural model engine (@huggingface/transformers)...", false);
+    try {
+      const module = await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.3.3");
+      window.transformers = module;
+      return module;
+    } catch (err) {
+      throw new Error("Failed to load @huggingface/transformers from CDN: " + (err.message || String(err)));
+    }
+  }
+
+  function buildOptions() {
+    const selectedStyle = styleEl.value;
+    if (selectedStyle === "llm") {
+      return {
+        encoding: {
+          style: "llm",
+          llmModel: llmModelEl.value.trim() || "onnx-community/Supra-Mini-v2-0.1M-ONNX",
+          llmPrompt: llmPromptEl.value.trim() || "In recent news,",
+          bitsPerToken: parseInt(bitsPerTokenEl.value, 10) || 4
+        }
+      };
+    }
+    if (selectedStyle === "equal-length") {
+      return {
+        encoding: {
+          style: "equal-length",
+          llmModel: llmModelEl.value.trim() || "onnx-community/Supra-Mini-v2-0.1M-ONNX",
+          equalLengthKeyPrompt: equalKeyPromptEl.value.trim() || "Here is an interesting observation:",
+          equalLengthPlaintextPrompt: equalPlainPromptEl.value.trim() || "A text:"
+        }
+      };
+    }
+    return {
+      encoding: {
+        style: selectedStyle
+      }
+    };
   }
 
   encodeBtn.addEventListener("click", async function() {
+    showError(null);
     try {
-      statusEl.style.display = "none";
+      const text = plainEl.value;
+      const pass = passEl.value;
+      if (!text) return showError("Please enter plaintext message to encode.");
+      if (!pass) return showError("Please enter a password.");
+
+      const isLlm = styleEl.value === "llm" || styleEl.value === "equal-length";
+      if (isLlm) {
+        await ensureTransformersLoaded();
+        const rawModel = llmModelEl.value.trim() || "onnx-community/Supra-Mini-v2-0.1M-ONNX";
+        const normalized = window.ngramCipher && window.ngramCipher.normalizeModelName
+          ? window.ngramCipher.normalizeModelName(rawModel)
+          : rawModel;
+        showStatus('⏳ Downloading / loading ONNX model "' + normalized + '" from Hugging Face...', false);
+      } else {
+        showStatus(null);
+      }
+
       const cipherLib = window.ngramCipher;
       if (!cipherLib || !cipherLib.encode) {
-        showMsg("Cipher engine library is not loaded.", true);
-        return;
+        throw new Error("Cipher engine library is not loaded.");
       }
-      const plain = plainEl.value.trim();
-      const pass = passEl.value;
-      if (!plain || !pass) {
-        showMsg("Please provide both plaintext and a password.", true);
-        return;
-      }
-      const style = styleEl.value;
-      const res = await cipherLib.encode(plain, pass, { encoding: { style: style } });
-      cipherEl.value = res;
-      showMsg("Successfully encoded into natural English prose!", false);
+
+      const result = await cipherLib.encode(text, pass, buildOptions());
+      cipherEl.value = result;
+      updateMetrics(result);
+      showStatus(isLlm ? "✅ Encoding complete! ONNX model cached in browser IndexedDB." : "✅ Successfully encoded into natural carrier text!", true);
     } catch (err) {
-      showMsg(err.message || String(err), true);
+      showStatus(null);
+      showError(err.message || "Encoding error occurred.");
     }
   });
 
   decodeBtn.addEventListener("click", async function() {
+    showError(null);
     try {
-      statusEl.style.display = "none";
+      const cipher = cipherEl.value;
+      const pass = passEl.value;
+      if (!cipher) return showError("Please enter carrier ciphertext to decode.");
+      if (!pass) return showError("Please enter a password.");
+
+      const isLlm = styleEl.value === "llm" || styleEl.value === "equal-length";
+      if (isLlm) {
+        await ensureTransformersLoaded();
+        const rawModel = llmModelEl.value.trim() || "onnx-community/Supra-Mini-v2-0.1M-ONNX";
+        const normalized = window.ngramCipher && window.ngramCipher.normalizeModelName
+          ? window.ngramCipher.normalizeModelName(rawModel)
+          : rawModel;
+        showStatus('⏳ Loading ONNX model "' + normalized + '" for decoding...', false);
+      } else {
+        showStatus(null);
+      }
+
       const cipherLib = window.ngramCipher;
       if (!cipherLib || !cipherLib.decode) {
-        showMsg("Cipher engine library is not loaded.", true);
-        return;
+        throw new Error("Cipher engine library is not loaded.");
       }
-      const cipher = cipherEl.value.trim();
-      const pass = passEl.value;
-      if (!cipher || !pass) {
-        showMsg("Please provide ciphertext and a password.", true);
-        return;
-      }
-      const style = styleEl.value;
-      const res = await cipherLib.decode(cipher, pass, { encoding: { style: style } });
-      plainEl.value = res;
-      showMsg("Successfully decoded and verified plaintext!", false);
+
+      const result = await cipherLib.decode(cipher, pass, buildOptions());
+      plainEl.value = result;
+      showStatus(isLlm ? "✅ Decoding complete!" : "✅ Successfully decoded and verified plaintext!", true);
     } catch (err) {
-      showMsg("Decryption failed: " + (err.message || "Invalid password or corrupted text."), true);
+      showStatus(null);
+      showError("Decryption failed: " + (err.message || "Incorrect password or corrupted carrier text."));
     }
   });
 });
@@ -175,7 +394,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <ul>
       <li>Key derivation using <strong>PBKDF2</strong> with 100,000 SHA-256 iterations.</li>
       <li>Symmetric authenticated encryption via <strong>AES-256-GCM</strong>.</li>
-      <li>Binary frame verification with CRC32 checksums and bit whitening.</li>
+      <li>Binary frame verification with CRC32 checksums and keystream whitening.</li>
     </ul>
   </li>
   <li><strong>Natural Carrier Prose (News &amp; Poetry)</strong>:
@@ -191,7 +410,7 @@ document.addEventListener("DOMContentLoaded", function() {
   </li>
   <li><strong>Adaptive Compression</strong>:
     <ul>
-      <li>Transparent pre-encryption payload compression with <code class="language-plaintext highlighter-rouge">gzip</code> or common-word packing.</li>
+      <li>Transparent pre-encryption payload compression with <code class="language-plaintext highlighter-rouge">gzip</code> or common-word dictionary packing.</li>
     </ul>
   </li>
 </ol>
@@ -209,18 +428,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">encode</span><span class="p">,</span> <span class="nx">decode</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">ngram-cipher</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="c1">// 1. Encode</span>
-<span class="kd">const</span> <span class="nx">carrier</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">encode</span><span class="p">(</span><span class="dl">"</span><span class="s2">Classified update</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">StrongPassword123</span><span class="dl">"</span><span class="p">);</span>
+<span class="c1">// 1. Encode into journalistic news prose</span>
+<span class="kd">const</span> <span class="nx">carrier</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">encode</span><span class="p">(</span><span class="dl">"</span><span class="s2">Classified update at midnight</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">StrongPassword123</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">carrier</span><span class="p">);</span>
+<span class="cm">/*
+"The critical market expanded 15.0% in Paris. Johnson stated that the central bank
+raised interest rates 5.1%, but the agency rejected the proposal..."
+*/</span>
 
-<span class="c1">// 2. Decode</span>
+<span class="c1">// 2. Decode back to original secret text</span>
 <span class="kd">const</span> <span class="nx">plaintext</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">decode</span><span class="p">(</span><span class="nx">carrier</span><span class="p">,</span> <span class="dl">"</span><span class="s2">StrongPassword123</span><span class="dl">"</span><span class="p">);</span>
-<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">plaintext</span><span class="p">);</span> <span class="c1">// "Classified update"</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">plaintext</span><span class="p">);</span> <span class="c1">// "Classified update at midnight"</span>
 </code></pre></div></div>
 
 <h3 id="browser-script-tag">Browser Script Tag</h3>
 
-<p>Include the global build directly from our site or CDN:</p>
+<p>Include the global build directly from our site:</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/assets/js/ngram-cipher.global.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script&gt;</span>
