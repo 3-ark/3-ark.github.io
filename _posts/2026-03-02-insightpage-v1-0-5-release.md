@@ -18,4 +18,6 @@ By combining keyword matching (BM25) with semantic embeddings and MMR reranking,
 ### 2. Native Support for On-Device Models
 You can now connect InsightPage to local model runners like Ollama or LM Studio with zero data leaving your machine.
 
+Install InsightPage directly from the [Chrome Web Store](https://chromewebstore.google.com/detail/insightpage/pbeehgjcmoangcnpjnbojdcfmppgbbcc?authuser=0&hl=en).
+
 Read the full documentation in our [InsightPage Docs]({{ '/docs/insightpage/getting-started/' | relative_url }}).
