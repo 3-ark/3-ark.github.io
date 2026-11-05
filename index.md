@@ -27,7 +27,7 @@ description: "Central portal for product documentation, engineering notes, and t
     <p class="card-description">AI-powered Personal Knowledge Management (PKM) browser extension with local-first Markdown vault integration, floating side panel, and hybrid RAG search.</p>
     <div class="card-footer">
       <div class="card-meta">
-        <span class="badge">v2.5 Release</span>
+        <span class="badge">v1.0.5 Release</span>
         <span>Local AI &bull; Privacy-first</span>
       </div>
       <a href="{{ '/docs/insightpage/getting-started/' | relative_url }}" class="card-action">Get Started &rarr;</a>
