@@ -118,11 +118,11 @@ series:
 | Data2 | 3 | 2 | 1 |
 | Data3 | 4.5 | 4 | 2 |
 
-^table
+^table1
 
 ```chart
 type: bar
-id: table
+id: table1
 layout: rows
 width: 80%
 beginAtZero: true
@@ -567,7 +567,7 @@ List of countries and dependencies showing population densities, populations, an
 | Antarctica                                        | 0.009   | 1,300 (winter)5,100 (summer) | 14,200,000      |
 | South Georgia and the South Sandwich Islands (UK) | 0.008   | 30                           | 3,756           |
 
-^table
+^table2
 
 Rendered interactive plot using `display(Plot.plot({...}))` reading dynamically from the table above:
 
