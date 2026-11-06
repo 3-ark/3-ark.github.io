@@ -12,6 +12,7 @@
 
   const extractTablesFromDoc = () => {
     const blocks = {};
+    let fullText = "";
     // 1. Check HTML <table> elements
     const tables = document.querySelectorAll("table");
     tables.forEach((tbl) => {
@@ -35,7 +36,9 @@
           rows.push("| " + cells.join(" | ") + " |");
         });
         const mdTable = rows.join("\n");
-        blocks[id] = { position: { start: { offset: 0 }, end: { offset: mdTable.length } } };
+        const startOffset = fullText.length;
+        fullText += mdTable + "\n\n";
+        blocks[id] = { position: { start: { offset: startOffset }, end: { offset: startOffset + mdTable.length } } };
         blocks["^" + id] = blocks[id];
         blocks["_table_" + id] = mdTable;
       }
@@ -59,13 +62,16 @@
         });
         if (id && tableLines.length >= 2) {
           const mdTable = tableLines.join("\n");
-          blocks[id] = { position: { start: { offset: 0 }, end: { offset: mdTable.length } } };
+          const startOffset = fullText.length;
+          fullText += mdTable + "\n\n";
+          blocks[id] = { position: { start: { offset: startOffset }, end: { offset: startOffset + mdTable.length } } };
           blocks["^" + id] = blocks[id];
           blocks["_table_" + id] = mdTable;
         }
       }
     });
 
+    blocks["_fullText"] = fullText;
     return blocks;
   };
 
@@ -103,6 +109,9 @@
 
         this.app.vault.cachedRead = async (file) => {
           const blocks = extractTablesFromDoc();
+          if (blocks["_fullText"]) {
+            return blocks["_fullText"];
+          }
           for (let k in blocks) {
             if (k.startsWith("_table_")) {
               return blocks[k];
