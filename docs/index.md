@@ -59,6 +59,12 @@ description: "Comprehensive product documentation, architecture overviews, and i
   </div>
 
   <div class="card">
+      <div class="card">
+    <h3 class="card-title"><a href="{{ '/Skills for AI/' | relative_url }}">Skills for AI</a></h3>
+    <p class="card-description">InsightPage extended Markdown syntax rules, Chart DSL specifications, and prompt guides for LLMs.</p>
+  </div>
+
+  <div class="card">
     <h3 class="card-title"><a href="{{ '/Example Chart/' | relative_url }}">Interactive Charts</a></h3>
     <p class="card-description">Bar, line, pie, donut, sankey, and radar charts via Chart.js and Observable Plot syntaxes.</p>
   </div>

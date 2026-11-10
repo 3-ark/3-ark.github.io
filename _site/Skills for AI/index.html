@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.9.1 -->
+<title>Skills for AI | Product Wiki &amp; Developer Hub</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Skills for AI" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="InsightPage extended Markdown syntax rules, DSL specifications, and examples tailored for AI assistants and LLMs." />
+<meta name="twitter:description" property="og:description" content="InsightPage extended Markdown syntax rules, DSL specifications, and examples tailored for AI assistants and LLMs." />
+<meta property="og:site_name" content="Product Wiki &amp; Developer Hub" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Skills for AI" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"InsightPage extended Markdown syntax rules, DSL specifications, and examples tailored for AI assistants and LLMs.","headline":"Skills for AI","url":"/Skills%20for%20AI/"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Product Wiki &amp; Developer Hub" />
+
+  <!-- Visualization Libraries Support -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/assets/css/insightpage-style.css">
+</head>
+<body>
+  <div class="site-wrapper">
+    <header class="site-header">
+      <div class="header-container">
+        <div class="site-title">
+          <a href="/">⚡ Product Wiki & Developer Hub</a>
+        </div>
+        <nav class="site-nav">
+          <a class="nav-link " href="/">Home</a>
+          <a class="nav-link " href="/docs/">Docs</a>
+          <a class="nav-link " href="/blog/">Blog</a>
+          <a class="nav-link " href="/Rendering%20Showcase/">Showcase</a>
+          <a class="nav-link" href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+          <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+            <span id="theme-icon">🌙</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <article class="page-article">
+  <header class="post-header">
+    <h1 class="post-title">Skills for AI</h1>
+
+      <p class="card-description">InsightPage extended Markdown syntax rules, DSL specifications, and examples tailored for AI assistants and LLMs.</p>
+
+  </header>
+
+  <div class="page-content">
+    <h1 id="insightpage-markdown-syntax">InsightPage Markdown Syntax</h1>
+
+<p>Use these extensions in addition to standard Markdown and Mermaid.</p>
+
+<p>Use different fence lengths for nested code fences.</p>
+
+<h2 id="tabs">Tabs</h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">tabs</code> for switchable sections. Start each tab with <code class="language-plaintext highlighter-rouge">--- &lt;Tab Title&gt;</code>.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">tabs
+</span><span class="sb">--- Overview
+Summary...
+--- Details
+Specifications...</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<h2 id="map">Map</h2>
+
+<p>InsightPage supports interactive maps rendered using <strong>Leaflet.js</strong> via <code class="language-plaintext highlighter-rouge">map</code> or <code class="language-plaintext highlighter-rouge">leaflet</code> code blocks.</p>
+
+<h3 id="1-interactive-map-example">1. Interactive Map Example</h3>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">map
+</span><span class="sb">center:
+  lat: 51.505
+  lng: -0.09
+zoom: 13
+height: 380px
+markers:
+  - lat: 51.505
+    lng: -0.09
+    title: "Central London"
+    popup: "&lt;b&gt;Central London&lt;/b&gt;&lt;br&gt;Heart of the city."
+    color: "#ef4444"
+  - lat: 51.515
+    lng: -0.1
+    title: "British Museum"
+    popup: "&lt;b&gt;British Museum&lt;/b&gt;&lt;br&gt;World-famous history and culture museum."
+    color: "#3b82f6"
+  - lat: 51.5007
+    lng: -0.1246
+    title: "Big Ben"
+    popup: "&lt;b&gt;Big Ben &amp; Houses of Parliament&lt;/b&gt;"
+    color: "#10b981"
+lines:
+  - coordinates:
+      - [51.505, -0.09]
+      - [51.515, -0.1]
+      - [51.5007, -0.1246]
+      - [51.505, -0.09]
+    color: "#8b5cf6"</span>
+<span class="p">```</span>
+</code></pre></div></div>
+<h3 id="2-configuration-reference">2. Configuration Reference</h3>
+
+<p>Use YAML or JSON inside a <code class="language-plaintext highlighter-rouge">map</code> block:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">center</code></strong>: Map center coordinates as <code class="language-plaintext highlighter-rouge">{ lat, lng }</code> or <code class="language-plaintext highlighter-rouge">[lat, lng]</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">zoom</code></strong>: Initial zoom level (integer from 1 to 19, default 13).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">height</code> / <code class="language-plaintext highlighter-rouge">width</code></strong>: Map container dimensions (e.g., <code class="language-plaintext highlighter-rouge">380px</code>, <code class="language-plaintext highlighter-rouge">100%</code>).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">markers</code></strong>: List of marker objects or <code class="language-plaintext highlighter-rouge">[lat, lng, popup]</code> tuples.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">lat</code>, <code class="language-plaintext highlighter-rouge">lng</code>: Coordinates.</li>
+      <li><code class="language-plaintext highlighter-rouge">title</code>: Tooltip text.</li>
+      <li><code class="language-plaintext highlighter-rouge">popup</code>: HTML / text displayed on click.</li>
+      <li><code class="language-plaintext highlighter-rouge">color</code>: Pin accent color (e.g., <code class="language-plaintext highlighter-rouge">#ef4444</code>, <code class="language-plaintext highlighter-rouge">#3b82f6</code>).</li>
+    </ul>
+  </li>
+  <li><strong><code class="language-plaintext highlighter-rouge">lines</code> / <code class="language-plaintext highlighter-rouge">polylines</code></strong>: Array of lines with coordinates and color options.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">polygons</code></strong>: Polygon shapes with <code class="language-plaintext highlighter-rouge">coordinates</code>, <code class="language-plaintext highlighter-rouge">fillColor</code>, and stroke <code class="language-plaintext highlighter-rouge">color</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">circles</code></strong>: Circle overlays with <code class="language-plaintext highlighter-rouge">lat</code>, <code class="language-plaintext highlighter-rouge">lng</code>, <code class="language-plaintext highlighter-rouge">radius</code> (in meters), and <code class="language-plaintext highlighter-rouge">popup</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">geojson</code></strong>: Raw GeoJSON object or string to plot vector geographic layers.</li>
+</ul>
+
+<h2 id="timeline-charts">Timeline Charts</h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">timeline</code> code blocks for zoomable, interactive timelines with adaptive time axes, horizontal panning, collection tags, and automatic categorical color discovery.</p>
+
+<h3 id="supported-syntaxes--formats">Supported Syntaxes &amp; Formats</h3>
+<ul>
+  <li><strong>Standard YAML/JSON array of events</strong>: <code class="language-plaintext highlighter-rouge">[{start, end, title, ...}]</code> or list <code class="language-plaintext highlighter-rouge">- start: ...</code></li>
+  <li><strong>Loose Double-Brace Object</strong>: <code class="language-plaintext highlighter-rouge">{{start: 2020-01-01, title: Project Alpha, end: 2021-06-01}}</code></li>
+  <li><strong>External Dataset Files &amp; Schema Mapping</strong>: <code class="language-plaintext highlighter-rouge">data: path/to/file.csv</code> with <code class="language-plaintext highlighter-rouge">schemas: { title, start, end, collection, categories }</code> (requires granting a local folder as FS Vault, or using absolute <code class="language-plaintext highlighter-rouge">http(s)://</code> / <code class="language-plaintext highlighter-rouge">data:</code> URLs)</li>
+  <li><strong>Markdown Table Sourcing</strong>: <code class="language-plaintext highlighter-rouge">table: "#table-id"</code> or <code class="language-plaintext highlighter-rouge">id: my-table</code> linking directly to note tables (works directly without file system permissions)</li>
+</ul>
+
+<h3 id="event-fields--configuration">Event Fields &amp; Configuration</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">start</code>: ISO date string (<code class="language-plaintext highlighter-rouge">YYYY-MM-DD</code>), timestamp, or BC/negative year number (e.g. <code class="language-plaintext highlighter-rouge">-3000-08-01</code>, <code class="language-plaintext highlighter-rouge">3000 BC</code>, <code class="language-plaintext highlighter-rouge">-2400</code>).</li>
+  <li><code class="language-plaintext highlighter-rouge">end</code>: End date or year (optional; omitted or <code class="language-plaintext highlighter-rouge">Date.now()</code> extends to present day). Using <code class="language-plaintext highlighter-rouge">Date.now()</code> renders the vertical “Today” indicator line.</li>
+  <li><code class="language-plaintext highlighter-rouge">title</code>: Event title label displayed above or on the event bar. Supports wikilinks (<code class="language-plaintext highlighter-rouge">[[Note Title]]</code>).</li>
+  <li><code class="language-plaintext highlighter-rouge">collection</code>: Array of related project or publication tags (<code class="language-plaintext highlighter-rouge">[Tag1, Tag2]</code>). Collapses into <code class="language-plaintext highlighter-rouge">+N</code> badges on tight zoom.</li>
+  <li><code class="language-plaintext highlighter-rouge">[customCategory]</code>: Any custom key (e.g., <code class="language-plaintext highlighter-rouge">type</code>, <code class="language-plaintext highlighter-rouge">institution</code>, <code class="language-plaintext highlighter-rouge">category</code>, <code class="language-plaintext highlighter-rouge">region</code>) is automatically discovered, colored, and mapped to interactive category selection controls.</li>
+</ul>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">timeline
+</span><span class="sb">- start: 2020-01-01
+  end: 2021-06-30
+  title: Research Phase
+  category: R&amp;D
+  collection: [Survey, Paper]
+
+- start: 2021-07-01
+  end: Date.now()
+  title: Product Rollout
+  category: Operations
+  collection: [V1, V2]</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<h2 id="charts-chart-dsl">Charts (Chart DSL)</h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">chart</code> with YAML configuration for interactive charts rendered via Observable Plot and D3.</p>
+
+<h3 id="unified-chart-configuration-reference">Unified Chart Configuration Reference</h3>
+
+<p>All Chart DSL charts share a consistent set of configuration keys:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Options &amp; Syntax</th>
+      <th>Description</th>
+      <th>Supported Chart Types</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Chart Types</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">type: bar</code> | <code class="language-plaintext highlighter-rouge">line</code> | <code class="language-plaintext highlighter-rouge">pie</code> | <code class="language-plaintext highlighter-rouge">donut</code> (<code class="language-plaintext highlighter-rouge">doughnut</code>) | <code class="language-plaintext highlighter-rouge">polararea</code> | <code class="language-plaintext highlighter-rouge">radar</code> | <code class="language-plaintext highlighter-rouge">sankey</code> | <code class="language-plaintext highlighter-rouge">scatter</code> (<code class="language-plaintext highlighter-rouge">point</code>, <code class="language-plaintext highlighter-rouge">scatterplot</code>)</td>
+      <td>Specify the visualization type to render.</td>
+      <td>All Chart Types</td>
+    </tr>
+    <tr>
+      <td><strong>Data Sourcing</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">id: table-id</code> / <code class="language-plaintext highlighter-rouge">table: "#table-id"</code> <br /> <code class="language-plaintext highlighter-rouge">data: path/to/file.csv</code> <br /> <code class="language-plaintext highlighter-rouge">source:</code> / <code class="language-plaintext highlighter-rouge">file:</code> / <code class="language-plaintext highlighter-rouge">dataset:</code></td>
+      <td>Bind directly to markdown tables (with or without <code class="language-plaintext highlighter-rouge">#</code> / <code class="language-plaintext highlighter-rouge">^</code> prefixes) or external CSV / TSV / JSON data files.</td>
+      <td>All Chart Types</td>
+    </tr>
+    <tr>
+      <td><strong>Mark Lines</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">markLines:</code> / <code class="language-plaintext highlighter-rouge">markLine:</code> / <code class="language-plaintext highlighter-rouge">marks:</code> <br /> <code class="language-plaintext highlighter-rouge">- { y: 80, label: "Target", style: dashed, color: "#10b981", strokeWidth: 1.5 }</code> <br /> <code class="language-plaintext highlighter-rouge">- { x: 50, label: "Threshold", style: dotted }</code> <br /> <code class="language-plaintext highlighter-rouge">- { x: "Q3", label: "Milestone" }</code></td>
+      <td>Add horizontal (<code class="language-plaintext highlighter-rouge">y:</code>) or vertical (<code class="language-plaintext highlighter-rouge">x:</code>) reference threshold lines with labels and custom styling (<code class="language-plaintext highlighter-rouge">solid</code>, <code class="language-plaintext highlighter-rouge">dashed</code>, <code class="language-plaintext highlighter-rouge">dotted</code>). Supports both numeric and categorical coordinates.</td>
+      <td>Bar, Line, Scatter</td>
+    </tr>
+    <tr>
+      <td><strong>Scales &amp; Log Scales</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">xScale: log</code> / <code class="language-plaintext highlighter-rouge">yScale: log</code> <br /> <code class="language-plaintext highlighter-rouge">xLog: true</code> / <code class="language-plaintext highlighter-rouge">yLog: true</code> <br /> <code class="language-plaintext highlighter-rouge">scales: { x: { type: log }, y: { type: log } }</code></td>
+      <td>Switch axis scale to logarithmic. Automatically suppresses 0-baseline collision on log scales.</td>
+      <td>Bar, Line, Scatter</td>
+    </tr>
+    <tr>
+      <td><strong>Domain &amp; Min/Max</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">xMin: 0</code> / <code class="language-plaintext highlighter-rouge">xMax: 100</code> <br /> <code class="language-plaintext highlighter-rouge">yMin: 0</code> / <code class="language-plaintext highlighter-rouge">yMax: 500</code> <br /> <code class="language-plaintext highlighter-rouge">xDomain: [0, 50]</code> / <code class="language-plaintext highlighter-rouge">yDomain: [100, 1000]</code></td>
+      <td>Pin explicit bounds and intervals for X or Y axes.</td>
+      <td>Bar, Line, Scatter</td>
+    </tr>
+    <tr>
+      <td><strong>Axis Inversion &amp; Visibility</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">xReverse: true</code> / <code class="language-plaintext highlighter-rouge">yReverse: true</code> <br /> <code class="language-plaintext highlighter-rouge">xDisplay: false</code> / <code class="language-plaintext highlighter-rouge">yDisplay: false</code></td>
+      <td>Invert axis direction (e.g. rankings, depth) or toggle axis visibility for clean sparklines.</td>
+      <td>Bar, Line, Scatter</td>
+    </tr>
+    <tr>
+      <td><strong>Zero Baseline</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">beginAtZero: true</code></td>
+      <td>Ensure linear quantitative axes start at 0, preventing truncated baselines.</td>
+      <td>Bar, Line, Scatter</td>
+    </tr>
+    <tr>
+      <td><strong>Grid Controls</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">grid: false</code> <br /> <code class="language-plaintext highlighter-rouge">xGrid: true</code> / <code class="language-plaintext highlighter-rouge">yGrid: false</code></td>
+      <td>Granularly enable or disable grid lines globally or independently per axis.</td>
+      <td>Bar, Line, Scatter</td>
+    </tr>
+    <tr>
+      <td><strong>Area Shading &amp; Fill Opacity</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">area: true</code> / <code class="language-plaintext highlighter-rouge">fill: true</code> <br /> <code class="language-plaintext highlighter-rouge">fillOpacity: 0.35</code> / <code class="language-plaintext highlighter-rouge">transparency: 0.2</code></td>
+      <td>Turn line charts into shaded area charts with customizable fill opacity.</td>
+      <td>Line</td>
+    </tr>
+    <tr>
+      <td><strong>Data Values &amp; Filtering</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">showLabels: true</code> / <code class="language-plaintext highlighter-rouge">dataLabels: true</code> <br /> <code class="language-plaintext highlighter-rouge">labelFilter: ["Target", "Peak"]</code> <br /> <code class="language-plaintext highlighter-rouge">fontSize: 11</code></td>
+      <td>Display direct numeric values, with support for selective label filtering and custom text size.</td>
+      <td>Bar, Line, Scatter</td>
+    </tr>
+    <tr>
+      <td><strong>Colors &amp; Fills</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">color:</code> / <code class="language-plaintext highlighter-rouge">fill: "#3b82f6"</code> <br /> <code class="language-plaintext highlighter-rouge">colors: [...]</code> / <code class="language-plaintext highlighter-rouge">palette: [...]</code> <br /> <code class="language-plaintext highlighter-rouge">colorScheme:</code> / <code class="language-plaintext highlighter-rouge">scheme: "tableau10"</code> / <code class="language-plaintext highlighter-rouge">"accent"</code> / <code class="language-plaintext highlighter-rouge">"set2"</code> / <code class="language-plaintext highlighter-rouge">"turbo"</code></td>
+      <td>Customize palette with hex colors, array lists, or standard D3 categorical schemes.</td>
+      <td>All Chart Types</td>
+    </tr>
+    <tr>
+      <td><strong>Legend</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">legend: true</code> / <code class="language-plaintext highlighter-rouge">legend: false</code></td>
+      <td>Toggle legend display (automatically defaults based on series count or categorical/continuous color channel).</td>
+      <td>All Chart Types</td>
+    </tr>
+    <tr>
+      <td><strong>Title, Subtitle &amp; Caption</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">title: "Chart Title"</code> <br /> <code class="language-plaintext highlighter-rouge">subtitle: "Additional context"</code> <br /> <code class="language-plaintext highlighter-rouge">caption: "Figure 1. Source reference"</code></td>
+      <td>Add informative chart titles, subtitles, and explanatory captions.</td>
+      <td>All Chart Types</td>
+    </tr>
+    <tr>
+      <td><strong>Container Width</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">width: 80%</code> / <code class="language-plaintext highlighter-rouge">width: 600px</code> / <code class="language-plaintext highlighter-rouge">width: 500</code></td>
+      <td>Sets maximum container width for responsive presentation.</td>
+      <td>All Chart Types</td>
+    </tr>
+    <tr>
+      <td><strong>Scatter Trendlines</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">trending: true</code> <br /> <code class="language-plaintext highlighter-rouge">trendline: { stroke: "#6366f1", strokeWidth: 2, strokeDasharray: "4,4", grouped: true }</code></td>
+      <td>Add linear regression trendlines. Supports log-space regression on logarithmic axes, custom styles, and per-series grouping (<code class="language-plaintext highlighter-rouge">grouped: true</code> / <code class="language-plaintext highlighter-rouge">bySeries: true</code>).</td>
+      <td>Scatter</td>
+    </tr>
+    <tr>
+      <td><strong>Scatter Fill &amp; Bubble Size</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">fill: &lt;column&gt;</code> / <code class="language-plaintext highlighter-rouge">color: &lt;column&gt;</code> <br /> <code class="language-plaintext highlighter-rouge">r: &lt;column|number&gt;</code> / <code class="language-plaintext highlighter-rouge">size: &lt;column|number&gt;</code> <br /> <code class="language-plaintext highlighter-rouge">colorScale: log</code> / <code class="language-plaintext highlighter-rouge">colorLog: true</code></td>
+      <td>Map columns to point fill colors (continuous ramp or discrete swatches) and bubble radii for 4D scatter bubble charts.</td>
+      <td>Scatter</td>
+    </tr>
+    <tr>
+      <td><strong>Sankey Links &amp; Flows</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">links:</code> / <code class="language-plaintext highlighter-rouge">flows:</code> / <code class="language-plaintext highlighter-rouge">series: [{ data: [...] }]</code> <br /> Tuple: <code class="language-plaintext highlighter-rouge">[source, value, target]</code> or <code class="language-plaintext highlighter-rouge">[source, target, value]</code> <br /> Object: <code class="language-plaintext highlighter-rouge">{ source, target, value }</code></td>
+      <td>Configure multi-stage flow networks. Nodes are automatically derived or defined via <code class="language-plaintext highlighter-rouge">nodes: [{ name }]</code>. Supports custom node/link colors via <code class="language-plaintext highlighter-rouge">colorFrom:</code>, <code class="language-plaintext highlighter-rouge">colorTo:</code>, <code class="language-plaintext highlighter-rouge">colors:</code>, <code class="language-plaintext highlighter-rouge">colorMode:</code>, and custom vertical ordering via <code class="language-plaintext highlighter-rouge">priority:</code>.</td>
+      <td>Sankey</td>
+    </tr>
+    <tr>
+      <td><strong>Schema Mappings</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">schemas:</code> / <code class="language-plaintext highlighter-rouge">schema:</code> / <code class="language-plaintext highlighter-rouge">mapping:</code> <br /> <code class="language-plaintext highlighter-rouge">{ x, y, labels, series, fill, r }</code></td>
+      <td>Map specific table or dataset columns to chart visual dimensions.</td>
+      <td>All Chart Types</td>
+    </tr>
+    <tr>
+      <td><strong>Transposition</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">layout: rows</code> / <code class="language-plaintext highlighter-rouge">transpose: true</code></td>
+      <td>Transpose markdown table rows into series and column headers into X-axis categories.</td>
+      <td>Bar, Line</td>
+    </tr>
+    <tr>
+      <td><strong>Adaptive Axis Ticks</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">ticks: 6</code> / <code class="language-plaintext highlighter-rouge">x: { ticks: 8, tickRotate: -45 }</code> <br /> <code class="language-plaintext highlighter-rouge">y: { ticks: 5, tickFormat: "~s" }</code> <br /> <code class="language-plaintext highlighter-rouge">tickRotate: -30</code> / <code class="language-plaintext highlighter-rouge">tickSpacing: 40</code></td>
+      <td>Automatically adapts tick density, stepping, and rotation to prevent label overlapping on dense or narrow axes. Supports explicit tick counts, custom rotation, spacing, and formatting.</td>
+      <td>Bar, Line, Scatter</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="examples">Examples</h3>
+
+<h4 id="1-bar-chart-with-markdown-table-binding-transposition--mark-line">1. Bar Chart (with Markdown Table Binding, Transposition &amp; Mark Line)</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|  | Test1 | Test2 | Test3 |
+| --- | --- | --- | --- |
+| Data1 | 1 | 2 | 3.33 |
+| Data2 | 3 | 2 | 1 |
+| Data3 | 4.5 | 4 | 2 |
+
+^table-metrics
+
+<span class="p">```</span><span class="nl">chart
+</span><span class="sb">type: bar
+id: table-metrics
+layout: rows
+x: "Metrics"
+y: "Score"
+showLabels: true
+markLines:
+  - y: 3.0
+    label: "Target Benchmark"
+    style: dashed
+    color: "#f59e0b"
+width: 80%</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<h4 id="2-line-chart-with-log-scale-mark-lines--custom-palette">2. Line Chart (with Log Scale, Mark Lines &amp; Custom Palette)</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">chart
+</span><span class="sb">type: line
+x: "Quarter"
+y: "Revenue ($K)"
+yScale: log
+showLabels: true
+labels: ["Q1", "Q2", "Q3", "Q4"]
+colorScheme: "tableau10"
+series:
+  - title: "2024 Revenue"
+    data: [120, 190, 300, 500]
+  - title: "2025 Target"
+    data: [150, 230, 340, 580]
+markLines:
+  - y: 250
+    label: "Break-even Milestone"
+    style: dotted
+    color: "#10b981"
+width: 550px</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<h4 id="2b-shaded-area-chart-with-area-fill-opacity--selective-labels">2b. Shaded Area Chart (with Area Fill, Opacity &amp; Selective Labels)</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">chart
+</span><span class="sb">type: line
+title: "Monthly Bandwidth Usage"
+subtitle: "Network Ingress (GB)"
+area: true
+fillOpacity: 0.3
+beginAtZero: true
+dataLabels: ["May", "Jul"]
+labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]
+series:
+  - title: "Ingress"
+    data: [120, 150, 180, 220, 310, 290, 420]
+markLines:
+  - x: "May"
+    label: "Capacity Upgrade"
+    style: dashed
+    color: "#6366f1"
+width: 550px</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<h4 id="3-pie-donut--polar-area-charts">3. Pie, Donut &amp; Polar Area Charts</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">chart
+</span><span class="sb">type: donut
+title: "Document Categories"
+labels: ["Markdown Notes", "Web Clips", "PDF Extracts", "Code Snippets"]
+colorScheme: "set2"
+series:
+  - title: "Share"
+    data: [45, 25, 18, 12]
+width: 320px</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<h4 id="4-sankey-flow-diagram-tuples-custom-node-colors--priority">4. Sankey Flow Diagram (Tuples, Custom Node Colors &amp; Priority)</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">chart
+</span><span class="sb">type: sankey
+title: "Energy Source Distribution"
+labels: ["Oil", "Natural Gas", "Coal", "Fossil Fuels", "Electricity", "Energy"]
+series:
+  - data:
+      - ["Oil", 15, "Fossil Fuels"]
+      - ["Natural Gas", 20, "Fossil Fuels"]
+      - ["Coal", 25, "Fossil Fuels"]
+      - ["Coal", 25, "Electricity"]
+      - ["Fossil Fuels", 60, "Energy"]
+      - ["Electricity", 25, "Energy"]
+priority:
+  Oil: 1
+  Natural Gas: 2
+  Coal: 3
+  Fossil Fuels: 1
+  Electricity: 2
+  Energy: 1
+colorFrom:
+  Oil: "black"
+  Coal: "gray"
+  "Fossil Fuels": "slategray"
+  Electricity: "blue"
+  Energy: "orange"
+colorTo:
+  Oil: "black"
+  Coal: "gray"
+  "Fossil Fuels": "slategray"
+  Electricity: "blue"
+  Energy: "orange"
+width: 650px</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<h4 id="5-radar-chart">5. Radar Chart</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">chart
+</span><span class="sb">type: radar
+title: "Model Comparison"
+labels: ["Speed", "Reliability", "Comfort", "Safety", "Efficiency"]
+series:
+  - title: "Model Alpha"
+    data: [80, 90, 70, 85, 60]
+  - title: "Model Beta"
+    data: [60, 70, 90, 95, 80]
+width: 450px</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<h4 id="6-scatter-chart-table-binding-trending-line--4d-bubble-size">6. Scatter Chart (Table Binding, Trending Line &amp; 4D Bubble Size)</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Location | Density | Population | Land area (km2) | GDP |
+| --- | --- | --- | --- | --- |
+| Monaco | 19428 | 38857 | 2 | 7180 |
+| Singapore | 8290 | 6110200 | 737 | 397000 |
+| Gibraltar (UK) | 5800 | 39329 | 6.8 | 2400 |
+| Vatican City | 2205 | 882 | 0.44 | 21 |
+| Bahrain | 2034 | 1607049 | 790 | 44000 |
+| Maldives | 1759 | 527799 | 298 | 5400 |
+| Malta | 1686 | 539607 | 320 | 17800 |
+| Bangladesh | 1333 | 173562364 | 130170 | 460000 |
+
+^table-countries
+
+<span class="p">```</span><span class="nl">chart
+</span><span class="sb">type: scatter
+id: table-countries
+xScale: log
+yScale: log
+trending: true
+fill: Density
+r: GDP
+x:
+  label: "Land Area (km²)"
+y:
+  label: "Population"
+markLines:
+  - y: 10000000
+    label: "10M Population Threshold"
+    style: dashed
+    color: "#f59e0b"
+  - x: 1000
+    label: "1,000 km² Threshold"
+    style: dotted
+    color: "#10b981"
+width: 700px</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<h4 id="7-external-csv--json-dataset-loading">7. External CSV / JSON Dataset Loading</h4>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">chart
+</span><span class="sb">type: bar
+data: 5-Data/datasets/sales_summary.csv
+x: "Product Category"
+y: "Units Sold"
+width: 500px</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<h2 id="observable-plot">Observable Plot</h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">plot</code> or <code class="language-plaintext highlighter-rouge">observableplot</code> for rich data visualizations using Observable Plot. You can write JavaScript expressions or declarative configuration options. Markdown tables with IDs (e.g. <code class="language-plaintext highlighter-rouge">^table-countries</code>) are preprocessed into accessible JavaScript identifiers (<code class="language-plaintext highlighter-rouge">table_countries</code>):</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">plot
+</span><span class="sb">Plot.plot({
+  title: "Population vs. Land Area from Note Table",
+  width: 700,
+  height: 380,
+  grid: true,
+  x: { type: "log", label: "Land Area (km²) →" },
+  y: { type: "log", label: "↑ Population" },
+  marks: [
+    Plot.dot(table_countries, {
+      x: "Land area (km2)",
+      y: "Population",
+      fill: "Density",
+      r: 6,
+      tip: true
+    }),
+    Plot.text(table_countries, {
+      x: "Land area (km2)",
+      y: "Population",
+      text: "Location",
+      dy: -10,
+      fontSize: 10
+    })
+  ]
+})</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<h2 id="inline-comment">Inline Comment</h2>
+
+<p>Use <code class="language-plaintext highlighter-rouge">::cmt[]</code> for interactive comments/popovers.</p>
+
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>::cmt[💡 example. This is a comment.]
+</code></pre></div></div>
+
+  </div>
+</article>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div>
+          <strong>Product Wiki & Developer Hub</strong> &copy; 2026 — Personal Knowledge & Engineering Portal
+        </div>
+        <div>
+          Powered by Jekyll & GitHub Pages &bull; <a href="https://github.com/3-ark/insightpage-style" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted);">insightpage-style on GitHub</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Theme Switcher Script -->
+  <script>
+    (function() {
+      const toggleBtn = document.getElementById('theme-toggle');
+      const themeIcon = document.getElementById('theme-icon');
+      const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+      document.documentElement.setAttribute('data-theme', storedTheme);
+      themeIcon.textContent = storedTheme === 'dark' ? '☀️' : '🌙';
+
+      toggleBtn.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeIcon.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      });
+    })();
+  </script>
+
+  <!-- Script Initializers for Visualisations & Libraries -->
+  <script src="/assets/js/pele.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script src="/assets/js/insightpage-style.js"></script>
+  <script src="/assets/js/ngram-cipher.global.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. Initialize KaTeX Math Formulas
+      if (typeof renderMathInElement !== "undefined") {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ]
+        });
+      }
+
+      // 3. Transform Obsidian/Note Callouts (> [!Note], > [!Summary], etc.)
+      document.querySelectorAll('blockquote').forEach(function(bq) {
+        const html = bq.innerHTML.trim();
+        const calloutMatch = html.match(/^<p>\[\!(Note|Summary|Warning|Important|Tip)\]\s*(.*?)<\/p>/i);
+        if (calloutMatch) {
+          const type = calloutMatch[1].toLowerCase();
+          const title = calloutMatch[2] || type.toUpperCase();
+          const content = html.replace(/^<p>\[\!(Note|Summary|Warning|Important|Tip)\]\s*.*?<\/p>/i, '');
+
+          const div = document.createElement('div');
+          div.className = 'callout callout-' + type;
+          div.innerHTML = '<div class="callout-title">💡 ' + title + '</div>' + content;
+          bq.parentNode.replaceChild(div, bq);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

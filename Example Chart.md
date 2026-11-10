@@ -7,98 +7,194 @@ tags:
   - chart
   - plot
   - visualization
-createdat: 1790759208076
-lastupdatedat: 1792396384299
+createdat: 1794277233929
+lastupdatedat: 1794277233929
 pinned: false
-fileextension: .md
-fileExtension: .md
 ---
 
-InsightPage supports rich interactive charts and data visualizations using **Chart.js-style YAML syntaxes** (`chart`) and **Observable Plot** (`plot` / `cosyobservableplot`).
+# Example Chart
+
+InsightPage supports rich interactive charts and data visualizations using **Chart.js-style YAML syntaxes** (`chart`) and **Observable Plot** (`plot` / `observableplot`).
 
 ---
 
 ## Chart.js Style YAML Charts
 
-Render interactive charts using simple YAML configuration.
+Render interactive charts using unified YAML configurations across **Bar**, **Line**, **Scatter**, **Pie / Donut / PolarArea**, **Radar**, and **Sankey** charts.
 
-### 1. Bar Chart Example
+### Unified Chart Configuration Reference
+
+All Chart DSL charts share a consistent set of configuration keys:
+
+| Category | Options & Syntax | Description | Supported Chart Types |
+| --- | --- | --- | --- |
+| **Chart Types** | `type: bar` \| `line` \| `pie` \| `donut` (`doughnut`) \| `polararea` \| `radar` \| `sankey` \| `scatter` (`point`, `scatterplot`) | Specify the visualization type to render. | All Chart Types |
+| **Data Sourcing** | `id: table-id` / `table: "#table-id"` <br> `data: path/to/file.csv` <br> `source:` / `file:` / `dataset:` | Bind directly to markdown tables (with or without `#` / `^` prefixes) or external CSV / TSV / JSON data files. | All Chart Types |
+| **Mark Lines** | `markLines:` / `markLine:` / `marks:` <br> `- { y: 80, label: "Target", style: dashed, color: "#10b981", strokeWidth: 1.5 }` <br> `- { x: 50, label: "Threshold", style: dotted }` <br> `- { x: "Q3", label: "Milestone" }` | Add horizontal (`y:`) or vertical (`x:`) reference threshold lines with labels and custom styling (`solid`, `dashed`, `dotted`). Supports both numeric and categorical coordinates. | Bar, Line, Scatter |
+| **Scales & Log Scales** | `xScale: log` / `yScale: log` <br> `xLog: true` / `yLog: true` <br> `scales: { x: { type: log }, y: { type: log } }` | Switch axis scale to logarithmic. Automatically suppresses 0-baseline collision on log scales. | Bar, Line, Scatter |
+| **Domain & Min/Max** | `xMin: 0` / `xMax: 100` <br> `yMin: 0` / `yMax: 500` <br> `xDomain: [0, 50]` / `yDomain: [100, 1000]` | Pin explicit bounds and intervals for X or Y axes. | Bar, Line, Scatter |
+| **Axis Inversion & Visibility** | `xReverse: true` / `yReverse: true` <br> `xDisplay: false` / `yDisplay: false` | Invert axis direction (e.g. rankings, depth) or toggle axis visibility for clean sparklines. | Bar, Line, Scatter |
+| **Zero Baseline** | `beginAtZero: true` | Ensure linear quantitative axes start at 0, preventing truncated baselines. | Bar, Line, Scatter |
+| **Grid Controls** | `grid: false` <br> `xGrid: true` / `yGrid: false` | Granularly enable or disable grid lines globally or independently per axis. | Bar, Line, Scatter |
+| **Area Shading & Fill Opacity** | `area: true` / `fill: true` <br> `fillOpacity: 0.35` / `transparency: 0.2` | Turn line charts into shaded area charts with customizable fill opacity. | Line |
+| **Data Values & Filtering** | `showLabels: true` / `dataLabels: true` <br> `labelFilter: ["Target", "Peak"]` <br> `fontSize: 11` | Display direct numeric values, with support for selective label filtering and custom text size. | Bar, Line, Scatter |
+| **Colors & Fills** | `color:` / `fill: "#3b82f6"` <br> `colors: [...]` / `palette: [...]` <br> `colorScheme:` / `scheme: "tableau10"` / `"accent"` / `"set2"` / `"turbo"` | Customize palette with hex colors, array lists, or standard D3 categorical schemes. | All Chart Types |
+| **Legend** | `legend: true` / `legend: false` | Toggle legend display (automatically defaults based on series count or categorical/continuous color channel). | All Chart Types |
+| **Title, Subtitle & Caption** | `title: "Chart Title"` <br> `subtitle: "Additional context"` <br> `caption: "Figure 1. Source reference"` | Add informative chart titles, subtitles, and explanatory captions. | All Chart Types |
+| **Container Width** | `width: 80%` / `width: 600px` / `width: 500` | Sets maximum container width for responsive presentation. | All Chart Types |
+| **Scatter Trendlines** | `trending: true` <br> `trendline: { stroke: "#6366f1", strokeWidth: 2, strokeDasharray: "4,4", grouped: true }` | Add linear regression trendlines. Supports log-space regression on logarithmic axes, custom styles, and per-series grouping (`grouped: true` / `bySeries: true`). | Scatter |
+| **Scatter Fill & Bubble Size** | `fill: <column>` / `color: <column>` <br> `r: <column|number>` / `size: <column|number>` <br> `colorScale: log` / `colorLog: true` | Map columns to point fill colors (continuous ramp or discrete swatches) and bubble radii for 4D scatter bubble charts. | Scatter |
+| **Sankey Links & Flows** | `links:` / `flows:` / `series: [{ data: [...] }]` <br> Tuple: `[source, value, target]` or `[source, target, value]` <br> Object: `{ source, target, value }` | Configure multi-stage flow networks. Nodes are automatically derived or defined via `nodes: [{ name }]`. Supports custom node/link colors via `colorFrom:`, `colorTo:`, `colors:`, `colorMode:`, and custom vertical ordering via `priority:`. | Sankey |
+| **Schema Mappings** | `schemas:` / `schema:` / `mapping:` <br> `{ x, y, labels, series, fill, r }` | Map specific table or dataset columns to chart visual dimensions. | All Chart Types |
+| **Adaptive Axis Ticks** | `ticks: 6` / `x: { ticks: 8, tickRotate: -45 }` <br> `y: { ticks: 5, tickFormat: "~s" }` <br> `tickRotate: -30` / `tickSpacing: 40` | Automatically adapts tick density, stepping, and rotation to prevent label overlapping on dense or narrow axes. Supports explicit tick counts, custom rotation, spacing, and formatting. | Bar, Line, Scatter |
+
+---
+
+### 1. Bar Chart Example (with Mark Lines, Axis Labels & Value Labels)
+
+|  | Test1 | Test2 | Test3 |
+| --- | --- | --- | --- |
+| Data1 | 1 | 2 | 3.33 |
+| Data2 | 3 | 2 | 1 |
+| Data3 | 4.5 | 4 | 2 |
+
+^table
 
 ```chart
 type: bar
-labels: ["Jan", "Feb", "Mar", "Apr"]
-series:
-  - title: "Notes Created"
-    data: [12, 25, 18, 30]
-width: 500px
+id: table
+layout: rows
+x: "Metrics"
+y: "Score"
+showLabels: true
+markLines:
+  - y: 3.0
+    label: "Target Benchmark"
+    style: dashed
+    color: "#f59e0b"
+width: 80%
 ```
 
-### 2. Line Chart Example
+### 2. Line Chart Example (with Mark Lines, Log Scale & Custom Palette)
 
 ```chart
 type: line
+x: "Quarter"
+y: "Revenue ($K)"
+yScale: log
+showLabels: true
 labels: ["Q1", "Q2", "Q3", "Q4"]
+colorScheme: "tableau10"
 series:
   - title: "2024 Revenue"
     data: [120, 190, 300, 500]
   - title: "2025 Target"
     data: [150, 230, 340, 580]
+markLines:
+  - y: 250
+    label: "Break-even Milestone"
+    style: dotted
+    color: "#10b981"
+width: 550px
 ```
 
-### 3. Pie & Donut Chart Example
+### 2b. Shaded Area Chart Example (with Area Fill, Opacity, BeginAtZero & Selective Labels)
 
+```chart
+type: line
+title: "Monthly Bandwidth Usage"
+subtitle: "Network Ingress (GB)"
+area: true
+fillOpacity: 0.3
+beginAtZero: true
+dataLabels: ["May", "Jul"]
+labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"]
+series:
+  - title: "Ingress"
+    data: [120, 150, 180, 220, 310, 290, 420]
+markLines:
+  - x: "May"
+    label: "Capacity Upgrade"
+    style: dashed
+    color: "#6366f1"
+width: 550px
+```
+
+### 3. Pie, Donut & Polar Area Chart Examples
+
+#### Standard Pie Chart
 ```chart
 type: pie
 labels: ["Markdown Notes", "Web Clips", "PDF Extracts", "Code Snippets"]
-series:
-  - title: "Category Share"
-    data: [45, 25, 18, 12]
-```
-
-```chart
-type: donut
-labels: ["Markdown Notes", "Web Clips", "PDF Extracts", "Code Snippets"]
+colorScheme: "tableau10"
 series:
   - title: "Category Share"
     data: [45, 25, 18, 12]
 width: 320px
 ```
 
-### 4. Sankey Example
+#### Donut Chart
+```chart
+type: donut
+labels: ["Markdown Notes", "Web Clips", "PDF Extracts", "Code Snippets"]
+colorScheme: "set2"
+series:
+  - title: "Category Share"
+    data: [45, 25, 18, 12]
+width: 320px
+```
+
+#### Polar Area Chart
+```chart
+type: polararea
+labels: ["Research", "Engineering", "Design", "Testing", "Documentation"]
+colorScheme: "accent"
+series:
+  - title: "Hours Allocated"
+    data: [40, 55, 30, 25, 20]
+width: 340px
+```
+
+### 4. Sankey Flow Diagram Example
+
+InsightPage supports multiple Sankey data formats, including 3-element tuple arrays `[source, value, target]` and object flows `{ from, to, flow }`. You can customize node positioning with `priority:` and link/node colors with `colorFrom:` and `colorTo:`:
 
 ```chart
 type: sankey
-labels: [Oil, "Natural Gas", Coal, "Fossil Fuel", Electricity, Energy]
+labels: ["Oil", "Natural Gas", "Coal", "Fossil Fuels", "Electricity", "Energy"]
 series:
-		- data:
-			- [Oil, 15, "Fossil Fuels"]
-			- ["Natural Gas", 20, "Fossil Fuels"]
-			- ["Coal", 25, "Fossil Fuels"]
-			- ["Coal", 25, "Electricity"]
-			- ["Fossil Fuels", 60, "Energy"]
-			- ["Electricity", 25, "Energy"]
+  - data:
+      - ["Oil", 15, "Fossil Fuels"]
+      - ["Natural Gas", 20, "Fossil Fuels"]
+      - ["Coal", 25, "Fossil Fuels"]
+      - ["Coal", 25, "Electricity"]
+      - ["Fossil Fuels", 60, "Energy"]
+      - ["Electricity", 25, "Energy"]
 priority:
-			Oil: 1
-			Natural Gas: 2
-			Coal: 3
-			Fossil Fuels: 1
-			Electricity: 2
-			Energy: 1
+  Oil: 1
+  Natural Gas: 2
+  Coal: 3
+  Fossil Fuels: 1
+  Electricity: 2
+  Energy: 1
 colorFrom:
-			Oil: "black"
-			Coal: "gray"
-			"Fossil Fuels": "slategray"
-			Electricity: "blue"
-			Energy: "orange"
+  Oil: "black"
+  Coal: "gray"
+  "Fossil Fuels": "slategray"
+  Electricity: "blue"
+  Energy: "orange"
 colorTo:
-			Oil: "black"
-			Coal: "gray"
-			"Fossil Fuels": "slategray"
-			Electricity: "blue"
-			Energy: "orange"
+  Oil: "black"
+  Coal: "gray"
+  "Fossil Fuels": "slategray"
+  Electricity: "blue"
+  Energy: "orange"
+width: 650px
 ```
 
 ### 5. Radar Chart Example
+
+Radar charts visualize multidimensional attributes across concentric web rings:
 
 ```chart
 type: radar
@@ -108,31 +204,81 @@ series:
     data: [80, 90, 70, 85, 60]
   - title: "Model Beta"
     data: [60, 70, 90, 95, 80]
+width: 450px
 ```
 
-### 6. chart for a table
+### 6. Scatter Chart Example
 
-|  | Test1 | Test2 | Test3 |
-| --- | --- | --- | --- |
-| Data1 | 1 | 2 | 3.33 |
-| Data2 | 3 | 2 | 1 |
-| Data3 | 4.5 | 4 | 2 |
-
-^table1
+Render scatter point plots with trending regression lines, custom-styled mark lines, legends, and linear or logarithmic axes:
 
 ```chart
-type: bar
-id: table1
-layout: rows
-width: 80%
-beginAtZero: true
+type: scatter
+trending: true
+markLines:
+  - y: 80
+    label: "Target Score"
+    style: dashed
+    color: "#10b981"
+  - x: 40
+    label: "Midpoint Threshold"
+    style: dotted
+    color: "#f59e0b"
+x:
+  label: "Study Hours"
+y:
+  label: "Exam Score"
+series:
+  - title: "Cohort A"
+    data:
+      - [10, 35]
+      - [18, 48]
+      - [25, 62]
+      - [32, 70]
+      - [45, 88]
+      - [50, 95]
+  - title: "Cohort B"
+    data:
+      - [12, 28]
+      - [20, 42]
+      - [28, 55]
+      - [38, 74]
+      - [48, 82]
+      - [55, 91]
+width: 600px
+```
+
+### 7. External CSV / JSON Dataset Loading
+
+InsightPage Chart DSL can load external dataset files directly without complex data-processing grammar, just like Timeline charts:
+
+```chart
+title: China Trade policy uncertainty
+type: line
+data: 5-Data/chinaEPU/China_Trade_policy_uncertainty.csv
+```
+
+Or for scatter charts using external CSV datasets:
+
+```chart
+type: scatter
+data: 5-Data/datasets/countries.csv
+fill: Density
+xScale: log
+yScale: log
+labels: [Singapore]
+r: 5
+x:
+  label: "Land Area (km²)"
+y:
+  label: "Population"
+trending: true
 ```
 
 ---
 
 ## Observable Plot Data Visualizations
 
-Render rich data visualizations using [Observable Plot](https://github.com/observablehq/plot) (`plot` or `cosyobservableplot`). For further infomation: https://observablehq.github.io/plot/features/plots
+Render rich data visualizations using [Observable Plot](https://github.com/observablehq/plot) (`plot` or `observableplot`). For further information: https://observablehq.github.io/plot/features/plots
 
 ```
 Plot.plot({
@@ -141,7 +287,7 @@ Plot.plot({
   caption: "Figure 1. A chart with a title, subtitle, and caption.",
   marks: [
     Plot.frame(),
-    Plot.text(["Titles, subtitles, captions, and annotations assist inter­pretation by telling the reader what’s interesting. Don’t make the reader work to find what you already know."], {lineWidth: 30, frameAnchor: "middle"})
+    Plot.text(["Titles, subtitles, captions, and annotations assist interpretation by telling the reader what’s interesting. Don’t make the reader work to find what you already know."], {lineWidth: 30, frameAnchor: "middle"})
   ]
 })
 ```
@@ -153,10 +299,11 @@ Plot.plot({
   caption: "Figure 1. A chart with a title, subtitle, and caption.",
   marks: [
     Plot.frame(),
-    Plot.text(["Titles, subtitles, captions, and annotations assist inter­pretation by telling the reader what’s interesting. Don’t make the reader work to find what you already know."], {lineWidth: 30, frameAnchor: "middle"})
+    Plot.text(["Titles, subtitles, captions, and annotations assist interpretation by telling the reader what’s interesting. Don’t make the reader work to find what you already know."], {lineWidth: 30, frameAnchor: "middle"})
   ]
 })
 ```
+
 ### 1. Reading Time Frequency Histogram
 
 ```plot
@@ -169,7 +316,7 @@ Plot.rectY(
 )
 ```
 
-### 2. 2026 Super El Nino (Godzilla El Nino)
+### 2. 2026 Super El Niño (Godzilla El Niño)
 
 Totally NOAA style! From data processing to the example, you can find the original one from https://observablehq.com/@fil/godzilla-el-nino
 
@@ -217,6 +364,9 @@ const point2026 = data.findLast((d) => d.name === "2026");
 const date = day => new Date(Date.UTC(2000, 0, 1 + day));
 
 Plot.plot({
+  title: "Godzilla El Niño",
+  subtitle: "The current Niño 3.4 sea-surface temperature anomaly based on the 1991-2020 baseline",
+  caption: "Figure 1. A good example of how Plot works.",
   width: 900,
   height: 540,
   marginRight: 40,
@@ -312,541 +462,110 @@ Plot.plot({
 })
 ```
 
+### 3. Rendering from Markdown Tables in the Same Note
 
-### 3. Countries and Dependencies by Population Density
+You can use any Markdown table in the same note as the data source for Observable Plot or Chart DSL! Simply refer to `id: #my-table-id` or `id: my-table-id`:
 
-List of countries and dependencies showing population densities, populations, and land areas.
+| Location | Density | Population | Land area (km2) | GDP |
+| --- | --- | --- | --- | --- |
+| Monaco | 19428 | 38857 | 2 | 7180 |
+| Singapore | 8290 | 6110200 | 737 | 397000 |
+| Gibraltar (UK) | 5800 | 39329 | 6.8 | 2400 |
+| Vatican City | 2205 | 882 | 0.44 | 21 |
+| Bahrain | 2034 | 1607049 | 790 | 44000 |
+| Maldives | 1759 | 527799 | 298 | 5400 |
+| Malta | 1686 | 539607 | 320 | 17800 |
+| Bangladesh | 1333 | 173562364 | 130170 | 460000 |
 
-| Location                                          | Density | Population                   | Land area (km2) |
-|---------------------------------------------------|---------|------------------------------|-----------------|
-| World                                             | 55      | 8,231,613,070                | 148,940,000     |
-| Macau (China)                                     | 21,826  | 720,262                      | 33              |
-| Monaco                                            | 19,428  | 38,857                       | 2               |
-| Singapore                                         | 8,290   | 6,110,200                    | 737             |
-| Hong Kong (China)                                 | 7,062   | 7,414,910                    | 1,050           |
-| Gibraltar (UK)                                    | 5,800   | 39,329                       | 6.8             |
-| Vatican City                                      | 2,205   | 882                          | 0.44            |
-| Bahrain                                           | 2,034   | 1,607,049                    | 790             |
-| Maldives                                          | 1,759   | 527,799                      | 298             |
-| Malta                                             | 1,686   | 539,607                      | 320             |
-| Bangladesh                                        | 1,333   | 173,562,364                  | 130,170         |
-| Sint Maarten (NL)                                 | 1,275   | 43,351                       | 34              |
-| Bermuda (UK)                                      | 1,197   | 64,637                       | 54              |
-| Palestine                                         | 892     | 5,371,230                    | 6,020           |
-| Jersey (UK)                                       | 891     | 103,387                      | 116             |
-| Guernsey (UK)                                     | 867     | 67,642                       | 78              |
-| Barbados                                          | 657     | 282,468                      | 430             |
-| Taiwan                                            | 656     | 23,213,962                   | 35,410          |
-| Mauritius                                         | 637     | 1,271,169                    | 1,997           |
-| Aruba (NL)                                        | 600     | 108,066                      | 180             |
-| Nauru                                             | 597     | 11,947                       | 20              |
-| Rwanda                                            | 578     | 14,256,567                   | 24,670          |
-| Lebanon                                           | 568     | 5,805,962                    | 10,230          |
-| Saint Barthélemy (France)                         | 563     | 11,258                       | 20              |
-| San Marino                                        | 560     | 33,581                       | 60              |
-| Burundi                                           | 547     | 14,047,786                   | 25,680          |
-| Netherlands                                       | 541     | 18,080,943                   | 33,670          |
-| South Korea                                       | 530     | 51,717,590                   | 97,600          |
-| Saint Martin (France)                             | 523     | 26,129                       | 50              |
-| Israel                                            | 468     | 10,148,000                   | 21,640          |
-| Comoros                                           | 466     | 866,628                      | 1,861           |
-| India                                             | 441     | 1,450,935,791                | 3,287,263       |
-| Haiti                                             | 427     | 11,772,557                   | 27,560          |
-| Curaçao (NL)                                      | 418     | 185,482                      | 444             |
-| Philippines                                       | 389     | 115,843,670                  | 298,170         |
-| Belgium                                           | 385     | 11,738,764                   | 30,494          |
-| Sri Lanka                                         | 373     | 23,103,565                   | 61,860          |
-| Puerto Rico (US)                                  | 366     | 3,242,204                    | 8,870           |
-| Grenada                                           | 345     | 117,208                      | 340             |
-| Japan                                             | 340     | 123,753,041                  | 364,500         |
-| Tuvalu                                            | 322     | 9,646                        | 30              |
-| Guam (US)                                         | 311     | 167,777                      | 540             |
-| Cayman Islands (UK)                               | 310     | 74,458                       | 240             |
-| Vietnam                                           | 309     | 102,300,000                  | 331,212         |
-| El Salvador                                       | 306     | 6,338,193                    | 20,720          |
-| Saint Lucia                                       | 295     | 179,744                      | 610             |
-| Trinidad and Tobago                               | 294     | 1,507,782                    | 5,130           |
-| Pakistan                                          | 289     | 255,300,000                  | 882,363         |
-| United Kingdom                                    | 287     | 69,483,939                   | 242,494         |
-| Seychelles                                        | 284     | 130,419                      | 460             |
-| Saint Vincent and the Grenadines                  | 281     | 109,296                      | 389             |
-| Kuwait                                            | 277     | 4,934,508                    | 17,820          |
-| Gambia                                            | 273     | 2,759,988                    | 10,120          |
-| Qatar                                             | 265     | 3,048,423                    | 11,490          |
-| British Virgin Islands (UK)                       | 263     | 39,471                       | 150             |
-| Jamaica                                           | 262     | 2,839,175                    | 10,830          |
-| Luxembourg                                        | 261     | 673,036                      | 2,575           |
-| Nigeria                                           | 255     | 232,679,478                  | 910,770         |
-| Tokelau (New Zealand)                             | 251     | 2,507                        | 10              |
-| Uganda                                            | 249     | 50,015,093                   | 200,520         |
-| Liechtenstein                                     | 249     | 39,870                       | 160             |
-| São Tomé and Príncipe                             | 245     | 235,537                      | 960             |
-| U.S. Virgin Islands (US)                          | 243     | 84,905                       | 350             |
-| Germany                                           | 242     | 84,552,242                   | 349,360         |
-| Dominican Republic                                | 237     | 11,427,557                   | 48,198          |
-| American Samoa (US)                               | 234     | 46,765                       | 200             |
-| Malawi                                            | 230     | 21,655,286                   | 94,280          |
-| Switzerland                                       | 226     | 8,921,981                    | 39,510          |
-| North Korea                                       | 220     | 26,498,823                   | 120,410         |
-| Antigua and Barbuda                               | 213     | 93,772                       | 440             |
-| Marshall Islands                                  | 209     | 37,548                       | 180             |
-| Nepal                                             | 207     | 29,651,055                   | 143,350         |
-| Italy                                             | 201     | 59,342,867                   | 295,720         |
-| Saint Kitts and Nevis                             | 180     | 46,843                       | 260             |
-| Togo                                              | 175     | 9,515,236                    | 54,390          |
-| Andorra                                           | 174     | 81,938                       | 470             |
-| Guatemala                                         | 172     | 18,406,359                   | 107,160         |
-| Kiribati                                          | 170     | 138,000                      | 810             |
-| Bonaire (NL)                                      | 169     | 26,552                       | 288             |
-| Saba (NL)                                         | 166     | 2,158                        | 13              |
-| Anguilla (UK)                                     | 162     | 14,599                       | 90              |
-| Federated States of Micronesia                    | 162     | 113,161                      | 700             |
-| Sint Eustatius (NL)                               | 156     | 3,270                        | 21              |
-| United Arab Emirates                              | 155     | 11,027,129                   | 71,020          |
-| Kosovo                                            | 154     | 1,674,125                    | 10,887          |
-| Ghana                                             | 151     | 34,427,414                   | 227,533         |
-| China                                             | 151     | 1,419,321,278                | 9,388,210       |
-| Indonesia                                         | 150     | 283,487,931                  | 1,892,555       |
-| Denmark                                           | 149     | 5,977,413                    | 40,000          |
-| Isle of Man (UK)                                  | 148     | 84,161                       | 570             |
-| Cyprus                                            | 147     | 1,358,282                    | 9,240           |
-| Northern Cyprus                                   | 146     | 489,308                      | 3,355           |
-| Tonga                                             | 145     | 104,176                      | 720             |
-| Thailand                                          | 140     | 71,668,011                   | 510,890         |
-| Czech Republic                                    | 139     | 10,735,860                   | 77,171          |
-| Syria                                             | 133     | 24,672,760                   | 185,178         |
-| Cape Verde                                        | 130     | 524,877                      | 4,030           |
-| Jordan                                            | 130     | 11,552,876                   | 88,794          |
-| Benin                                             | 128     | 14,462,724                   | 112,760         |
-| Poland                                            | 126     | 37,600,280                   | 306,090         |
-| Azerbaijan                                        | 125     | 10,336,578                   | 82,650          |
-| France                                            | 122     | 66,548,531                   | 547,557         |
-| Sierra Leone                                      | 120     | 8,642,023                    | 72,180          |
-| Egypt                                             | 117     | 116,538,258                  | 995,450         |
-| Ethiopia                                          | 117     | 132,059,768                  | 1,128,571       |
-| Slovakia                                          | 115     | 5,506,760                    | 48,080          |
-| Portugal                                          | 114     | 10,425,293                   | 91,606          |
-| Turkey                                            | 114     | 87,473,805                   | 769,630         |
-| Austria                                           | 111     | 9,120,813                    | 82,520          |
-| Malaysia                                          | 108     | 35,557,674                   | 328,550         |
-| Iraq                                              | 106     | 46,042,015                   | 434,128         |
-| Hungary                                           | 106     | 9,676,135                    | 91,260          |
-| Slovenia                                          | 105     | 2,118,697                    | 20,136          |
-| Armenia                                           | 104     | 2,973,841                    | 28,470          |
-| Albania                                           | 102     | 2,791,765                    | 27,400          |
-| Costa Rica                                        | 100     | 5,129,910                    | 51,060          |
-| Ivory Coast                                       | 100     | 31,934,230                   | 318,000         |
-| Cambodia                                          | 100     | 17,638,801                   | 176,520         |
-| Kenya                                             | 99      | 56,432,945                   | 569,140         |
-| Honduras                                          | 97      | 10,825,704                   | 111,890         |
-| Northern Mariana Islands (US)                     | 96      | 44,278                       | 460             |
-| Senegal                                           | 96      | 18,501,985                   | 192,530         |
-| Spain                                             | 98      | 49,801,559                   | 499,714         |
-| Timor-Leste                                       | 94      | 1,400,638                    | 14,870          |
-| Moldova                                           | 92      | 3,034,961                    | 32,890          |
-| Cuba                                              | 89      | 9,748,532                    | 109,820         |
-| Dominica                                          | 88      | 66,205                       | 750             |
-| Transnistria                                      | 88      | 367,000                      | 4,163           |
-| Brunei                                            | 88      | 462,722                      | 5,270           |
-| Burkina Faso                                      | 86      | 23,548,781                   | 273,600         |
-| Serbia                                            | 85      | 6,567,783                    | 88,499          |
-| Myanmar                                           | 84      | 54,500,091                   | 652,670         |
-| Romania                                           | 83      | 19,015,088                   | 230,080         |
-| Uzbekistan                                        | 83      | 36,361,859                   | 440,652         |
-| French Polynesia (France)                         | 81      | 281,807                      | 3,471           |
-| Wallis and Futuna (France)                        | 81      | 11,278                       | 140             |
-| Tunisia                                           | 79      | 12,277,109                   | 155,360         |
-| Samoa                                             | 78      | 218,020                      | 2,780           |
-| Guinea-Bissau                                     | 78      | 2,201,352                    | 28,120          |
-| Greece                                            | 78      | 10,047,817                   | 128,900         |
-| Tanzania                                          | 77      | 68,560,157                   | 885,800         |
-| Lesotho                                           | 77      | 2,337,423                    | 30,360          |
-| Yemen                                             | 77      | 40,583,165                   | 527,970         |
-| Tajikistan                                        | 76      | 10,590,928                   | 138,790         |
-| Ireland                                           | 76      | 5,255,018                    | 68,890          |
-| Ecuador                                           | 73      | 18,135,478                   | 248,360         |
-| North Macedonia                                   | 72      | 1,823,009                    | 25,220          |
-| Eswatini                                          | 72      | 1,242,822                    | 17,200          |
-| Akrotiri and Dhekelia (UK)                        | 72      | 18,195                       | 254             |
-| Croatia                                           | 69      | 3,875,325                    | 55,960          |
-| Equatorial Guinea                                 | 67      | 1,892,517                    | 28,050          |
-| Mexico                                            | 67      | 130,861,007                  | 1,943,950       |
-| Afghanistan                                       | 65      | 42,647,492                   | 652,230         |
-| Ukraine                                           | 65      | 37,860,222                   | 579,400         |
-| Bulgaria                                          | 62      | 6,757,689                    | 108,560         |
-| Bosnia and Herzegovina                            | 62      | 3,164,253                    | 51,200          |
-| Cameroon                                          | 62      | 29,123,744                   | 472,710         |
-| Panama                                            | 61      | 4,515,577                    | 74,180          |
-| Norfolk Island (Australia)                        | 61      | 2,188                        | 36              |
-| Guinea                                            | 60      | 14,754,786                   | 245,720         |
-| Liberia                                           | 58      | 5,612,817                    | 96,320          |
-| Nicaragua                                         | 57      | 6,916,140                    | 120,340         |
-| Cook Islands (New Zealand)                        | 57      | 13,729                       | 240             |
-| Iran                                              | 56      | 91,567,738                   | 1,648,195       |
-| Madagascar                                        | 55      | 31,964,956                   | 581,800         |
-| Georgia                                           | 55      | 3,807,670                    | 69,490          |
-| South Africa                                      | 53      | 64,007,187                   | 1,213,090       |
-| Morocco                                           | 53      | 38,081,173                   | 710,850         |
-| Fiji                                              | 51      | 928,784                      | 18,270          |
-| Djibouti                                          | 50      | 1,168,722                    | 23,180          |
-| Turks and Caicos Islands (UK)                     | 49      | 46,535                       | 950             |
-| DR Congo                                          | 48      | 109,276,265                  | 2,267,050       |
-| Colombia                                          | 48      | 52,886,364                   | 1,109,500       |
-| Montenegro                                        | 47      | 638,479                      | 13,450          |
-| Lithuania                                         | 46      | 2,859,110                    | 62,604          |
-| Belarus                                           | 45      | 9,056,696                    | 202,990         |
-| Mozambique                                        | 44      | 34,631,766                   | 786,380         |
-| Montserrat (UK)                                   | 44      | 4,389                        | 100             |
-| Cocos (Keeling) Islands (Australia)               | 43      | 602                          | 14              |
-| Zimbabwe                                          | 43      | 16,634,373                   | 386,850         |
-| Faroe Islands (Denmark)                           | 40      | 55,400                       | 1,370           |
-| Bahamas                                           | 40      | 401,283                      | 10,010          |
-| Palau                                             | 38      | 17,696                       | 460             |
-| United States                                     | 37      | 341,730,701                  | 9,147,590       |
-| Kyrgyzstan                                        | 37      | 7,186,009                    | 191,800         |
-| Somaliland                                        | 35      | 4,914,100                    | 167,283         |
-| Laos                                              | 34      | 7,769,819                    | 230,800         |
-| Venezuela                                         | 32      | 28,405,543                   | 882,050         |
-| Estonia                                           | 32      | 1,360,546                    | 42,730          |
-| Angola                                            | 30      | 37,885,850                   | 1,246,700       |
-| Somalia                                           | 30      | 19,009,151                   | 627,340         |
-| Latvia                                            | 30      | 1,871,872                    | 62,230          |
-| Solomon Islands                                   | 29      | 819,198                      | 27,990          |
-| Eritrea                                           | 29      | 3,535,603                    | 121,041         |
-| Zambia                                            | 29      | 21,314,956                   | 743,390         |
-| Sudan                                             | 27      | 50,448,963                   | 1,868,000       |
-| Vanuatu                                           | 27      | 327,778                      | 12,190          |
-| Peru                                              | 27      | 34,217,848                   | 1,280,000       |
-| Chile                                             | 27      | 19,764,772                   | 743,532         |
-| Sweden                                            | 26      | 10,606,999                   | 407,280         |
-| Brazil                                            | 25      | 211,998,574                  | 8,358,140       |
-| Saint Pierre and Miquelon (France)                | 24      | 5,628                        | 230             |
-| Papua New Guinea                                  | 23      | 10,576,502                   | 452,860         |
-| Niger                                             | 21      | 27,032,413                   | 1,266,700       |
-| Bhutan                                            | 21      | 791,525                      | 38,140          |
-| Mali                                              | 20      | 24,478,596                   | 1,220,190       |
-| New Zealand                                       | 20      | 5,213,944                    | 263,310         |
-| Åland (Finland)                                   | 20      | 30,237                       | 1,583           |
-| Algeria                                           | 20      | 47,400,000                   | 2,381,741       |
-| Uruguay                                           | 19      | 3,386,588                    | 175,020         |
-| South Sudan                                       | 19      | 11,943,409                   | 631,930         |
-| Congo                                             | 19      | 6,332,961                    | 341,500         |
-| Finland                                           | 18      | 5,617,311                    | 303,948         |
-| Belize                                            | 18      | 417,072                      | 22,810          |
-| Oman                                              | 17      | 5,281,538                    | 309,500         |
-| Argentina                                         | 17      | 45,696,159                   | 2,736,690       |
-| Chad                                              | 16      | 20,299,123                   | 1,259,200       |
-| New Caledonia (France)                            | 16      | 292,640                      | 18,280          |
-| Turkmenistan                                      | 16      | 7,494,499                    | 469,930         |
-| Saudi Arabia                                      | 16      | 33,962,757                   | 2,149,690       |
-| Paraguay                                          | 15      | 6,109,903                    | 406,752         |
-| Norway                                            | 15      | 5,576,660                    | 364,270         |
-| South Ossetia                                     | 14      | 56,520                       | 3,900           |
-| Saint Helena, Ascension and Tristan da Cunha (UK) | 13      | 5,238                        | 390             |
-| Christmas Island (Australia)                      | 13      | 1,692                        | 136             |
-| Bolivia                                           | 11      | 12,413,315                   | 1,083,300       |
-| Gabon                                             | 9.9     | 2,538,952                    | 257,670         |
-| Russia                                            | 8.6     | 147,182,123                  | 17,125,191      |
-| Central African Republic                          | 8.6     | 5,330,690                    | 622,980         |
-| Kazakhstan                                        | 7.6     | 20,592,571                   | 2,699,700       |
-| Niue (New Zealand)                                | 7.0     | 1,819                        | 260             |
-| Mauritania                                        | 5.0     | 5,169,396                    | 1,030,700       |
-| Canada                                            | 4.5     | 39,742,430                   | 8,788,700       |
-| Botswana                                          | 4.4     | 2,521,139                    | 566,730         |
-| Guyana                                            | 4.2     | 831,087                      | 196,850         |
-| Libya                                             | 4.2     | 7,381,023                    | 1,759,540       |
-| Suriname                                          | 4.0     | 634,431                      | 160,508         |
-| Iceland                                           | 3.9     | 393,396                      | 100,830         |
-| Namibia                                           | 3.7     | 3,030,131                    | 823,290         |
-| Australia                                         | 3.5     | 26,713,205                   | 7,692,020       |
-| Mongolia                                          | 2.2     | 3,475,540                    | 1,557,507       |
-| Western Sahara                                    | 2.2     | 590,506                      | 266,000         |
-| Pitcairn Islands (UK)                             | 0.85    | 40                           | 47              |
-| Falkland Islands (UK)                             | 0.29    | 3,471                        | 12,170          |
-| Greenland (Denmark)                               | 0.026   | 55,840                       | 2,166,086       |
-| Antarctica                                        | 0.009   | 1,300 (winter)5,100 (summer) | 14,200,000      |
-| South Georgia and the South Sandwich Islands (UK) | 0.008   | 30                           | 3,756           |
+^table-countries
 
-^table2
+#### Using Chart DSL (`chart`)
 
-Rendered interactive plot using `display(Plot.plot({...}))` reading dynamically from the table above:
+You can render a scatter chart referencing the table using our YAML-based Chart DSL:
 
-```plot
-const table = Array.from(document.querySelectorAll("table")).find(t =>
-  t.innerText.includes("Land area") && t.innerText.includes("Population")
-);
-
-const data = Array.from(table ? table.querySelectorAll("tbody tr") : []).map(tr => {
-  const cells = Array.from(tr.querySelectorAll("td")).map(td => td.innerText.trim());
-  return {
-    location: cells[0],
-    density: parseFloat(cells[1].replace(/,/g, "")),
-    population: parseFloat(cells[2].replace(/,/g, "")),
-    area: parseFloat(cells[3].replace(/,/g, ""))
-  };
-}).filter(d => d.location && d.location !== "World" && !isNaN(d.population) && !isNaN(d.area) && d.area > 0 && d.population > 0);
-
-const POP_THRESHOLD = 10_000_000;
-const AREA_THRESHOLD = 100_000;
-
-const lx = data.map(d => Math.log10(d.area));
-const ly = data.map(d => Math.log10(d.population));
-const meanX = d3.mean(lx), meanY = d3.mean(ly);
-const slope = d3.sum(lx, (x, i) => (x - meanX) * (ly[i] - meanY)) / d3.sum(lx, x => (x - meanX) ** 2);
-const intercept = meanY - slope * meanX;
-
-const trend = [0.3, 20_000_000].map(area => ({
-  area,
-  population: 10 ** (intercept + slope * Math.log10(area))
-}));
-
-const cornerStyle = {fill: "#888", fontSize: 10, fontStyle: "italic"};
-
-const plot = display(Plot.plot({
-  title: "Population vs. Land Area",
-  subtitle: "Color = density (/km²); blue line = log-log regression; orange lines = 10M population / 100k km² thresholds",
-  width: 900,
-  height: 600,
-  grid: true,
-  inset: 24,
-  x: {type: "log", label: "Land area (km²) →", tickFormat: "~s"},
-  y: {type: "log", label: "↑ Population", tickFormat: "~s"},
-  color: {type: "log", scheme: "turbo", legend: true, label: "Density (/km²)"},
-  marks: [
-    Plot.line(trend, {x: "area", y: "population", stroke: "#1d63b8", strokeWidth: 3.5}),
-    Plot.ruleX([AREA_THRESHOLD], {stroke: "#f59e0b", strokeWidth: 2}),
-    Plot.ruleY([POP_THRESHOLD], {stroke: "#f59e0b", strokeWidth: 2}),
-    // Quadrant corner labels: one mark per corner (frameAnchor is a constant option)
-    Plot.text(["↖ High Density / Small Land"], {frameAnchor: "top-left", dx: 10, dy: 10, ...cornerStyle}),
-    Plot.text(["↗ Large States (High Pop & Land)"], {frameAnchor: "top-right", dx: -10, dy: 10, ...cornerStyle}),
-    Plot.text(["↙ Microstates & Territories"], {frameAnchor: "bottom-left", dx: 10, dy: -10, ...cornerStyle}),
-    Plot.text(["↘ Large Land / Low Pop"], {frameAnchor: "bottom-right", dx: -10, dy: -10, ...cornerStyle}),
-    Plot.dot(data, {
-      x: "area", y: "population", fill: "density", r: 5.5,
-      stroke: "#222", strokeWidth: 0.5, tip: true,
-      title: d => `${d.location}\nArea: ${d.area.toLocaleString()} km²\nPopulation: ${d.population.toLocaleString()}\nDensity: ${d.density.toLocaleString()} /km²`
-    }),
-    Plot.text(
-      data.filter(d => ["China", "India", "Bangladesh", "Taiwan", "Singapore", "Monaco", "Vatican City"].includes(d.location)),
-      {x: "area", y: "population", text: "location", dy: -12, fontSize: 11, fontWeight: "bold", fill: "#111", stroke: "#fff", strokeWidth: 2, paintOrder: "stroke"}
-    )
-  ]
-}));
+```chart
+type: scatter
+id: table-countries
+xScale: log
+yScale: log
+trending: true
+fill: GDP
+r: Density
+x:
+   label: "Land Area (km²)"
+y:
+   label: "Population"
+markLines:
+   - y: 10000000
+     label: "10M Population Threshold"
+     style: dashed
+     color: "#f59e0b"
+   - x: 1000
+     label: "1,000 km² Threshold"
+     style: dotted
+     color: "#10b981"
+width: 700px
 ```
 
-#### Alternative Syntaxes
+##### Table-to-Data Column Resolution
 
-You can also write Observable Plot visualizations as a direct expression or assigned to a variable without `display`:
+When referencing a table, columns are resolved automatically:
+1. **X and Y Dimensions**: Matched first by matching your `x` and `y` labels, keys, or columns against table headers (with fuzzy matching for superscripts such as `km²` vs `km2`).
+2. **Color Legend & Fill**: Chosen from the remaining numeric columns in table order (`numericCols.find((k) => k !== xCol && k !== yCol)`). In the table above, `Density` appears before `GDP`, so points are colored by `Density` and the legend shows `Density`.
+3. **Custom Fill Column**: You can explicitly specify `fill:` or `color:` to pick any column (e.g. `fill: GDP`) for point colors and legend.
+4. **4D Bubble Chart (Size Mapping)**: Map another numeric dimension to point radius using `r:` or `size:` (e.g. `r: GDP` or `r: Density`):
 
-##### 1. Standalone Plot Expression
+```chart
+type: scatter
+id: table-countries
+xScale: log
+yScale: log
+trending: true
+fill: Density
+r: GDP
+x:
+   label: "Land Area (km²)"
+y:
+   label: "Population"
+markLines:
+   - y: 10000000
+     label: "10M Population Threshold"
+     style: dashed
+     color: "#f59e0b"
+   - x: 1000
+     label: "1,000 km² Threshold"
+     style: dotted
+     color: "#10b981"
+width: 700px
+```
 
-```javascript
-// 1. Read and parse data dynamically from the table
-const table = Array.from(document.querySelectorAll("table")).find(t =>
-  t.innerText.includes("Land area") && t.innerText.includes("Population")
-);
+#### Using Observable Plot (`plot`)
 
-const data = Array.from(table ? table.querySelectorAll("tbody tr") : []).map(tr => {
-  const cells = Array.from(tr.querySelectorAll("td")).map(td => td.innerText.trim());
-  return {
-    location: cells[0],
-    density: parseFloat(cells[1].replace(/,/g, "")),
-    population: parseFloat(cells[2].replace(/,/g, "")),
-    area: parseFloat(cells[3].replace(/,/g, ""))
-  };
-}).filter(d => d.location && d.location !== "World" && !isNaN(d.population) && !isNaN(d.area) && d.area > 0 && d.population > 0);
+In Observable Plot code blocks, tables with hyphenated IDs (e.g. `table-countries` or `^table-countries`) are preprocessed into accessible JavaScript identifiers (`table_countries` or `table-countries` directly):
 
-// 2. Standard Thresholds (10M Population, 100k km² Area)
-const POP_THRESHOLD = 10_000_000;
-const AREA_THRESHOLD = 100_000;
-
-// 3. Log-Log Linear Regression (Trend Line)
-const n = data.length;
-const lx = data.map(d => Math.log10(d.area));
-const ly = data.map(d => Math.log10(d.population));
-const meanX = lx.reduce((a, b) => a + b, 0) / n;
-const meanY = ly.reduce((a, b) => a + b, 0) / n;
-const num = lx.reduce((acc, x, i) => acc + (x - meanX) * (ly[i] - meanY), 0);
-const den = lx.reduce((acc, x) => acc + Math.pow(x - meanX, 2), 0);
-const slope = num / den;
-const intercept = meanY - slope * meanX;
-
-const trend = [
-  { area: 0.3, population: Math.pow(10, intercept + slope * Math.log10(0.3)) },
-  { area: 20_000_000, population: Math.pow(10, intercept + slope * Math.log10(20_000_000)) }
-];
-
-// 4. Render
+```plot
 Plot.plot({
-  title: "Population vs. Land Area",
-  subtitle: "X = Land area (km²), Y = Population, Color = Density | Blue line: Regression trend | Yellow cross: Large state thresholds (10M pop / 100k km²)",
-  width: 860,
-  height: 580,
+  title: "Population vs. Land Area from Note Table",
+  width: 700,
+  height: 380,
   grid: true,
-  inset: 24,
-  x: {
-    type: "log",
-    label: "Land Area (km²) →",
-    tickFormat: "~s"
-  },
-  y: {
-    type: "log",
-    label: "↑ Population",
-    tickFormat: "~s"
-  },
-  color: {
-    type: "log",
-    scheme: "turbo",
-    legend: true,
-    label: "Density (/km²)"
-  },
+  x: { type: "log", label: "Land Area (km²) →" },
+  y: { type: "log", label: "↑ Population" },
   marks: [
-    // --- Regression Trend Line (Blue) ---
-    Plot.line(trend, {
-      x: "area",
-      y: "population",
-      stroke: "#1d63b8",
-      strokeWidth: 3.5
+    Plot.dot(table_countries, {
+      x: "Land area (km2)",
+      y: "Population",
+      fill: "Density",
+      r: "GDP",
+      tip: true
     }),
-
-    // --- Threshold Crosshair (Yellow) ---
-    Plot.ruleX([AREA_THRESHOLD], {
-      stroke: "#f59e0b",
-      strokeWidth: 2
-    }),
-    Plot.ruleY([POP_THRESHOLD], {
-      stroke: "#f59e0b",
-      strokeWidth: 2
-    }),
-
-    // --- Quadrant Corner Badges (Placed out of the way) ---
-    Plot.text([
-      { text: "↖ High Density / Small Land", frameAnchor: "top-left", dx: 10, dy: 10 },
-      { text: "↗ Large States (High Pop & Land)", frameAnchor: "top-right", dx: -10, dy: 10 },
-      { text: "↙ Microstates & Territories", frameAnchor: "bottom-left", dx: 10, dy: -10 },
-      { text: "↘ Large Land / Low Pop", frameAnchor: "bottom-right", dx: -10, dy: -10 }
-    ], {
-      frameAnchor: "frameAnchor",
-      text: "text",
-      fill: "#888",
-      fontSize: 10,
-      fontStyle: "italic",
-      dx: "dx",
-      dy: "dy"
-    }),
-
-    // --- Country Dots ---
-    Plot.dot(data, {
-      x: "area",
-      y: "population",
-      fill: "density",
-      r: 5.5,
-      stroke: "#222",
-      strokeWidth: 0.5,
-      tip: true,
-      title: d => `${d.location}\nArea: ${d.area.toLocaleString()} km²\nPopulation: ${d.population.toLocaleString()}\nDensity: ${d.density.toLocaleString()} /km²`
-    }),
-
-    // --- Key Country Labels (Always rendered on top with clear text) ---
-    Plot.text(
-      data.filter(d => ["China", "India", "Bangladesh", "Taiwan", "Singapore", "Monaco", "Vatican City"].includes(d.location)),
-      {
-        x: "area",
-        y: "population",
-        text: "location",
-        dy: -12,
-        fontSize: 11,
-        fontWeight: "bold",
-        fill: "#111",
-        stroke: "#fff",
-        strokeWidth: 2,
-        paintOrder: "stroke" // Ensures the white halo stays behind the text
-      }
-    )
+    Plot.text(table_countries, {
+      x: "Land area (km2)",
+      y: "Population",
+      text: "Location",
+      dy: -10,
+      fontSize: 10
+    })
   ]
 })
 ```
-
-##### 2. Assigned to Variable
-
-```javascript
-const table = Array.from(document.querySelectorAll("table")).find(t =>
-  t.innerText.includes("Land area") && t.innerText.includes("Population")
-);
-
-const data = Array.from(table ? table.querySelectorAll("tbody tr") : []).map(tr => {
-  const cells = Array.from(tr.querySelectorAll("td")).map(td => td.innerText.trim());
-  return {
-    location: cells[0],
-    density: parseFloat(cells[1].replace(/,/g, "")),
-    population: parseFloat(cells[2].replace(/,/g, "")),
-    area: parseFloat(cells[3].replace(/,/g, ""))
-  };
-}).filter(d => d.location && d.location !== "World" && !isNaN(d.population) && !isNaN(d.area) && d.area > 0 && d.population > 0);
-
-const POP_THRESHOLD = 10_000_000;
-const AREA_THRESHOLD = 100_000;
-
-const lx = data.map(d => Math.log10(d.area));
-const ly = data.map(d => Math.log10(d.population));
-const meanX = d3.mean(lx), meanY = d3.mean(ly);
-const slope = d3.sum(lx, (x, i) => (x - meanX) * (ly[i] - meanY)) / d3.sum(lx, x => (x - meanX) ** 2);
-const intercept = meanY - slope * meanX;
-
-const trend = [0.3, 20_000_000].map(area => ({
-  area,
-  population: 10 ** (intercept + slope * Math.log10(area))
-}));
-
-const cornerStyle = {fill: "#888", fontSize: 10, fontStyle: "italic"};
-
-const plot = Plot.plot({
-  title: "Population vs. Land Area",
-  subtitle: "Color = density (/km²); blue line = log-log regression; orange lines = 10M population / 100k km² thresholds",
-  width: 860,
-  height: 580,
-  grid: true,
-  inset: 24,
-  x: {type: "log", label: "Land area (km²) →", tickFormat: "~s"},
-  y: {type: "log", label: "↑ Population", tickFormat: "~s"},
-  color: {type: "log", scheme: "turbo", legend: true, label: "Density (/km²)"},
-  marks: [
-    Plot.line(trend, {x: "area", y: "population", stroke: "#1d63b8", strokeWidth: 3.5}),
-    Plot.ruleX([AREA_THRESHOLD], {stroke: "#f59e0b", strokeWidth: 2}),
-    Plot.ruleY([POP_THRESHOLD], {stroke: "#f59e0b", strokeWidth: 2}),
-
-    // Quadrant Corner Labels
-    Plot.text(["↖ High Density / Small Land"], {frameAnchor: "top-left", dx: 10, dy: 10, ...cornerStyle}),
-    Plot.text(["↗ Large States (High Pop & Land)"], {frameAnchor: "top-right", dx: -10, dy: 10, ...cornerStyle}),
-    Plot.text(["↙ Microstates & Territories"], {frameAnchor: "bottom-left", dx: 10, dy: -10, ...cornerStyle}),
-    Plot.text(["↘ Large Land / Low Pop"], {frameAnchor: "bottom-right", dx: -10, dy: -10, ...cornerStyle}),
-
-    Plot.dot(data, {
-      x: "area", y: "population", fill: "density", r: 5.5,
-      stroke: "#222", strokeWidth: 0.5, tip: true,
-      title: d => `${d.location}\nArea: ${d.area.toLocaleString()} km²\nPopulation: ${d.population.toLocaleString()}\nDensity: ${d.density.toLocaleString()} /km²`
-    }),
-
-    Plot.text(
-      data.filter(d => ["China", "India", "Bangladesh", "Taiwan", "Singapore", "Monaco", "Vatican City"].includes(d.location)),
-      {x: "area", y: "population", text: "location", dy: -12, fontSize: 11, fontWeight: "bold", fill: "#111", stroke: "#fff", strokeWidth: 2, paintOrder: "stroke"}
-    )
-  ]
-});
-```
-
----
-
-## Other methods for charts or chart-like content
-
-
-![](https://www.youtube.com/watch?v=NnTvZWp5Q7o)
-
-\*This text will not be italicized\*.%%FUCK%%
-
-![](https://twitter.com/obsdmd/status/1580548874246443010)
-
-<iframe width="560" height="315" src="https://www.inoreader.com/"></iframe>
-
-* [Chart.js Style YAML Charts](#chartjs-style-yaml-charts)
-* [Rendering Showcase]({{ '/Rendering Showcase/' | relative_url }})
