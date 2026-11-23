@@ -67,7 +67,7 @@
 <p>Test the cipher engine directly in your browser. Select your preferred carrier style below—from statistical news prose and poetry stanzas to experimental causal language models:</p>
 
 <div class="card cipher-tester-card" style="margin: 1.75rem 0 2.5rem 0; padding: 1.75rem; border: 1px solid var(--border-color); border-radius: 14px; background: var(--bg-card); box-shadow: var(--card-shadow);">
-  <div style="margin-bottom: 1.25rem;">
+  <div id="cipher-password-group" style="margin-bottom: 1.25rem;">
     <label for="cipher-password" style="display: block; font-weight: 700; margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-main);">🔑 Secret Password / Key</label>
     <input type="password" id="cipher-password" value="MySecretKey123" placeholder="Enter encryption password..." style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem; background: var(--bg-body); color: var(--text-main); box-sizing: border-box; font-family: inherit;" />
   </div>
@@ -163,6 +163,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const plainEl = document.getElementById("cipher-plaintext");
   const cipherEl = document.getElementById("cipher-ciphertext");
   const passEl = document.getElementById("cipher-password");
+  const passGroupEl = document.getElementById("cipher-password-group");
   const styleEl = document.getElementById("cipher-style");
   const llmPanelEl = document.getElementById("llm-panel");
   const llmModelEl = document.getElementById("llm-model");
@@ -186,22 +187,26 @@ document.addEventListener("DOMContentLoaded", function() {
   function updateStyleUI() {
     const style = styleEl.value;
     if (style === "llm") {
+      if (passGroupEl) passGroupEl.style.display = "block";
       llmPanelEl.style.display = "block";
       llmStdFieldsEl.style.display = "block";
       llmEqualLengthFieldsEl.style.display = "none";
       encodeBtn.textContent = "🤖 Encode with ONNX LLM";
       decodeBtn.textContent = "🔓 Decode with ONNX LLM";
     } else if (style === "equal-length") {
+      if (passGroupEl) passGroupEl.style.display = "none";
       llmPanelEl.style.display = "block";
       llmStdFieldsEl.style.display = "none";
       llmEqualLengthFieldsEl.style.display = "block";
       encodeBtn.textContent = "🤖 Encode with Equal-Length LLM";
       decodeBtn.textContent = "🔓 Decode with Equal-Length LLM";
     } else if (style === "poetry") {
+      if (passGroupEl) passGroupEl.style.display = "block";
       llmPanelEl.style.display = "none";
       encodeBtn.textContent = "🔒 Encode to Poetry";
       decodeBtn.textContent = "🔓 Decode to Plaintext";
     } else {
+      if (passGroupEl) passGroupEl.style.display = "block";
       llmPanelEl.style.display = "none";
       encodeBtn.textContent = "🔒 Encode to English Prose";
       decodeBtn.textContent = "🔓 Decode to Plaintext";
@@ -209,6 +214,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   styleEl.addEventListener("change", updateStyleUI);
+  styleEl.addEventListener("input", updateStyleUI);
   updateStyleUI();
 
   function showError(msg) {
@@ -317,10 +323,11 @@ document.addEventListener("DOMContentLoaded", function() {
     try {
       const text = plainEl.value;
       const pass = passEl.value;
+      const selectedStyle = styleEl.value;
       if (!text) return showError("Please enter plaintext message to encode.");
-      if (!pass) return showError("Please enter a password.");
+      if (selectedStyle !== "equal-length" && !pass) return showError("Please enter a password.");
 
-      const isLlm = styleEl.value === "llm" || styleEl.value === "equal-length";
+      const isLlm = selectedStyle === "llm" || selectedStyle === "equal-length";
       if (isLlm) {
         await ensureTransformersLoaded();
         const rawModel = llmModelEl.value.trim() || "onnx-community/Supra-Mini-v2-0.1M-ONNX";
@@ -333,11 +340,24 @@ document.addEventListener("DOMContentLoaded", function() {
       }
 
       const cipherLib = window.ngramCipher;
-      if (!cipherLib || !cipherLib.encode) {
+      if (!cipherLib) {
         throw new Error("Cipher engine library is not loaded.");
       }
 
-      const result = await cipherLib.encode(text, pass, buildOptions());
+      let result;
+      const opts = buildOptions();
+      if (selectedStyle === "equal-length") {
+        if (typeof cipherLib.equalLengthEncode !== "function") {
+          throw new Error("equalLengthEncode function is not available in cipher engine.");
+        }
+        result = await cipherLib.equalLengthEncode(text, opts.encoding);
+      } else {
+        if (typeof cipherLib.encode !== "function") {
+          throw new Error("encode function is not available in cipher engine.");
+        }
+        result = await cipherLib.encode(text, pass, opts);
+      }
+
       cipherEl.value = result;
       updateMetrics(result);
       showStatus(isLlm ? "✅ Encoding complete! ONNX model cached in browser IndexedDB." : "✅ Successfully encoded into natural carrier text!", true);
@@ -352,10 +372,11 @@ document.addEventListener("DOMContentLoaded", function() {
     try {
       const cipher = cipherEl.value;
       const pass = passEl.value;
+      const selectedStyle = styleEl.value;
       if (!cipher) return showError("Please enter carrier ciphertext to decode.");
-      if (!pass) return showError("Please enter a password.");
+      if (selectedStyle !== "equal-length" && !pass) return showError("Please enter a password.");
 
-      const isLlm = styleEl.value === "llm" || styleEl.value === "equal-length";
+      const isLlm = selectedStyle === "llm" || selectedStyle === "equal-length";
       if (isLlm) {
         await ensureTransformersLoaded();
         const rawModel = llmModelEl.value.trim() || "onnx-community/Supra-Mini-v2-0.1M-ONNX";
@@ -368,11 +389,24 @@ document.addEventListener("DOMContentLoaded", function() {
       }
 
       const cipherLib = window.ngramCipher;
-      if (!cipherLib || !cipherLib.decode) {
+      if (!cipherLib) {
         throw new Error("Cipher engine library is not loaded.");
       }
 
-      const result = await cipherLib.decode(cipher, pass, buildOptions());
+      let result;
+      const opts = buildOptions();
+      if (selectedStyle === "equal-length") {
+        if (typeof cipherLib.equalLengthDecode !== "function") {
+          throw new Error("equalLengthDecode function is not available in cipher engine.");
+        }
+        result = await cipherLib.equalLengthDecode(cipher, opts.encoding);
+      } else {
+        if (typeof cipherLib.decode !== "function") {
+          throw new Error("decode function is not available in cipher engine.");
+        }
+        result = await cipherLib.decode(cipher, pass, opts);
+      }
+
       plainEl.value = result;
       showStatus(isLlm ? "✅ Decoding complete!" : "✅ Successfully decoded and verified plaintext!", true);
     } catch (err) {
