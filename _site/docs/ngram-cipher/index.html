@@ -281,11 +281,17 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     showStatus("⏳ Loading neural model engine (@huggingface/transformers)...", false);
     try {
-      const module = await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.3.3");
+      const module = await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.6");
       window.transformers = module;
       return module;
     } catch (err) {
-      throw new Error("Failed to load @huggingface/transformers from CDN: " + (err.message || String(err)));
+      try {
+        const fallbackModule = await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@latest");
+        window.transformers = fallbackModule;
+        return fallbackModule;
+      } catch (fallbackErr) {
+        throw new Error("Failed to load @huggingface/transformers from CDN: " + (err.message || String(err)));
+      }
     }
   }
 
