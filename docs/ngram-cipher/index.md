@@ -230,7 +230,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     showStatus("⏳ Loading neural model engine (@huggingface/transformers)...", false);
     try {
-      const module = await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.6");
+      const module = await import("https://cdn.jsdelivr.net/npm/@huggingface/transformers@4.3.2");
       window.transformers = module;
       return module;
     } catch (err) {
