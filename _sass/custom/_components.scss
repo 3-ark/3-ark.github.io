@@ -270,6 +270,38 @@
   }
 }
 
+/* Breadcrumb Navigation */
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+
+  a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--accent-primary);
+      text-decoration: underline;
+    }
+  }
+
+  .breadcrumb-separator {
+    color: var(--border-color);
+    font-size: 0.75rem;
+  }
+
+  .breadcrumb-current {
+    color: var(--text-main);
+    font-weight: 600;
+  }
+}
+
 /* Post Article Container */
 .post-header {
   margin-bottom: 2rem;

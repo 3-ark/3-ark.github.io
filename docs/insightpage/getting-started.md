@@ -78,6 +78,6 @@ InsightPage is designed to be highly configurable and operates under a **Bring Y
 ## 📚 Further Reading
 
 * [Explore Detailed Features & Capabilities]({{ '/docs/insightpage/features/' | relative_url }})
-* [Interactive Rendering Showcase]({{ '/Rendering Showcase/' | relative_url }})
+* [Interactive Showcases & Gallery]({{ '/showcase/' | relative_url }})
 * [Privacy Policy & Local-First Principles]({{ '/privacy-policy/' | relative_url }})
 * [Documentation Hub Home]({{ '/docs/' | relative_url }})

@@ -89,7 +89,7 @@ graph TD
   3. View the real-time **Diff View** in your note tab, highlighting additions and deletions side-by-side.
   4. Click **Accept** to commit the changes directly to your file, or **Decline** to keep the original.
 
-Explore all visual rendering features in our [Rendering Showcase]({{ '/Rendering Showcase/' | relative_url }}).
+Explore all visual rendering features in our [Interactive Showcases]({{ '/showcase/' | relative_url }}).
 
 ---
 

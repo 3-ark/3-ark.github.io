@@ -10,8 +10,8 @@ description: "Central portal for product documentation, engineering notes, and t
   <p>Discover complete user guides, system architecture diagrams, interactive visualization showcases, and engineering updates for our product ecosystem.</p>
   <div class="hero-buttons">
     <a href="{{ '/docs/' | relative_url }}" class="btn btn-primary">📖 Explore Documentation</a>
+    <a href="{{ '/showcase/' | relative_url }}" class="btn btn-secondary">🎨 Interactive Showcases</a>
     <a href="{{ '/blog/' | relative_url }}" class="btn btn-secondary">📰 Engineering Blog</a>
-    <a href="{{ '/Rendering Showcase/' | relative_url }}" class="btn btn-secondary">🎨 Interactive Showcase</a>
   </div>
 </div>
 
@@ -77,8 +77,8 @@ description: "Central portal for product documentation, engineering notes, and t
 <hr>
 
 <div class="section-header">
-  <h2>🎨 Visualizations & Markdown Rendering</h2>
-  <a href="{{ '/Rendering Showcase/' | relative_url }}" class="section-link">Explore showcases &rarr;</a>
+  <h2>🎨 Interactive Showcases & Visualizations</h2>
+  <a href="{{ '/showcase/' | relative_url }}" class="section-link">View all showcases &rarr;</a>
 </div>
 
 <div class="card-grid showcase-grid">
@@ -86,7 +86,15 @@ description: "Central portal for product documentation, engineering notes, and t
     <div class="mini-card-icon">📊</div>
     <div class="mini-card-content">
       <h3 class="card-title"><a href="{{ '/Example Chart/' | relative_url }}">Interactive Charts</a></h3>
-      <p class="card-description">Bar, line, pie, donut, sankey, and radar charts via Chart.js & Observable Plot.</p>
+      <p class="card-description">Bar, line, pie, sankey, scatter, and radar charts via Chart.js & Observable Plot.</p>
+    </div>
+  </div>
+
+  <div class="card mini-card">
+    <div class="mini-card-icon">🌍</div>
+    <div class="mini-card-content">
+      <h3 class="card-title"><a href="{{ '/Example Charts of Countries and Dependencies by Population Density/' | relative_url }}">Demographic Data</a></h3>
+      <p class="card-description">Global population, area, and density analysis with log scales.</p>
     </div>
   </div>
 
@@ -99,18 +107,26 @@ description: "Central portal for product documentation, engineering notes, and t
   </div>
 
   <div class="card mini-card">
-    <div class="mini-card-icon">🔀</div>
-    <div class="mini-card-content">
-      <h3 class="card-title"><a href="{{ '/Example Mermaid/' | relative_url }}">Mermaid Diagrams</a></h3>
-      <p class="card-description">Flowcharts, sequence diagrams, class diagrams, and state machines.</p>
-    </div>
-  </div>
-
-  <div class="card mini-card">
     <div class="mini-card-icon">⏳</div>
     <div class="mini-card-content">
       <h3 class="card-title"><a href="{{ '/Example Timeline/' | relative_url }}">Interactive Timelines</a></h3>
       <p class="card-description">Zoomable timeline charts with milestones, tags, and category filtering.</p>
+    </div>
+  </div>
+
+  <div class="card mini-card">
+    <div class="mini-card-icon">🔀</div>
+    <div class="mini-card-content">
+      <h3 class="card-title"><a href="{{ '/Example Mermaid/' | relative_url }}">Mermaid Diagrams</a></h3>
+      <p class="card-description">Flowcharts, sequence diagrams, class models, and state machines.</p>
+    </div>
+  </div>
+
+  <div class="card mini-card">
+    <div class="mini-card-icon">🎼</div>
+    <div class="mini-card-content">
+      <h3 class="card-title"><a href="{{ '/simple abc/' | relative_url }}">Sheet Music & Audio</a></h3>
+      <p class="card-description">Vector musical scores with interactive MIDI playback in markdown.</p>
     </div>
   </div>
 </div>

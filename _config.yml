@@ -5,8 +5,8 @@ theme: minima
 # Header Navigation
 header_pages:
   - docs/index.md
+  - showcase/index.md
   - blog/index.md
-  - Rendering Showcase.md
   - privacy-policy.md
 
 # Permalink settings

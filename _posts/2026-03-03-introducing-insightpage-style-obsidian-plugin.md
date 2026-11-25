@@ -68,7 +68,7 @@ Add compact popover comments directly inside paragraph text:
 The plugin is 100% open-source under the AGPL-3.0 license.
 
 * **GitHub Repository**: [https://github.com/3-ark/insightpage-style](https://github.com/3-ark/insightpage-style)
-* **Interactive Showcase**: Explore live web demos on our [Rendering Showcase]({{ '/Rendering Showcase/' | relative_url }}).
+* **Interactive Showcase**: Explore live web demos in our [Interactive Showcases & Gallery]({{ '/showcase/' | relative_url }}).
 * **Sample Visualizations**: Check out [Example Chart]({{ '/Example Chart/' | relative_url }}), [Example Map]({{ '/Example Map/' | relative_url }}), and [Example Timeline]({{ '/Example Timeline/' | relative_url }}).
 
 Check out the repository on GitHub, try it out in your Obsidian vault, and let us know what you think!

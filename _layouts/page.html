@@ -3,6 +3,22 @@ layout: default
 ---
 
 <article class="page-article">
+  <div class="breadcrumb-nav">
+    <a href="{{ '/' | relative_url }}">Home</a>
+    {% if page.url contains '/docs/' and page.url != '/docs/' %}
+      <span class="breadcrumb-separator">/</span>
+      <a href="{{ '/docs/' | relative_url }}">Docs</a>
+    {% elsif page.url contains '/showcase/' and page.url != '/showcase/' %}
+      <span class="breadcrumb-separator">/</span>
+      <a href="{{ '/showcase/' | relative_url }}">Showcase</a>
+    {% elsif page.url contains 'Example' or page.url contains 'Rendering Showcase' or page.url contains 'simple abc' or page.url contains 'Skills for AI' %}
+      <span class="breadcrumb-separator">/</span>
+      <a href="{{ '/showcase/' | relative_url }}">Showcase</a>
+    {% endif %}
+    <span class="breadcrumb-separator">/</span>
+    <span class="breadcrumb-current">{{ page.title }}</span>
+  </div>
+
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
     {% if page.description %}
